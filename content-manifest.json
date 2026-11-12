@@ -1,0 +1,468 @@
+{
+  "site": "https://digital.lazyplex.com",
+  "generated_on": "2026-11-12",
+  "source": "existing Lazy Plex Digital v2",
+  "pillar_target_words": [
+    3500,
+    5500
+  ],
+  "supporting_blogs_per_industry": 5,
+  "records": [
+    {
+      "type": "pillar",
+      "industry": "healthcare",
+      "path": "industries/healthcare/index.html",
+      "words": 5475,
+      "url": "https://digital.lazyplex.com/industries/healthcare/",
+      "keyword": "healthcare digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/hospital-seo-services-what-to-check/index.html",
+      "words": 2626,
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/hospital-seo-services-what-to-check/",
+      "keyword": "hospital SEO services"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/google-ads-for-clinics-appointment-quality/index.html",
+      "words": 2612,
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/google-ads-for-clinics-appointment-quality/",
+      "keyword": "clinic Google Ads management"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/hospital-website-conversion-checklist/index.html",
+      "words": 2610,
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/hospital-website-conversion-checklist/",
+      "keyword": "hospital website development company"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/medical-local-seo-multiple-locations/index.html",
+      "words": 2628,
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/medical-local-seo-multiple-locations/",
+      "keyword": "medical local SEO services"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/patient-enquiry-follow-up-system/index.html",
+      "words": 2625,
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/patient-enquiry-follow-up-system/",
+      "keyword": "healthcare CRM and appointment lead management"
+    },
+    {
+      "type": "pillar",
+      "industry": "real-estate",
+      "path": "industries/real-estate/index.html",
+      "words": 5485,
+      "url": "https://digital.lazyplex.com/industries/real-estate/",
+      "keyword": "real estate digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/property-lead-generation-qualified-buyers/index.html",
+      "words": 2563,
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/property-lead-generation-qualified-buyers/",
+      "keyword": "property lead generation services"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/google-ads-for-real-estate-projects/index.html",
+      "words": 2579,
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/google-ads-for-real-estate-projects/",
+      "keyword": "Google Ads for builders"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/real-estate-project-landing-pages/index.html",
+      "words": 2586,
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/real-estate-project-landing-pages/",
+      "keyword": "real estate landing page design"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/real-estate-seo-locality-pages/index.html",
+      "words": 2601,
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/real-estate-seo-locality-pages/",
+      "keyword": "real estate SEO services"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/real-estate-crm-site-visit-funnel/index.html",
+      "words": 2573,
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/real-estate-crm-site-visit-funnel/",
+      "keyword": "real estate CRM automation"
+    },
+    {
+      "type": "pillar",
+      "industry": "education",
+      "path": "industries/education/index.html",
+      "words": 5223,
+      "url": "https://digital.lazyplex.com/industries/education/",
+      "keyword": "education digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "education",
+      "path": "industries/education/insights/admission-lead-generation-qualified-applicants/index.html",
+      "words": 2487,
+      "url": "https://digital.lazyplex.com/industries/education/insights/admission-lead-generation-qualified-applicants/",
+      "keyword": "admission lead generation services"
+    },
+    {
+      "type": "blog",
+      "industry": "education",
+      "path": "industries/education/insights/google-ads-for-colleges-and-institutes/index.html",
+      "words": 2506,
+      "url": "https://digital.lazyplex.com/industries/education/insights/google-ads-for-colleges-and-institutes/",
+      "keyword": "Google Ads for colleges"
+    },
+    {
+      "type": "blog",
+      "industry": "education",
+      "path": "industries/education/insights/college-website-admissions-conversion/index.html",
+      "words": 2495,
+      "url": "https://digital.lazyplex.com/industries/education/insights/college-website-admissions-conversion/",
+      "keyword": "college website development agency"
+    },
+    {
+      "type": "blog",
+      "industry": "education",
+      "path": "industries/education/insights/education-seo-programme-pages/index.html",
+      "words": 2530,
+      "url": "https://digital.lazyplex.com/industries/education/insights/education-seo-programme-pages/",
+      "keyword": "SEO for coaching institutes"
+    },
+    {
+      "type": "blog",
+      "industry": "education",
+      "path": "industries/education/insights/education-crm-enrolment-tracking/index.html",
+      "words": 2496,
+      "url": "https://digital.lazyplex.com/industries/education/insights/education-crm-enrolment-tracking/",
+      "keyword": "education CRM for admission leads"
+    },
+    {
+      "type": "pillar",
+      "industry": "ecommerce",
+      "path": "industries/ecommerce/index.html",
+      "words": 5322,
+      "url": "https://digital.lazyplex.com/industries/ecommerce/",
+      "keyword": "ecommerce performance marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "ecommerce",
+      "path": "industries/ecommerce/insights/ecommerce-performance-marketing-profit/index.html",
+      "words": 2545,
+      "url": "https://digital.lazyplex.com/industries/ecommerce/insights/ecommerce-performance-marketing-profit/",
+      "keyword": "ecommerce performance marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "ecommerce",
+      "path": "industries/ecommerce/insights/shopify-seo-category-product-pages/index.html",
+      "words": 2560,
+      "url": "https://digital.lazyplex.com/industries/ecommerce/insights/shopify-seo-category-product-pages/",
+      "keyword": "Shopify SEO services"
+    },
+    {
+      "type": "blog",
+      "industry": "ecommerce",
+      "path": "industries/ecommerce/insights/google-shopping-feed-audit/index.html",
+      "words": 2546,
+      "url": "https://digital.lazyplex.com/industries/ecommerce/insights/google-shopping-feed-audit/",
+      "keyword": "Google Shopping ads management"
+    },
+    {
+      "type": "blog",
+      "industry": "ecommerce",
+      "path": "industries/ecommerce/insights/ecommerce-conversion-rate-optimisation/index.html",
+      "words": 2536,
+      "url": "https://digital.lazyplex.com/industries/ecommerce/insights/ecommerce-conversion-rate-optimisation/",
+      "keyword": "ecommerce conversion rate optimisation"
+    },
+    {
+      "type": "blog",
+      "industry": "ecommerce",
+      "path": "industries/ecommerce/insights/d2c-retention-customer-lifecycle/index.html",
+      "words": 2508,
+      "url": "https://digital.lazyplex.com/industries/ecommerce/insights/d2c-retention-customer-lifecycle/",
+      "keyword": "D2C retention marketing agency"
+    },
+    {
+      "type": "pillar",
+      "industry": "hospitality",
+      "path": "industries/hospitality/index.html",
+      "words": 5327,
+      "url": "https://digital.lazyplex.com/industries/hospitality/",
+      "keyword": "hotel digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "hospitality",
+      "path": "industries/hospitality/insights/hotel-seo-services-direct-bookings/index.html",
+      "words": 2551,
+      "url": "https://digital.lazyplex.com/industries/hospitality/insights/hotel-seo-services-direct-bookings/",
+      "keyword": "hotel SEO services"
+    },
+    {
+      "type": "blog",
+      "industry": "hospitality",
+      "path": "industries/hospitality/insights/hotel-google-ads-booking-intent/index.html",
+      "words": 2543,
+      "url": "https://digital.lazyplex.com/industries/hospitality/insights/hotel-google-ads-booking-intent/",
+      "keyword": "resort Google Ads management"
+    },
+    {
+      "type": "blog",
+      "industry": "hospitality",
+      "path": "industries/hospitality/insights/hotel-booking-website-ux/index.html",
+      "words": 2541,
+      "url": "https://digital.lazyplex.com/industries/hospitality/insights/hotel-booking-website-ux/",
+      "keyword": "hotel website booking engine design"
+    },
+    {
+      "type": "blog",
+      "industry": "hospitality",
+      "path": "industries/hospitality/insights/hotel-social-content-seasonality/index.html",
+      "words": 2537,
+      "url": "https://digital.lazyplex.com/industries/hospitality/insights/hotel-social-content-seasonality/",
+      "keyword": "hotel social media marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "hospitality",
+      "path": "industries/hospitality/insights/hotel-direct-booking-channel-mix/index.html",
+      "words": 2514,
+      "url": "https://digital.lazyplex.com/industries/hospitality/insights/hotel-direct-booking-channel-mix/",
+      "keyword": "increase direct hotel bookings services"
+    },
+    {
+      "type": "pillar",
+      "industry": "beauty-wellness",
+      "path": "industries/beauty-wellness/index.html",
+      "words": 5359,
+      "url": "https://digital.lazyplex.com/industries/beauty-wellness/",
+      "keyword": "salon and wellness digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "beauty-wellness",
+      "path": "industries/beauty-wellness/insights/salon-local-seo-services/index.html",
+      "words": 2568,
+      "url": "https://digital.lazyplex.com/industries/beauty-wellness/insights/salon-local-seo-services/",
+      "keyword": "beauty clinic SEO services"
+    },
+    {
+      "type": "blog",
+      "industry": "beauty-wellness",
+      "path": "industries/beauty-wellness/insights/salon-google-ads-appointments/index.html",
+      "words": 2554,
+      "url": "https://digital.lazyplex.com/industries/beauty-wellness/insights/salon-google-ads-appointments/",
+      "keyword": "salon Google Ads management"
+    },
+    {
+      "type": "blog",
+      "industry": "beauty-wellness",
+      "path": "industries/beauty-wellness/insights/salon-website-booking-flow/index.html",
+      "words": 2555,
+      "url": "https://digital.lazyplex.com/industries/beauty-wellness/insights/salon-website-booking-flow/",
+      "keyword": "salon website booking system"
+    },
+    {
+      "type": "blog",
+      "industry": "beauty-wellness",
+      "path": "industries/beauty-wellness/insights/wellness-social-media-to-bookings/index.html",
+      "words": 2543,
+      "url": "https://digital.lazyplex.com/industries/beauty-wellness/insights/wellness-social-media-to-bookings/",
+      "keyword": "wellness social media marketing services"
+    },
+    {
+      "type": "blog",
+      "industry": "beauty-wellness",
+      "path": "industries/beauty-wellness/insights/salon-retention-membership-marketing/index.html",
+      "words": 2521,
+      "url": "https://digital.lazyplex.com/industries/beauty-wellness/insights/salon-retention-membership-marketing/",
+      "keyword": "salon retention marketing services"
+    },
+    {
+      "type": "pillar",
+      "industry": "professional-services",
+      "path": "industries/professional-services/index.html",
+      "words": 5231,
+      "url": "https://digital.lazyplex.com/industries/professional-services/",
+      "keyword": "professional services digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "professional-services",
+      "path": "industries/professional-services/insights/b2b-consulting-lead-generation/index.html",
+      "words": 2493,
+      "url": "https://digital.lazyplex.com/industries/professional-services/insights/b2b-consulting-lead-generation/",
+      "keyword": "B2B lead generation for consultants"
+    },
+    {
+      "type": "blog",
+      "industry": "professional-services",
+      "path": "industries/professional-services/insights/professional-service-seo-strategy/index.html",
+      "words": 2524,
+      "url": "https://digital.lazyplex.com/industries/professional-services/insights/professional-service-seo-strategy/",
+      "keyword": "professional services SEO agency"
+    },
+    {
+      "type": "blog",
+      "industry": "professional-services",
+      "path": "industries/professional-services/insights/consulting-firm-website-design/index.html",
+      "words": 2494,
+      "url": "https://digital.lazyplex.com/industries/professional-services/insights/consulting-firm-website-design/",
+      "keyword": "consulting firm website design"
+    },
+    {
+      "type": "blog",
+      "industry": "professional-services",
+      "path": "industries/professional-services/insights/linkedin-marketing-for-consultants/index.html",
+      "words": 2495,
+      "url": "https://digital.lazyplex.com/industries/professional-services/insights/linkedin-marketing-for-consultants/",
+      "keyword": "LinkedIn marketing for consultants"
+    },
+    {
+      "type": "blog",
+      "industry": "professional-services",
+      "path": "industries/professional-services/insights/consultancy-sales-crm-pipeline/index.html",
+      "words": 2482,
+      "url": "https://digital.lazyplex.com/industries/professional-services/insights/consultancy-sales-crm-pipeline/",
+      "keyword": "consultancy CRM automation"
+    },
+    {
+      "type": "pillar",
+      "industry": "manufacturing-b2b",
+      "path": "industries/manufacturing-b2b/index.html",
+      "words": 5248,
+      "url": "https://digital.lazyplex.com/industries/manufacturing-b2b/",
+      "keyword": "manufacturing digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "manufacturing-b2b",
+      "path": "industries/manufacturing-b2b/insights/industrial-seo-commercial-intent/index.html",
+      "words": 2512,
+      "url": "https://digital.lazyplex.com/industries/manufacturing-b2b/insights/industrial-seo-commercial-intent/",
+      "keyword": "industrial SEO services"
+    },
+    {
+      "type": "blog",
+      "industry": "manufacturing-b2b",
+      "path": "industries/manufacturing-b2b/insights/b2b-manufacturing-lead-generation/index.html",
+      "words": 2495,
+      "url": "https://digital.lazyplex.com/industries/manufacturing-b2b/insights/b2b-manufacturing-lead-generation/",
+      "keyword": "B2B lead generation for manufacturers"
+    },
+    {
+      "type": "blog",
+      "industry": "manufacturing-b2b",
+      "path": "industries/manufacturing-b2b/insights/industrial-website-rfq-design/index.html",
+      "words": 2499,
+      "url": "https://digital.lazyplex.com/industries/manufacturing-b2b/insights/industrial-website-rfq-design/",
+      "keyword": "industrial website development company"
+    },
+    {
+      "type": "blog",
+      "industry": "manufacturing-b2b",
+      "path": "industries/manufacturing-b2b/insights/google-ads-industrial-manufacturing/index.html",
+      "words": 2507,
+      "url": "https://digital.lazyplex.com/industries/manufacturing-b2b/insights/google-ads-industrial-manufacturing/",
+      "keyword": "Google Ads for manufacturing companies"
+    },
+    {
+      "type": "blog",
+      "industry": "manufacturing-b2b",
+      "path": "industries/manufacturing-b2b/insights/manufacturer-linkedin-export-content/index.html",
+      "words": 2497,
+      "url": "https://digital.lazyplex.com/industries/manufacturing-b2b/insights/manufacturer-linkedin-export-content/",
+      "keyword": "LinkedIn lead generation for manufacturers"
+    },
+    {
+      "type": "pillar",
+      "industry": "startups-smes",
+      "path": "industries/startups-smes/index.html",
+      "words": 5354,
+      "url": "https://digital.lazyplex.com/industries/startups-smes/",
+      "keyword": "small business digital marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "startups-smes",
+      "path": "industries/startups-smes/insights/small-business-digital-marketing-priorities/index.html",
+      "words": 2544,
+      "url": "https://digital.lazyplex.com/industries/startups-smes/insights/small-business-digital-marketing-priorities/",
+      "keyword": "small business digital marketing services"
+    },
+    {
+      "type": "blog",
+      "industry": "startups-smes",
+      "path": "industries/startups-smes/insights/startup-marketing-budget-plan/index.html",
+      "words": 2527,
+      "url": "https://digital.lazyplex.com/industries/startups-smes/insights/startup-marketing-budget-plan/",
+      "keyword": "startup marketing agency"
+    },
+    {
+      "type": "blog",
+      "industry": "startups-smes",
+      "path": "industries/startups-smes/insights/small-business-seo-service-pages/index.html",
+      "words": 2584,
+      "url": "https://digital.lazyplex.com/industries/startups-smes/insights/small-business-seo-service-pages/",
+      "keyword": "affordable SEO services for small business"
+    },
+    {
+      "type": "blog",
+      "industry": "startups-smes",
+      "path": "industries/startups-smes/insights/google-ads-small-business-budget/index.html",
+      "words": 2560,
+      "url": "https://digital.lazyplex.com/industries/startups-smes/insights/google-ads-small-business-budget/",
+      "keyword": "Google Ads management for small business"
+    },
+    {
+      "type": "blog",
+      "industry": "startups-smes",
+      "path": "industries/startups-smes/insights/small-business-website-lead-conversion/index.html",
+      "words": 2545,
+      "url": "https://digital.lazyplex.com/industries/startups-smes/insights/small-business-website-lead-conversion/",
+      "keyword": "small business website development"
+    },
+    {
+      "type": "hub",
+      "industry": "all",
+      "path": "insights/index.html",
+      "words": 1319,
+      "url": "https://digital.lazyplex.com/insights/",
+      "keyword": "digital marketing industry insights"
+    },
+    {
+      "type": "service",
+      "industry": "all",
+      "path": "services/crm-automation/index.html",
+      "words": 584,
+      "url": "https://digital.lazyplex.com/services/crm-automation/",
+      "keyword": "CRM automation services"
+    },
+    {
+      "type": "service",
+      "industry": "all",
+      "path": "services/conversion-optimisation/index.html",
+      "words": 600,
+      "url": "https://digital.lazyplex.com/services/conversion-optimisation/",
+      "keyword": "conversion rate optimisation agency"
+    }
+  ]
+}

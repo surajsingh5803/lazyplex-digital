@@ -1,41 +1,43 @@
-# Lazy Plex Digital — Version 2
+# Lazy Plex Digital — Industry SEO Expansion (V3)
 
-**Target:** https://digital.lazyplex.com/  
-**Hosting:** GitHub Pages (static website, no framework build step)  
-**Brand assets:** official uploaded LP logo (faithful cropped logo on white background)  
-**Phone and WhatsApp:** +91 72579 19567
+Site: `https://digital.lazyplex.com`  
+Repository: `https://github.com/surajsingh5803/lazyplex-digital`
 
-## What's inside
+## What is included
 
-- Original deep navy / mint / cream brand design retained.
-- Homepage offering a *single service* or a larger connected growth engagement.
-- 12 service pages with distinct scope, common challenges, measurement considerations and individually pre-filled quote links.
-- 9 industry pages with use cases and links to relevant services.
-- Real estate page links to existing [Lazy Plex Growth System](https://lazyplex.com/solutions/) and [Growth Audit](https://lazyplex.com/growth-audit/).
-- New **Our Work** page using clearly labelled representative approaches; no invented testimonials or performance figures.
-- About, Contact, Privacy, favicon, sitemap, robots.txt, CNAME and custom 404.
-- Click-to-call, WhatsApp floating action, menu and footer links.
+- The existing Lazy Plex brand and website design, including the official LP logo, contact number, WhatsApp enquiry flow, 12 original service pages and existing general pages.
+- **9 expanded industry pillar pages**, each **5,223–5,485 words**.
+- **45 supporting detailed articles**, five under each industry, each approximately **2,482–2,628 words**.
+- One new `/insights/` directory landing page and navigation entry.
+- Two additional landing pages for **CRM Automation** and **Conversion Rate Optimisation**, so new commercial links lead to real pages.
+- New canonical URLs, page meta information and appropriate webpage/blog/breadcrumb structured data, with no unsupported rich-result guarantees.
+- Updated sitemap.xml, including all 76 indexable HTML pages (404 excluded).
+- `SEO-KEYWORD-ICP-RESEARCH.md`: ICP profiles, pain-point framing, industry keyword clusters and references.
+- `CONTENT-QA.md` and `content-manifest.json`: word counts and editorial launch checklist.
 
-## Contact / lead collection — READ THIS
+## Important editorial limitations
 
-The contact form currently uses **WhatsApp handoff**, not background storage or an API endpoint. It validates required fields, preselects the requested service or industry and opens the actual WhatsApp number with a composed message. **The visitor must tap Send in WhatsApp to deliver it.** Nothing is silently submitted, emailed or saved by the website.
+1. The keywords are **commercial-intent research hypotheses**, not verified search-volume, keyword-difficulty, or CPC measurements. Validate with Google Search Console, Keyword Planner and actual country/location SERPs.
+2. Every pillar and article is a **first draft** structured to help buyers choose services, not a claim of sector-specific performance. Editorial review, subject-matter verification and relevant experience should be added before aggressive promotion.
+3. Healthcare, regulated professional-services and any medical aesthetics content must be reviewed for factual claims, permissions and applicable local law.
+4. No case-study performance figures, testimonial endorsements, partner credentials or search rankings have been invented.
+5. The current contact form opens a WhatsApp message and requires the visitor to press **Send**. Static GitHub Pages does not receive or store form submissions.
+6. Publishing the new code does **not** resolve a separate custom-domain DNS verification or SSL certificate problem; verify HTTPS in GitHub Pages before sending public traffic.
 
-To receive true in-website submissions later, integrate a verified form endpoint (Tally, Formspree, CRM lead API, etc.), use a compliant privacy notice and add spam protection. Do not embed a private API key in frontend code. If users don't have WhatsApp, they can call the displayed number.
+## How to publish on the existing GitHub Pages repository
 
-## Launch checklist
+- Extract the ZIP locally.
+- Upload the **contents of this folder**, not the ZIP itself, to the root of `surajsingh5803/lazyplex-digital` on the `main` branch.
+- Keep the folder paths intact (`assets`, `services`, `industries`, `insights`, etc.).
+- Replace corresponding older files; do not create a nested V3 parent directory.
+- GitHub Pages remains `main` branch, `/ (root)`; the CNAME is `digital.lazyplex.com`.
+- Verify the site over HTTPS before public promotion, then add `https://digital.lazyplex.com/sitemap.xml` in Search Console.
 
-1. Create an empty **public** GitHub repository `lazyplex-digital` under `surajsingh5803`.
-2. Extract this ZIP, upload all **contents** into repo root, commit to `main`.
-3. Go to **Settings → Pages** and publish from `main` / `(root)`.
-4. In GitHub Pages settings configure custom domain `digital.lazyplex.com` first.
-5. In your domain provider create `CNAME` host `digital` → `surajsingh5803.github.io` (do not include repo name); don't modify existing apex/www/CRM records.
-6. Enable HTTPS when available, verify live site, contact form WhatsApp send, mobile menu, logo and all links.
-7. Submit `https://digital.lazyplex.com/sitemap.xml` through Google Search Console.
-8. Add genuine, approved case studies and any analytics after you have configured relevant privacy/consent requirements.
-9. **On the existing `lazyplex.com`, add a navigation/footer link** to `https://digital.lazyplex.com/services/` labelled “Digital Marketing Services.” This existing site's content has **not** been changed.
+## Navigation and URL pattern
 
-**No automatic deployment, DNS change, analytics setup or CRM API integration is performed by this ZIP.**
+- Pillar: `/industries/healthcare/`
+- Supporting article: `/industries/healthcare/insights/hospital-seo-services-what-to-check/`
+- All articles: `/insights/`
+- Related service: `/services/search-engine-optimisation/`
 
-## Local preview
-
-Run `python -m http.server 8000 --directory lazyplex-digital-site` from the parent folder. Visit http://localhost:8000/.
+The existing real estate specialism cross-links to `https://lazyplex.com/solutions/` without duplicating that main site's positioning.
