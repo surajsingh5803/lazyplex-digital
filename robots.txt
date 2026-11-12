@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://digital.lazyplex.com/sitemap.xml
