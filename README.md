@@ -41,3 +41,7 @@ Repository: `https://github.com/surajsingh5803/lazyplex-digital`
 - Related service: `/services/search-engine-optimisation/`
 
 The existing real estate specialism cross-links to `https://lazyplex.com/solutions/` without duplicating that main site's positioning.
+
+## Personal project notes
+
+Read the founder's overview of Lazy Plex and its consulting approach: [Suraj Kumar's project page](https://heysuraj.com/projects/lazy-plex/).
