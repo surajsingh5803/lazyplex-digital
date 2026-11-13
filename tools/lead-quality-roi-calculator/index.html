@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Lead Quality & Marketing ROI Calculator | Lazy Plex</title>
+<meta name="description" content="Free marketing lead-quality calculator: analyse cost per lead, qualified lead rate, customer acquisition cost and contribution. Private, browser-based and no signup.">
+<link rel="canonical" href="https://digital.lazyplex.com/tools/lead-quality-roi-calculator/">
+<meta property="og:title" content="Free Lead Quality & Marketing ROI Calculator | Lazy Plex">
+<meta property="og:description" content="Use your own sales funnel numbers to measure lead quality and marketing costs. Free calculator and downloadable CSV template.">
+<meta property="og:url" content="https://digital.lazyplex.com/tools/lead-quality-roi-calculator/">
+<link rel="icon" type="image/png" href="/assets/favicon.png"><link rel="stylesheet" href="/assets/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lead Quality and Marketing ROI Calculator","url":"https://digital.lazyplex.com/tools/lead-quality-roi-calculator/","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"Lazy Plex","url":"https://lazyplex.com/"}}</script>
+<style>
+.tool{color:#18283d;background:#f6f7ef;padding:48px 0 64px}.wrap{width:min(1120px,calc(100% - 38px));margin:auto}
+.tool h1,.tool h2,.tool h3{line-height:1.18;letter-spacing:-.03em}.tool h1{font-size:clamp(2rem,5vw,4rem);max-width:900px}
+.tool h2{font-size:clamp(1.3rem,2.8vw,1.8rem)}.tool p,.tool li{line-height:1.7}.tool a:not(.btn){text-decoration:underline;text-underline-offset:3px}
+.top{margin-bottom:32px}.top .label{color:#267246;font-weight:800;letter-spacing:.13em;font-size:13px}.top p{max-width:830px;color:#46586c;font-size:18px}
+.cards{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}.card{background:white;border:1px solid #d9e1dc;border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:0 14px 40px #0b192611}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.f label{display:block;font-weight:750;font-size:14px;margin-bottom:6px}
+.f input,.f select{width:100%;background:white;border:1px solid #afc2bb;padding:11px;border-radius:9px;color:#152a38}.f small{display:block;margin:6px 0;color:#677586;line-height:1.4}
+.group{font-size:14px;font-weight:800;border-top:1px solid #dbe3de;padding-top:19px;margin:23px 0 12px}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:11px}.metric{background:#edf5e8;border-radius:12px;padding:16px}.metric b{font-size:clamp(1.13rem,2.5vw,1.7rem);display:block;overflow-wrap:anywhere}.metric small{color:#586d63;display:block;font-size:12px;line-height:1.4;margin-top:6px}
+.tool button,.tool .cta{background:#b9f664;color:#101d31;padding:12px 18px;border:0;border-radius:32px;font-weight:850;display:inline-block;margin:12px 7px 0 0;cursor:pointer}.tool button.secondary{background:#e8eee4}
+.note{background:#f6f7f2;border-left:4px solid #b9f664;margin-top:22px;padding:16px;line-height:1.6}
+.warning{background:#ffe5b3;padding:10px;border-radius:10px;color:#6a4000;margin:18px 0}.warning[hidden]{display:none}
+.article{margin-top:24px}.article h2,.article h3{margin-top:23px}.article ul{padding-left:22px}.article table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+.article th,.article td{padding:12px;border:1px solid #d4ddd6;text-align:left;vertical-align:top;font-size:14px}.article th{background:#e9f2e3}.tiny{font-size:13px;color:#576b7c}
+@media(max-width:830px){.cards{grid-template-columns:1fr}}@media(max-width:550px){.fields,.results{grid-template-columns:1fr}}
+</style>
+<script defer src="/assets/main.js"></script></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-bar"><a class="brand" href="/"><span class="brand-mark"><img src="/assets/lazyplex-logo.webp" alt="Lazy Plex logo" style="width:100%"></span><span class="brand-name">LAZY PLEX <small>DIGITAL</small></span></a><nav class="desktop-nav" aria-label="Primary"><a class="nav-link" href="/services/">Services</a><a class="nav-link" href="/industries/">Industries</a><a class="nav-link" href="/insights/">Insights</a><a class="nav-cta" href="/contact/">Let's talk ↗</a></nav><button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></div><nav class="mobile-menu" hidden id="mobile-menu" aria-label="Mobile"><a href="/">Home</a><a href="/services/">Services</a><a href="/industries/">Industries</a><a href="/insights/">Insights</a><a href="/contact/">Contact</a></nav></header>
+<main id="main" class="tool"><div class="wrap">
+<section class="top"><a href="/insights/">← Insights & resources</a><p class="label">FREE TOOL · NO SIGNUP REQUIRED</p><h1>Lead Quality & Marketing ROI Calculator</h1><p>Understand what happens after someone clicks your ad or submits a form. Calculate lead quality, cost per qualified lead, cost per appointment, customer acquisition cost and estimated contribution using your own figures.</p><p class="tiny">For healthcare, property marketing, education, D2C, service businesses and manufacturers. No personal or health information required. Calculations stay in your browser.</p></section>
+<div class="cards"><form id="roi" class="card">
+<h2>Enter your campaign figures</h2><p>Use the same period and a consistent definition of a qualified lead across the funnel. Empty optional cost fields count as zero.</p>
+<div class="fields"><div class="f"><label for="currency">Currency</label><select id="currency"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option></select></div><div class="f"><label for="sector">Sector</label><select id="sector"><option>General business</option><option>Healthcare</option><option>Real estate</option><option>Education</option><option>D2C ecommerce</option><option>Manufacturing and B2B</option></select></div></div>
+<p class="group">1 — Spend</p><div class="fields">
+<div class="f"><label for="ads">Ad spend</label><input type="number" min="0" step="any" id="ads" placeholder="0" required></div>
+<div class="f"><label for="fees">Management / agency fee</label><input type="number" min="0" step="any" id="fees" placeholder="0"></div>
+<div class="f"><label for="other">Other campaign costs</label><input type="number" min="0" step="any" id="other" placeholder="0"><small>Creative, tools and tracking costs for this period.</small></div></div>
+<p class="group">2 — Funnel counts</p><div class="fields">
+<div class="f"><label for="leads">Unique leads / enquiries</label><input type="number" min="0" step="1" id="leads" placeholder="0" required></div>
+<div class="f"><label for="qualified">Qualified leads</label><input type="number" min="0" step="1" id="qualified" placeholder="0" required><small>Meet documented fit and intent criteria.</small></div>
+<div class="f"><label for="attended">Attended meetings / appointments</label><input type="number" min="0" step="1" id="attended" placeholder="0" required><small>For property, count attended site visits.</small></div>
+<div class="f"><label for="closed">Closed customers / deals</label><input type="number" min="0" step="1" id="closed" placeholder="0" required><small>A consistent, completed business outcome.</small></div></div>
+<p class="group">3 — Optional economics</p><div class="fields">
+<div class="f"><label for="revenue">Revenue per closed conversion</label><input type="number" min="0" step="any" id="revenue" placeholder="Optional"></div>
+<div class="f"><label for="delivery">Direct delivery cost per conversion</label><input type="number" min="0" step="any" id="delivery" placeholder="Optional"><small>Enter both values to estimate contribution.</small></div></div>
+<p id="warning" class="warning" hidden role="alert"></p><button type="submit">Calculate metrics →</button><button type="reset" class="secondary">Clear</button>
+<p class="tiny">No numbers are uploaded, stored on our servers or sent to Lazy Plex.</p></form>
+<section class="card" aria-labelledby="result-h"><h2 id="result-h">Your scorecard</h2>
+<div class="results"><div class="metric"><b id="cpl">—</b><small>Total cost per lead</small></div><div class="metric"><b id="cpql">—</b><small>Cost per qualified lead</small></div><div class="metric"><b id="cpa">—</b><small>Cost per attended appointment</small></div><div class="metric"><b id="cac">—</b><small>Marketing cost per closed customer</small></div><div class="metric"><b id="qrate">—</b><small>Qualified lead rate</small></div><div class="metric"><b id="close">—</b><small>Lead-to-close rate</small></div><div class="metric"><b id="roas">—</b><small>Revenue ÷ ad spend (ROAS)</small></div><div class="metric"><b id="profit">—</b><small>Est. contribution after direct + marketing costs</small></div></div>
+<div class="note" id="narrative" aria-live="polite">Enter your own data and calculate. A dash means a denominator or relevant input is missing; this is not an invented industry benchmark.</div>
+<button type="button" id="copy">Copy summary</button><button type="button" class="secondary" id="csv">Download empty tracking CSV</button>
+<p class="tiny">This simple attribution model excludes other operational costs unless added. It is not a promise of lead volume, financial performance or advertising results.</p></section></div>
+<section class="card article"><h2>How the lead-quality calculator works</h2><p>The key difference is between <strong>raw enquiries</strong> and <strong>qualified leads</strong>. A raw form fill could be unrelated, unresponsive or outside the service area. A qualified lead should satisfy your documented buying-fit criteria. This calculator treats a qualified lead and a closed outcome as distinct events, broadly consistent with <a href="https://support.google.com/google-ads/answer/11459091?hl=en-IN">Google Ads' qualified and converted lead definitions</a>.</p>
+<h3>Formula glossary</h3><ul><li>Total campaign cost = ad spend + management fee + other entered marketing costs.</li><li>Cost per lead (CPL) = total campaign cost / unique leads.</li><li>Cost per qualified lead (CPQL) = total campaign cost / qualified leads.</li><li>Cost per attended appointment = total campaign cost / attended appointments or meetings.</li><li>Simplified customer acquisition cost = total campaign cost / closed customers. Sales-team cost is excluded unless entered.</li><li>Qualified lead rate = qualified leads / leads × 100; lead-to-close rate = closed customers / leads × 100.</li><li>Return on ad spend (ROAS) = revenue / ad spend. This is not profit.</li><li>Estimated contribution = closed customers × (revenue per customer − variable cost per customer) − campaign cost. It is not net profit, and excludes tax and unentered overhead.</li></ul>
+<h3>What counts at each stage?</h3><table><thead><tr><th>Business</th><th>Qualified enquiry</th><th>Attended stage</th><th>Closed outcome</th></tr></thead><tbody>
+<tr><td>Clinic or hospital</td><td>Appropriate enquiry, without recording private clinical information here</td><td>Attended consultation</td><td>Clearly defined completed business event, with appropriate privacy safeguards</td></tr>
+<tr><td>Real estate</td><td>Budget, property type and location fit confirmed</td><td>Attended site visit</td><td>Confirmed booking / transaction</td></tr>
+<tr><td>Education</td><td>Programme eligibility and interest established</td><td>Counselling attended</td><td>Enrolment</td></tr>
+<tr><td>Manufacturing / B2B</td><td>Product, specification and buying fit established</td><td>Discovery meeting</td><td>Won RFQ, purchase order or contract</td></tr>
+<tr><td>Ecommerce</td><td>Relevant pre-purchase enquiry, if tracked</td><td>Optional sales consultation</td><td>Completed order</td></tr>
+</tbody></table>
+<h3>How to avoid misleading ROI comparisons</h3><p>Keep the time period consistent, but remember that some leads close weeks or months after the original click. Comparing this month's new leads with this month's sales may mix different cohorts. If you have CRM data, use the same original lead cohort for all four counts. Deduplicate contacts and do not add website clicks, calls and form submissions together without checking overlap. Paid ad ROAS should use revenue attributable to the ads rather than total business revenue.</p>
+<p>Do not compare an IVF appointment funnel, an apartment site-visit funnel and an industrial RFQ funnel against the same supposed standard. Use your own baseline from a comparable date range and track changes after introducing a new campaign or service page. Where a process has no meeting stage, enter 0 for attended appointments; that particular metric will be undefined, but overall leads-to-sales conversion can still be analysed.</p>
+<h3>What should you improve next?</h3><p>If lots of raw leads fail qualification, investigate keyword targeting, offers, location relevance and form wording. If qualified leads rarely attend meetings, improve follow-up speed, booking reminders and expectation setting. If attended meetings are strong but sales are weak, examine product fit, pricing, service availability and sales processes. If ROAS looks high but contribution is negative, don't expand budget before checking margins and direct costs.</p>
+<p>You can use the <strong>blank CSV</strong> as a simple campaign reporting template. It contains column headings only, with no example business figures or personal data. You may cite this page or share it with your team without asking permission. Helpful related resources: <a href="/industries/healthcare/">healthcare marketing</a>, <a href="/industries/real-estate/">real estate marketing</a>, <a href="/services/lead-generation/">lead generation services</a> and <a href="/services/crm-automation/">CRM automation</a>.</p>
+<p class="tiny">Methodology and calculator published by Lazy Plex; source definitions adapted in part from Google Ads documentation. Last editorial review: November 2026. Not an official Google product or financial forecast.</p></section>
+<section class="card article"><h2>Need a better lead-generation system?</h2><p>We can help connect search and advertising to lead qualification, conversion tracking and follow-up. You can start with one scoped service instead of a full agency retainer.</p><a class="cta" href="/contact/?service=lead-generation&amp;source=free-calculator">Discuss your requirements ↗</a></section>
+</div></main>
+<footer class="site-footer"><div class="container"><p style="color:#fff;padding:30px 0">LAZY PLEX DIGITAL · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/insights/">Insights</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a></p></div></footer>
+<script>
+(()=>{"use strict";
+const form=document.getElementById('roi'), warning=document.getElementById('warning'), narrative=document.getElementById('narrative');
+const el=id=>document.getElementById(id), val=id=>el(id).value.trim()===''?null:Number(el(id).value),set=(id,s)=>el(id).textContent=s;
+let latest='';
+const div=(n,d)=>d>0?n/d:null;
+form.addEventListener('submit',e=>{e.preventDefault();
+const a=val('ads'),f=val('fees'),o=val('other'),l=val('leads'),q=val('qualified'),m=val('attended'),c=val('closed'),rev=val('revenue'),dc=val('delivery');
+const arr=[a,l,q,m,c],extras=[f,o,rev,dc];
+if(arr.some(x=>x===null||!Number.isFinite(x)||x<0)||extras.some(x=>x!==null&&(!Number.isFinite(x)||x<0))||[l,q,m,c].some(x=>!Number.isInteger(x))){warning.hidden=false;warning.textContent='Enter valid non-negative values. All lead-stage counts must be whole numbers.';return;}
+if(q>l||m>q||(m>0&&c>m)){warning.hidden=false;warning.textContent='Check your funnel: qualified leads should not exceed enquiries, and attended meetings should not exceed qualified leads. For direct-checkout stores, keep meetings at 0.';return;}
+warning.hidden=true;const cur=el('currency').value,cost=a+(f||0)+(o||0);
+const money=n=>n===null||!Number.isFinite(n)?'—':new Intl.NumberFormat('en-IN',{style:'currency',currency:cur,maximumFractionDigits:0}).format(n);
+const perc=n=>n===null||!Number.isFinite(n)?'—':(n*100).toFixed(1)+'%';
+const rows=[['cpl',money(div(cost,l))],['cpql',money(div(cost,q))],['cpa',money(div(cost,m))],['cac',money(div(cost,c))],['qrate',perc(div(q,l))],['close',perc(div(c,l))],['roas',rev!==null&&a>0?(c*rev/a).toFixed(2)+'×':'—'],['profit',rev!==null&&dc!==null?money(c*(rev-dc)-cost):'—']];
+rows.forEach(([id,x])=>set(id,x));
+narrative.textContent='Calculated from '+l+' enquiries, '+q+' qualified leads, '+m+' attended meetings and '+c+' closed conversions. Compare your results with equivalent prior cohorts; this tool does not supply industry averages.';
+latest=['Lazy Plex lead quality scorecard','Sector: '+el('sector').value,'Total marketing cost: '+money(cost),...rows.map(([id,value])=>el(id).nextElementSibling.textContent+': '+value),'Source: https://digital.lazyplex.com/tools/lead-quality-roi-calculator/'].join(String.fromCharCode(10));
+});
+form.addEventListener('reset',()=>{setTimeout(()=>{['cpl','cpql','cpa','cac','qrate','close','roas','profit'].forEach(x=>set(x,'—'));latest='';warning.hidden=true;narrative.textContent='Enter your own data and calculate. A dash means a denominator or relevant input is missing.';},0);});
+el('copy').addEventListener('click',()=>{if(!latest){narrative.textContent='Calculate first to copy a scorecard.';return;}navigator.clipboard.writeText(latest).then(()=>{narrative.textContent='Summary copied. The figures remain your own estimates.';}).catch(()=>{narrative.textContent='Copy blocked by browser. Select the results and copy manually.';});});
+el('csv').addEventListener('click',()=>{const head='Reporting period,Channel,Campaign,Ad spend,Agency fees,Other marketing cost,Unique leads,Qualified leads,Attended appointments or meetings,Closed customers,Revenue per conversion,Direct cost per conversion,Notes';const blob=new Blob([head+String.fromCharCode(10)],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='lazy-plex-lead-quality-template.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+})();
+</script></body></html>
