@@ -65,3 +65,9 @@ Read the founder's overview of Lazy Plex and its consulting approach: [Suraj Kum
 - Added the browser-only `/tools/break-even-marketing-budget-planner/` with a distinct reverse customer-target workflow, not another forward ROI calculator.
 - Improved dark-green small-label contrast on the existing white service cards after Lighthouse accessibility review.
 - Linked the planner from the tools directory and relevant lead-generation and Google Ads service pages.
+
+## Phase 4 — measurement and conversion quality
+
+Full execution details: [SEO-PHASE4-IMPLEMENTATION.md](SEO-PHASE4-IMPLEMENTATION.md). Google indexation snapshot: [SEO-PHASE4-INDEXATION-SNAPSHOT.md](SEO-PHASE4-INDEXATION-SNAPSHOT.md). Manual AI answer observation protocol: [SEO-PHASE4-AI-OBSERVATION-PLAN.md](SEO-PHASE4-AI-OBSERVATION-PLAN.md).
+
+New `/tools/break-even-marketing-budget-planner/` estimates the **required** leads and spend from a target outcome; it does not duplicate the forward ROI calculator. Added privacy-conscious source preservation and a separate CTA-intent event. The project still needs an appropriate GA4 connection to measure actual site events.
