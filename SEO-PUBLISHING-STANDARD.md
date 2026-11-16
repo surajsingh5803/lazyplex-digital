@@ -55,3 +55,12 @@ Use this checklist for all service, industry, speciality, city and editorial pag
 - People-first content: https://developers.google.com/search/docs/fundamentals/creating-helpful-content
 - Google Business Profile local ranking: https://support.google.com/business/answer/7091
 - Healthcare advertising policy: https://support.google.com/adspolicy/answer/176031
+
+## Public copy must not expose the internal SEO planning process
+
+- Keep target-keyword spreadsheets, page-intent maps, SERP analysis instructions, drafting prompts, editorial QA notes and publishing instructions in repository documentation, never in client-facing HTML.
+- Replace public keyword-target tables with useful explanations of services, customer decisions and direct links to relevant working pages.
+- Every article's CTA must route to the service that article actually discusses. Check the form's `service` option and URL parameters, not only whether the link resolves.
+- Never publish generic meta-questions such as “How do I avoid duplicate or low-quality content?” on articles about unrelated services. Readers should see subject-specific buying or implementation questions.
+- Verify in-page section anchors, labels, site navigation, hub/spoke links and CTA destinations in CI; a syntactically valid link can still be the wrong business destination.
+- Run `node scripts/seo-quality-check.mjs` before every merge; it rejects known editorial leaks, guide service mismatches and missing local anchors.
