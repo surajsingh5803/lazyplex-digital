@@ -31,3 +31,7 @@ Branch: `seo/phase-4-measurement-ux-2026-11-16`
 - Connect the **correct** GA4 website property in <https://app.openseo.so/p/b9e7f1ef-4fa6-44da-b539-d8e5fdd8a205/settings/integrations> and confirm suitable, privacy-safe key event configuration. Do not equate a click with a submitted enquiry.
 - Once GSC queries for digital.lazyplex.com and GA4 events exist, prioritise high-intent URL improvements by real impressions, CTR, qualified contact stages and business relevance.
 - Wait for permitted, verifiable case studies and client results. Do not fabricate authority or backlinks.
+
+## Post-deployment accessibility follow-up
+
+A second OpenSEO Lighthouse sample on 16 November still showed homepage accessibility at 95 and found additional low-contrast elements: offer-card labels (`#609448` on white) and a mint-coloured highlighted heading on the light-green offer section. Corrected both to `#355f21` while preserving navy/mint styling. Added a source-level minimum 4.5:1 test for three priority text cases. This is targeted contrast testing, not a full accessibility certification. The follow-up Lighthouse run exhausted OpenSEO Lighthouse credits before testing the new budget planner; do not claim a new measured Lighthouse score until an eligible audit completes.

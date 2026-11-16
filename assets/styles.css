@@ -38,13 +38,14 @@
 .property-specialism .btn-dark{background:#c9f394;color:#10221a!important}
 .property-specialism .text-link{color:#d8efca!important}
 .section-offer{background:#e9f6e1;padding:80px 0}
+.section-offer h2 em{color:#355f21}
 .offer-layout{display:grid;grid-template-columns:.9fr 1.4fr;align-items:center;gap:55px}
 .offer-layout h2{font-size:clamp(38px,4vw,64px);letter-spacing:-.055em;line-height:1.1;margin:14px 0 18px}
 .offer-layout>div:first-child>p{color:#597062;font-size:15px;line-height:1.8}
 .offer-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .offer-card{display:flex;flex-direction:column;gap:12px;min-height:245px;text-decoration:none;border:1px solid #d1e2ca;background:#fff;border-radius:15px;padding:27px;color:#0d2733;transition:transform .2s,box-shadow .2s}
 .offer-card:hover{transform:translateY(-4px);box-shadow:0 15px 30px #12412416}
-.offer-card small{font-weight:850;color:#609448;font-size:11px;letter-spacing:.14em}
+.offer-card small{font-weight:850;color:#355f21;font-size:11px;letter-spacing:.14em}
 .offer-card h3{font-size:27px;letter-spacing:-.045em;margin:0}
 .offer-card p{font-size:14px;line-height:1.65;color:#52635b;flex:1;margin:0}
 .offer-card span{font-size:13px;color:#244e40;font-weight:800}
