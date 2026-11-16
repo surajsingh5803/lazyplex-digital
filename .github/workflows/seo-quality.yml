@@ -30,6 +30,8 @@ jobs:
         run: node scripts/test-attribution.mjs
       - name: Check key text contrast ratios
         run: node scripts/test-contrast.mjs
+      - name: Validate deployment polling script syntax
+        run: python3 -m py_compile scripts/wait-for-pages.py scripts/indexnow-submit.py
       - name: Verify IndexNow key, sitemap and changed-URL filtering
         run: python3 -m unittest discover -s scripts -p 'test_indexnow.py' -v
       - name: Check sitemap, titles, canonicals, structured data and internal links
