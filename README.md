@@ -50,3 +50,11 @@ Read the founder's overview of Lazy Plex and its consulting approach: [Suraj Kum
 - All eight pages are linked from the healthcare hub and the new guides from Insights; existing URLs are unchanged.
 - New enquiry links pass a healthcare topic and source to the existing contact form. A WhatsApp handoff is **not** counted as a confirmed lead.
 - See [SEO-PHASE2-HEALTHCARE.md](SEO-PHASE2-HEALTHCARE.md) for the keyword ownership and editorial map.
+
+## Phase 3 — real estate, AI search, regional services and tools (16 November 2026)
+
+- Published real estate SEO, qualified lead generation and Google Ads specialist service pages and a responsible AI search optimisation offer.
+- Added five distinct property marketing guides and an SEO/AEO/GEO explainer.
+- Added Lucknow and Mumbai service-area pages, with no claim of physical offices. Existing Patna page remains.
+- Added the free `/tools/` directory and a browser-only real estate lead-to-site-visit funnel calculator.
+- Sitemap contains 100 intended indexable URLs; see [SEO-PHASE3-IMPLEMENTATION.md](SEO-PHASE3-IMPLEMENTATION.md) for the release scope.
