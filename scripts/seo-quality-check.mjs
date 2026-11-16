@@ -28,6 +28,16 @@ const forbiddenPublicPhrases = [
   "The commercial trigger for "
 ];
 const expectedServiceForGuide = {
+  "industries/real-estate/seo/index.html": "search-engine-optimisation",
+  "industries/real-estate/lead-generation/index.html": "lead-generation",
+  "industries/real-estate/google-ads/index.html": "google-ads-ppc",
+  "services/ai-search-optimisation/index.html": "search-engine-optimisation",
+  "industries/real-estate/insights/cost-per-qualified-property-lead/index.html": "lead-generation",
+  "industries/real-estate/insights/search-vs-performance-max-property-ads/index.html": "google-ads-ppc",
+  "industries/real-estate/insights/property-project-launch-marketing-plan/index.html": "lead-generation",
+  "industries/real-estate/insights/developer-seo-vs-broker-seo/index.html": "search-engine-optimisation",
+  "industries/real-estate/insights/real-estate-leads-site-visits-bookings/index.html": "lead-generation",
+  "insights/seo-aeo-geo-explained/index.html": "search-engine-optimisation",
   "industries/ecommerce/insights/shopify-seo-category-product-pages/index.html": "search-engine-optimisation",
   "industries/education/insights/admission-lead-generation-qualified-applicants/index.html": "lead-generation",
   "industries/education/insights/education-seo-programme-pages/index.html": "search-engine-optimisation",
@@ -42,6 +52,12 @@ const expectedServiceForGuide = {
 const htmlCache = new Map();
 let checkedInternalLinks = 0;
 let checkedAnchors = 0;
+let checkedAssets = 0;
+const inbound = new Map(urls.map(entry => [localPath(new URL(entry).pathname), new Set()]));
+const trackedFocus = fs.readFileSync(path.join(root,"assets/main.js"),"utf8");
+const focusBlock = trackedFocus.match(/const focusNames\s*=\s*\{([\s\S]*?)\};/)?.[1] ?? "";
+const focusKeys = new Set([...focusBlock.matchAll(/['"]([a-z0-9-]+)['"]\s*:/g)].map(m => m[1]));
+
 function readFileCached(file) {
   if (!htmlCache.has(file)) htmlCache.set(file, fs.readFileSync(file, "utf8"));
   return htmlCache.get(file);
@@ -88,6 +104,34 @@ for (const entry of urls) {
     }
   }
 
+
+  if (!/<html\b[^>]*\blang=["'](?:en|en-[A-Za-z-]+)["']/i.test(html))
+    errors.push(entry + ": HTML language is missing or unexpected");
+  if ((html.match(/<main\b/gi) || []).length !== 1)
+    errors.push(entry + ": expected one main landmark");
+  const ids = [...html.matchAll(/\bid=["']([^"']+)["']/gi)].map(m => m[1]);
+  if (new Set(ids).size !== ids.length)
+    errors.push(entry + ": duplicate element IDs can break accessibility and anchor navigation");
+  if (/<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html))
+    errors.push(entry + ": sitemap page contains a noindex directive");
+  for (const image of html.matchAll(/<img\b[^>]*>/gi)) {
+    if (!/\balt=["'][^"']*["']/i.test(image[0])) errors.push(entry + ": image missing alt attribute");
+  }
+  // Check local images, scripts, stylesheets and icons, not only navigational links.
+  for (const tag of html.matchAll(/<(?:img|script|link)\b[^>]*>/gi)) {
+    const el = tag[0];
+    const isLink = /^<link\b/i.test(el);
+    if (isLink && !/\brel=["'](?:stylesheet|icon|apple-touch-icon|preload|modulepreload)["']/i.test(el)) continue;
+    const value = attribute(el,isLink ? "href":"src");
+    if (!value || value.startsWith("data:") || value.startsWith("#")) continue;
+    let asset;
+    try { asset = new URL(value.replace(/&amp;/g,"&"),entry); }
+    catch { errors.push(entry + ": invalid asset URL: "+value); continue; }
+    if (asset.origin !== host) continue;
+    checkedAssets++;
+    if (!fs.existsSync(localPath(asset.pathname))) errors.push(entry + ": missing local asset: " + value);
+  }
+
   const h1s = [...html.matchAll(/<h1(?:\s|>)/gi)];
   if (h1s.length !== 1) errors.push(entry + ": expected exactly one H1; found " + h1s.length);
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim();
@@ -112,6 +156,11 @@ for (const entry of urls) {
     const targetPath = localPath(target.pathname);
 
     checkedInternalLinks++;
+    if (targetPath !== file && inbound.has(targetPath)) inbound.get(targetPath).add(file);
+    if (target.pathname === "/contact/") {
+      const focus = target.searchParams.get("focus");
+      if (focus && !focusKeys.has(focus)) errors.push(entry + ": unregistered enquiry focus: " + focus);
+    }
     if (!fs.existsSync(targetPath)) {
       errors.push(entry + ": broken internal link: " + href);
     } else if (target.hash && targetPath.endsWith(".html")) {
@@ -128,7 +177,12 @@ for (const entry of urls) {
     }
   }
 }
+for (const [file,sources] of inbound) {
+  // Homepage can be the root of the link graph; the 404 utility is not in the sitemap.
+  if (file === path.join(root,"index.html")) continue;
+  if (!sources.size) warnings.push("Possible orphaned sitemap page: " + relativePage(file));
+}
 for (const warning of warnings) console.warn("WARN " + warning);
 for (const error of errors) console.error("ERROR " + error);
-console.log("SEO QA checked " + unique.size + " sitemap URLs and " + checkedInternalLinks + " internal links (" + checkedAnchors + " anchors); " + errors.length + " errors, " + warnings.length + " warnings.");
+console.log("SEO QA checked " + unique.size + " sitemap URLs, " + checkedInternalLinks + " internal links (" + checkedAnchors + " anchors), and " + checkedAssets + " local assets; " + errors.length + " errors, " + warnings.length + " warnings.");
 if (errors.length) process.exitCode = 1;
