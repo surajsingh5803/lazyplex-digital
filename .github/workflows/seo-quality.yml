@@ -19,5 +19,7 @@ jobs:
           node --check assets/main.js
           node --check scripts/seo-quality-check.mjs
           node --check assets/real-estate-funnel.js
+      - name: Verify real estate funnel calculator calculations
+        run: node scripts/test-real-estate-funnel.mjs
       - name: Check sitemap, titles, canonicals, structured data and internal links
         run: node scripts/seo-quality-check.mjs
