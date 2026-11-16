@@ -670,6 +670,15 @@
       "keyword": "digital marketing agency process",
       "publication_date": "2026-11-16",
       "editorial_status": "Public method explanation; no client outcomes represented"
+    },
+    {
+      "type": "tool",
+      "industry": "cross-industry",
+      "path": "tools/break-even-marketing-budget-planner/index.html",
+      "url": "https://digital.lazyplex.com/tools/break-even-marketing-budget-planner/",
+      "keyword": "marketing budget break even planner",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Browser-only reverse planning calculator; illustrative defaults, not a forecast"
     }
   ],
   "phase2_updated_on": "2026-11-16",
@@ -690,5 +699,7 @@
     "total_sitemap_urls": 100,
     "total_industry_guides": 55
   },
-  "technical_trust_sprint": "2026-11-16: process page, source-of-truth content and QA expansion"
+  "technical_trust_sprint": "2026-11-16: process page, source-of-truth content and QA expansion",
+  "phase4_updated_on": "2026-11-16",
+  "phase4_scope": "100%-URL Search Console indexation inspection, performance baseline, contrast improvement and reverse budgeting tool"
 }

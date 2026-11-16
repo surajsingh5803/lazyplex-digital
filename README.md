@@ -58,3 +58,10 @@ Read the founder's overview of Lazy Plex and its consulting approach: [Suraj Kum
 - Added Lucknow and Mumbai service-area pages, with no claim of physical offices. Existing Patna page remains.
 - Added the free `/tools/` directory and a browser-only real estate lead-to-site-visit funnel calculator.
 - Sitemap contains 100 intended indexable URLs; see [SEO-PHASE3-IMPLEMENTATION.md](SEO-PHASE3-IMPLEMENTATION.md) for the release scope.
+
+## Phase 4 — measurement and conversion improvements
+
+- A dated 101-URL Google indexation snapshot is stored in [SEO-PHASE4-INDEXATION-SNAPSHOT.md](SEO-PHASE4-INDEXATION-SNAPSHOT.md). It distinguishes indexed, discovered-not-indexed and unknown-to-Google URLs.
+- Added the browser-only `/tools/break-even-marketing-budget-planner/` with a distinct reverse customer-target workflow, not another forward ROI calculator.
+- Improved dark-green small-label contrast on the existing white service cards after Lighthouse accessibility review.
+- Linked the planner from the tools directory and relevant lead-generation and Google Ads service pages.
