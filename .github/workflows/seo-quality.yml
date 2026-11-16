@@ -31,6 +31,6 @@ jobs:
       - name: Check key text contrast ratios
         run: node scripts/test-contrast.mjs
       - name: Verify IndexNow key, sitemap and changed-URL filtering
-        run: python3 -m unittest discover -s scripts -p 'test-indexnow.py' -v
+        run: python3 -m unittest discover -s scripts -p 'test_indexnow.py' -v
       - name: Check sitemap, titles, canonicals, structured data and internal links
         run: node scripts/seo-quality-check.mjs
