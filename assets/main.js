@@ -18,6 +18,26 @@ if (toggle && menu) {
 const form = document.querySelector('#enquiry-form');
 if (form) {
   const params = new URLSearchParams(window.location.search);
+
+  // Route a healthcare service/topic without collecting clinical or personal data in analytics.
+  const focusNames = {
+    'doctor-marketing':'Doctor marketing and practitioner visibility',
+    'hospital-seo':'Hospital SEO services',
+    'google-ads':'Google Ads for hospitals and clinics',
+    'ivf-marketing':'IVF and fertility clinic marketing',
+    'google-business-profile-for-doctors':'Doctor Google Business Profile guidance',
+    'hospital-lead-counting-guide':'Hospital enquiry tracking and deduplication',
+    'healthcare-seo-pricing-india':'Healthcare SEO scope and pricing',
+    'ivf-clinic-marketing-guide':'IVF clinic marketing guide'
+  };
+  const focus = params.get('focus') || '';
+  const source = params.get('source') || '';
+  const safeSource = /^[a-z0-9-]{1,60}$/.test(source) ? source : '';
+  const enquiryContext = document.querySelector('#enquiry-context');
+  if (enquiryContext && Object.prototype.hasOwnProperty.call(focusNames, focus)) {
+    enquiryContext.textContent = 'You are enquiring about: ' + focusNames[focus] + '.';
+    enquiryContext.hidden = false;
+  }
   const service = params.get('service');
   const industry = params.get('industry');
   const serviceInput = form.elements.namedItem('service');
@@ -50,6 +70,12 @@ if (form) {
       '',
       'Sent from digital.lazyplex.com'
     ];
+    if (Object.prototype.hasOwnProperty.call(focusNames, focus)) lines.splice(2, 0, 'Topic: ' + focusNames[focus]);
+    if (safeSource) lines.splice(3, 0, 'Page source: ' + safeSource);
+    // A handoff is not a delivered WhatsApp message or a qualified lead.
+    // Do not put the contact's name, email, phone or message into this event.
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'lazyplex_whatsapp_handoff',service:serviceInput.value,industry:d.get('industry') || '',topic:Object.prototype.hasOwnProperty.call(focusNames, focus)?focus:'',source:safeSource});
     const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
     status.textContent = 'Opening WhatsApp. Review the prepared message and tap Send there to deliver your enquiry.';
     status.className = 'form-status success';

@@ -463,6 +463,86 @@
       "words": 600,
       "url": "https://digital.lazyplex.com/services/conversion-optimisation/",
       "keyword": "conversion rate optimisation agency"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "healthcare",
+      "path": "industries/healthcare/doctor-marketing/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/doctor-marketing/",
+      "keyword": "digital marketing for doctors",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing content; clinical facts require authorised review"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "healthcare",
+      "path": "industries/healthcare/hospital-seo/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/hospital-seo/",
+      "keyword": "hospital SEO services",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing content; clinical facts require authorised review"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "healthcare",
+      "path": "industries/healthcare/google-ads/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/google-ads/",
+      "keyword": "Google Ads for doctors and hospitals",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing content; clinical facts require authorised review"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "healthcare",
+      "path": "industries/healthcare/ivf-marketing/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/ivf-marketing/",
+      "keyword": "IVF marketing agency",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing content; clinical facts require authorised review"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/google-business-profile-for-doctors/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/google-business-profile-for-doctors/",
+      "keyword": "google business profile for doctors",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing education; not individual medical advice"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/hospital-lead-counting-guide/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/hospital-lead-counting-guide/",
+      "keyword": "hospital lead counting guide",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing education; not individual medical advice"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/healthcare-seo-pricing-india/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/healthcare-seo-pricing-india/",
+      "keyword": "healthcare seo pricing india",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing education; not individual medical advice"
+    },
+    {
+      "type": "blog",
+      "industry": "healthcare",
+      "path": "industries/healthcare/insights/ivf-clinic-marketing-guide/index.html",
+      "url": "https://digital.lazyplex.com/industries/healthcare/insights/ivf-clinic-marketing-guide/",
+      "keyword": "ivf clinic marketing guide",
+      "publication_date": "2026-11-16",
+      "editorial_status": "marketing education; not individual medical advice"
     }
-  ]
+  ],
+  "phase2_updated_on": "2026-11-16",
+  "phase2_scope": "Four commercial healthcare speciality pages and four supporting educational articles, published as distinct reader intents.",
+  "phase2_expansion": {
+    "new_speciality_pages": 4,
+    "new_healthcare_guides": 4,
+    "base_healthcare_guides": 5,
+    "total_healthcare_guides": 9
+  }
 }

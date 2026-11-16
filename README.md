@@ -7,7 +7,7 @@ Repository: `https://github.com/surajsingh5803/lazyplex-digital`
 
 - The existing Lazy Plex brand and website design, including the official LP logo, contact number, WhatsApp enquiry flow, 12 original service pages and existing general pages.
 - **9 expanded industry pillar pages**, each **5,223–5,485 words**.
-- **45 supporting detailed articles**, five under each industry, each approximately **2,482–2,628 words**.
+- **49 supporting detailed articles**, five under each industry, each approximately **2,482–2,628 words**.
 - One new `/insights/` directory landing page and navigation entry.
 - Two additional landing pages for **CRM Automation** and **Conversion Rate Optimisation**, so new commercial links lead to real pages.
 - New canonical URLs, page meta information and appropriate webpage/blog/breadcrumb structured data, with no unsupported rich-result guarantees.
@@ -42,3 +42,11 @@ The existing real estate specialism cross-links to `https://lazyplex.com/solutio
 ## Personal project notes
 
 Read the founder's overview of Lazy Plex and its consulting approach: [Suraj Kumar's project page](https://heysuraj.com/projects/lazy-plex/).
+
+## Phase 2 — Healthcare expansion (16 November 2026)
+
+- Four additional healthcare commercial pages: doctor marketing, hospital SEO, healthcare Google Ads, IVF marketing.
+- Four original healthcare field guides: doctor GBP eligibility, lead counting without duplication, India healthcare SEO pricing factors, IVF clinic marketing trust.
+- All eight pages are linked from the healthcare hub and the new guides from Insights; existing URLs are unchanged.
+- New enquiry links pass a healthcare topic and source to the existing contact form. A WhatsApp handoff is **not** counted as a confirmed lead.
+- See [SEO-PHASE2-HEALTHCARE.md](SEO-PHASE2-HEALTHCARE.md) for the keyword ownership and editorial map.
