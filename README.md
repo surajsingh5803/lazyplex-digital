@@ -11,7 +11,7 @@ Repository: `https://github.com/surajsingh5803/lazyplex-digital`
 - One new `/insights/` directory landing page and navigation entry.
 - Two additional landing pages for **CRM Automation** and **Conversion Rate Optimisation**, so new commercial links lead to real pages.
 - New canonical URLs, page meta information and appropriate webpage/blog/breadcrumb structured data, with no unsupported rich-result guarantees.
-- Updated sitemap.xml, including all 76 indexable HTML pages (404 excluded).
+- Updated sitemap.xml, covering the current indexable HTML pages (404 excluded).
 - `SEO-KEYWORD-ICP-RESEARCH.md`: ICP profiles, pain-point framing, industry keyword clusters and references.
 - `CONTENT-QA.md` and `content-manifest.json`: word counts and editorial launch checklist.
 
@@ -24,14 +24,11 @@ Repository: `https://github.com/surajsingh5803/lazyplex-digital`
 5. The current contact form opens a WhatsApp message and requires the visitor to press **Send**. Static GitHub Pages does not receive or store form submissions.
 6. Publishing the new code does **not** resolve a separate custom-domain DNS verification or SSL certificate problem; verify HTTPS in GitHub Pages before sending public traffic.
 
-## How to publish on the existing GitHub Pages repository
+## How changes are published
 
-- Extract the ZIP locally.
-- Upload the **contents of this folder**, not the ZIP itself, to the root of `surajsingh5803/lazyplex-digital` on the `main` branch.
-- Keep the folder paths intact (`assets`, `services`, `industries`, `insights`, etc.).
-- Replace corresponding older files; do not create a nested V3 parent directory.
-- GitHub Pages remains `main` branch, `/ (root)`; the CNAME is `digital.lazyplex.com`.
-- Verify the site over HTTPS before public promotion, then add `https://digital.lazyplex.com/sitemap.xml` in Search Console.
+Edit `surajsingh5803/lazyplex-digital` directly through a dedicated GitHub branch and pull request, not by uploading ZIP files. Keep the existing domain, URL structure and styling, run the SEO QA workflow and then merge into `main` after review. Deployment is handled by the existing GitHub Pages configuration.
+
+Phase 1 implementation notes and measured keyword intent mapping: [SEO-PHASE1-IMPLEMENTATION.md](SEO-PHASE1-IMPLEMENTATION.md). Editorial standards: [SEO-PUBLISHING-STANDARD.md](SEO-PUBLISHING-STANDARD.md). Run `node scripts/seo-quality-check.mjs` before merging.
 
 ## Navigation and URL pattern
 
