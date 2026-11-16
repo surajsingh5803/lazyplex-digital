@@ -64,3 +64,9 @@ Use this checklist for all service, industry, speciality, city and editorial pag
 - Never publish generic meta-questions such as “How do I avoid duplicate or low-quality content?” on articles about unrelated services. Readers should see subject-specific buying or implementation questions.
 - Verify in-page section anchors, labels, site navigation, hub/spoke links and CTA destinations in CI; a syntactically valid link can still be the wrong business destination.
 - Run `node scripts/seo-quality-check.mjs` before every merge; it rejects known editorial leaks, guide service mismatches and missing local anchors.
+
+## Interactive calculators and service-area content
+
+- Test formulas, descending funnel stage counts and zero denominators. Never present illustrative results as client results or guarantees.
+- Keep browser-only calculator inputs out of marketing pixels and third-party requests without proper consent.
+- City pages need genuinely different service needs, a clear remote-delivery explanation and no invented office, testimonials or local client figures.

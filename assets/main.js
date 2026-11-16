@@ -28,7 +28,17 @@ if (form) {
     'google-business-profile-for-doctors':'Doctor Google Business Profile guidance',
     'hospital-lead-counting-guide':'Hospital enquiry tracking and deduplication',
     'healthcare-seo-pricing-india':'Healthcare SEO scope and pricing',
-    'ivf-clinic-marketing-guide':'IVF clinic marketing guide'
+    'ivf-clinic-marketing-guide':'IVF clinic marketing guide',
+    'real-estate-seo':'Real estate SEO and project-page optimisation',
+    'real-estate-lead-generation':'Real estate qualified buyer lead generation',
+    'real-estate-google-ads':'Google Ads for real estate developers',
+    'ai-search-optimisation':'AI search optimisation services',
+    'property-qualified-lead-cost':'Property CPL and qualified buyer cost guide',
+    'property-search-vs-pmax':'Search versus Performance Max for property campaigns',
+    'property-launch-marketing':'Real estate project launch marketing',
+    'developer-vs-broker-seo':'Developer SEO versus broker SEO',
+    'property-funnel-reporting':'Real estate site visit and booking reporting',
+    'seo-aeo-geo-guide':'SEO, AEO and GEO comparison guide'
   };
   const focus = params.get('focus') || '';
   const source = params.get('source') || '';

@@ -535,6 +535,132 @@
       "keyword": "ivf clinic marketing guide",
       "publication_date": "2026-11-16",
       "editorial_status": "marketing education; not individual medical advice"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "real-estate",
+      "path": "industries/real-estate/seo/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/seo/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "seo"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "real-estate",
+      "path": "industries/real-estate/lead-generation/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/lead-generation/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "lead generation"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "real-estate",
+      "path": "industries/real-estate/google-ads/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/google-ads/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "google ads"
+    },
+    {
+      "type": "speciality-service",
+      "industry": "cross-industry",
+      "path": "services/ai-search-optimisation/index.html",
+      "url": "https://digital.lazyplex.com/services/ai-search-optimisation/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "ai search optimisation"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/cost-per-qualified-property-lead/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/cost-per-qualified-property-lead/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "cost per qualified property lead"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/search-vs-performance-max-property-ads/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/search-vs-performance-max-property-ads/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "search vs performance max property ads"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/property-project-launch-marketing-plan/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/property-project-launch-marketing-plan/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "property project launch marketing plan"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/developer-seo-vs-broker-seo/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/developer-seo-vs-broker-seo/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "developer seo vs broker seo"
+    },
+    {
+      "type": "blog",
+      "industry": "real-estate",
+      "path": "industries/real-estate/insights/real-estate-leads-site-visits-bookings/index.html",
+      "url": "https://digital.lazyplex.com/industries/real-estate/insights/real-estate-leads-site-visits-bookings/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "real estate leads site visits bookings"
+    },
+    {
+      "type": "blog",
+      "industry": "cross-industry",
+      "path": "insights/seo-aeo-geo-explained/index.html",
+      "url": "https://digital.lazyplex.com/insights/seo-aeo-geo-explained/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "seo aeo geo explained"
+    },
+    {
+      "type": "tool",
+      "industry": "multi-industry",
+      "path": "tools/index.html",
+      "url": "https://digital.lazyplex.com/tools/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "tools"
+    },
+    {
+      "type": "tool",
+      "industry": "real-estate",
+      "path": "tools/real-estate-lead-funnel-calculator/index.html",
+      "url": "https://digital.lazyplex.com/tools/real-estate-lead-funnel-calculator/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "real estate lead funnel calculator"
+    },
+    {
+      "type": "city",
+      "industry": "multi-industry",
+      "path": "locations/lucknow/index.html",
+      "url": "https://digital.lazyplex.com/locations/lucknow/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "lucknow"
+    },
+    {
+      "type": "city",
+      "industry": "multi-industry",
+      "path": "locations/mumbai/index.html",
+      "url": "https://digital.lazyplex.com/locations/mumbai/",
+      "publication_date": "2026-11-16",
+      "editorial_status": "Published marketing content; no invented client results or office claims",
+      "keyword": "mumbai"
     }
   ],
   "phase2_updated_on": "2026-11-16",
@@ -544,5 +670,15 @@
     "new_healthcare_guides": 4,
     "base_healthcare_guides": 5,
     "total_healthcare_guides": 9
+  },
+  "phase3_updated_on": "2026-11-16",
+  "phase3_scope": "Three property services; AI search; six distinct guides; two verified-purpose city service areas; browser-only real estate funnel calculator and tools index.",
+  "phase3_expansion": {
+    "new_commercial_pages": 4,
+    "new_guides": 6,
+    "new_city_pages": 2,
+    "new_tool_pages": 2,
+    "total_sitemap_urls": 100,
+    "total_industry_guides": 55
   }
 }
