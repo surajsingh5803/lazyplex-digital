@@ -1,5 +1,36 @@
 "use strict";
 const WA_NUMBER = "917257919567";
+// Only non-sensitive, short UTM labels are retained in this tab for enquiry routing.
+// No names, phone numbers, emails, query strings or form messages are stored here.
+const campaignFields = ["utm_source", "utm_medium", "utm_campaign"];
+const safeCampaignValue = value => typeof value === "string" && /^[a-z0-9][a-z0-9_.-]{0,47}$/i.test(value) ? value.toLowerCase() : "";
+const pageParams = new URLSearchParams(window.location.search);
+const incomingCampaign = Object.fromEntries(campaignFields.map(key => [key, safeCampaignValue(pageParams.get(key))]));
+let campaignContext = {...incomingCampaign};
+try {
+  const key = "lazyplex_campaign_session";
+  if (campaignFields.some(k => incomingCampaign[k])) {
+    window.sessionStorage.setItem(key, JSON.stringify({...incomingCampaign, savedAt: Date.now()}));
+  } else {
+    const stored = JSON.parse(window.sessionStorage.getItem(key) || "null");
+    if (stored && Number.isFinite(stored.savedAt) && Date.now() >= stored.savedAt && Date.now() - stored.savedAt < 30 * 60 * 1000) {
+      campaignContext = Object.fromEntries(campaignFields.map(k => [k, safeCampaignValue(stored[k])]));
+    }
+  }
+} catch {
+  // Browsers that disable session storage still support the contact form.
+}
+document.addEventListener("click", event => {
+  const link = event.target?.closest?.("a[href]");
+  if (!link) return;
+  let target;
+  try { target = new URL(link.getAttribute("href"), window.location.href); }
+  catch { return; }
+  if (target.origin !== window.location.origin || target.pathname !== "/contact/") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event:"lazyplex_contact_cta_click",page_path:window.location.pathname,service:target.searchParams.get("service")||""});
+});
+
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.mobile-menu');
 if (toggle && menu) {
@@ -82,10 +113,13 @@ if (form) {
     ];
     if (Object.prototype.hasOwnProperty.call(focusNames, focus)) lines.splice(2, 0, 'Topic: ' + focusNames[focus]);
     if (safeSource) lines.splice(3, 0, 'Page source: ' + safeSource);
+    if (campaignContext.utm_source) lines.splice(4, 0, "Campaign source: " + campaignContext.utm_source);
+    if (campaignContext.utm_medium) lines.splice(5, 0, "Campaign medium: " + campaignContext.utm_medium);
+    if (campaignContext.utm_campaign) lines.splice(6, 0, "Campaign label: " + campaignContext.utm_campaign);
     // A handoff is not a delivered WhatsApp message or a qualified lead.
     // Do not put the contact's name, email, phone or message into this event.
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event:'lazyplex_whatsapp_handoff',service:serviceInput.value,industry:d.get('industry') || '',topic:Object.prototype.hasOwnProperty.call(focusNames, focus)?focus:'',source:safeSource});
+    window.dataLayer.push({event:'lazyplex_whatsapp_handoff',service:serviceInput.value,industry:d.get('industry') || '',topic:Object.prototype.hasOwnProperty.call(focusNames, focus)?focus:'',source:safeSource,utm_source:campaignContext.utm_source,utm_medium:campaignContext.utm_medium});
     const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
     status.textContent = 'Opening WhatsApp. Review the prepared message and tap Send there to deliver your enquiry.';
     status.className = 'form-status success';
