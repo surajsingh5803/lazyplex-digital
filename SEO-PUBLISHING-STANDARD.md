@@ -70,3 +70,8 @@ Use this checklist for all service, industry, speciality, city and editorial pag
 - Test formulas, descending funnel stage counts and zero denominators. Never present illustrative results as client results or guarantees.
 - Keep browser-only calculator inputs out of marketing pixels and third-party requests without proper consent.
 - City pages need genuinely different service needs, a clear remote-delivery explanation and no invented office, testimonials or local client figures.
+
+## Evidence-free trust content
+
+- Explain the real service process, client approvals, measurement definitions and next steps without inventing client outcomes, people, endorsements or office locations.
+- Publish method content separately from case studies. Link to it from relevant service and company pages; distinguish a proposed workflow from completed project evidence.
