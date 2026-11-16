@@ -1,0 +1,24 @@
+name: Lighthouse production spot-check
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 1 * *"
+permissions:
+  contents: read
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit representative public pages and retain reports
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://digital.lazyplex.com/
+            https://digital.lazyplex.com/services/google-ads-ppc/
+            https://digital.lazyplex.com/industries/healthcare/
+            https://digital.lazyplex.com/tools/break-even-marketing-budget-planner/
+          configPath: "./lighthouserc.json"
+          uploadArtifacts: true
+          temporaryPublicStorage: false
