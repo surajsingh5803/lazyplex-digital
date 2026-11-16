@@ -37,9 +37,9 @@ for (const entry of urls) {
   const file = localPath(pageUrl.pathname);
   if (!fs.existsSync(file)) { errors.push("Sitemap URL has no file: " + entry); continue; }
   const html = fs.readFileSync(file, "utf8");
-  const h1s = [...html.matchAll(/<h1(?:\\s|>)/gi)];
+  const h1s = [...html.matchAll(/<h1(?:\s|>)/gi)];
   if (h1s.length !== 1) errors.push(entry + ": expected exactly one H1; found " + h1s.length);
-  const title = html.match(/<title>([\\s\\S]*?)<\\/title>/i)?.[1]?.trim();
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim();
   if (!title) errors.push(entry + ": missing title");
   else if (titleOwner.has(title)) warnings.push("Possible duplicate title: " + entry + " and " + titleOwner.get(title));
   else titleOwner.set(title, entry);
@@ -50,10 +50,10 @@ for (const entry of urls) {
   if (canonicals.length !== 1 || attribute(canonicals[0]?.[0] ?? "", "href") !== entry)
     errors.push(entry + ": incorrect or absent canonical");
 
-  for (const script of html.matchAll(/<script[^>]*type=["']application\\/ld\\+json["'][^>]*>([\\s\\S]*?)<\\/script>/gi)) {
+  for (const script of html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     try { JSON.parse(script[1]); } catch { errors.push(entry + ": invalid JSON-LD"); }
   }
-  for (const link of html.matchAll(/<a\\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
+  for (const link of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
     const href = link[1].replace(/&amp;/g, "&");
     let target;
     try { target = new URL(href, entry); } catch { warnings.push(entry + ": unparseable link: " + href); continue; }
