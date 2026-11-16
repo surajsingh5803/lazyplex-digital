@@ -1,3 +1,4 @@
+# Initial 29 updated URLs: submit on first deployment of direct IndexNow workflow
 https://digital.lazyplex.com/
 https://digital.lazyplex.com/about/
 https://digital.lazyplex.com/approach/

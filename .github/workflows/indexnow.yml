@@ -1,8 +1,6 @@
 name: IndexNow — direct publishing notifications
 on:
-  workflow_run:
-    workflows: ["pages build and deployment"]
-    types: [completed]
+  push:
     branches: [main]
   workflow_dispatch:
     inputs:
@@ -20,16 +18,21 @@ on:
         required: false
 permissions:
   contents: read
+  actions: read
 jobs:
   indexnow:
-    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 2
+      - name: Confirm current site commit has finished deploying
+        if: github.event_name == 'push'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/wait-for-pages.py
       - name: Validate IndexNow URL lists and canonical key
         run: python3 -m unittest discover -s scripts -p 'test_indexnow.py' -v
       - name: Verify publicly served key, then submit only changed URLs
