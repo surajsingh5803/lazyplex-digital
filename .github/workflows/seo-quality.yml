@@ -14,5 +14,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - name: Validate JavaScript syntax
+        run: |
+          node --check assets/main.js
+          node --check scripts/seo-quality-check.mjs
       - name: Check sitemap, titles, canonicals, structured data and internal links
         run: node scripts/seo-quality-check.mjs
