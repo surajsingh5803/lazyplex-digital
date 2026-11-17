@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -74,7 +74,7 @@ function lp_main_seo_metadata_map() {
         31 => array('title'=>'Real Estate Lead Conversion Services | Lazy Plex','description'=>'Improve property enquiry qualification, sales handoffs, CRM follow-up and conversion journeys with Lazy Plex growth systems.'),
         34 => array('title'=>'Real Estate Sales Automation & CRM Workflows | Lazy Plex','description'=>'Connect property sales enquiries, lead routing, CRM workflows and timely follow-up with practical real estate automation.'),
         37 => array('title'=>'Real Estate Marketing Analytics & Reporting | Lazy Plex','description'=>'Connect property marketing spend, qualified leads, site visits, bookings and revenue with meaningful reporting and measurement.'),
-        46 => array('title'=>'Business Growth Audit | Identify Sales & Marketing Gaps | Lazy Plex','description'=>'Request a growth audit to understand acquisition, lead quality, conversion, CRM follow-up and measurement gaps before scaling spend.')
+        46 => array('title'=>'Business Growth Audit | Marketing & Sales | Lazy Plex','description'=>'Request a growth audit to understand acquisition, lead quality, conversion, CRM follow-up and measurement gaps before scaling spend.')
     );
 }
 add_filter('rank_math/frontend/title', function($title) {
