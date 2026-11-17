@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -83,6 +83,8 @@ add_filter('rank_math/frontend/title', function($title) {
     return isset($map[$id]) ? $map[$id]['title'] : $title;
 }, 99);
 add_filter('rank_math/frontend/description', function($description) {
+    if (is_category('uncategorized')) return 'Category archive for Lazy Plex articles. Browse practical digital marketing and growth resources in our main insights section.';
+    if (function_exists('is_shop') && is_shop()) return 'The Lazy Plex store is being prepared. For digital marketing, growth systems and business enquiries, contact our consultancy team.';
     if (!is_page()) return $description;
     $map = lp_main_seo_metadata_map(); $id = get_queried_object_id();
     return isset($map[$id]) ? $map[$id]['description'] : $description;
@@ -95,6 +97,6 @@ add_filter('rank_math/frontend/robots', function($robots) {
 }, 99);
 add_action('template_redirect', function() {
     $path = wp_parse_url(isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '/', PHP_URL_PATH);
-    $redirects = array('/elementor-287/' => '/growth-consultancy/', '/hello-world/' => '/insights/', '/digital-bundle/' => '/solutions/', '/digital-bundle-thank-you/' => '/solutions/');
+    $redirects = array('/elementor-287/' => '/growth-consultancy/', '/hello-world/' => '/insights/', '/digital-bundle/' => '/solutions/', '/digital-bundle-thank-you/' => '/solutions/', '/product/222/' => '/solutions/');
     if (isset($redirects[$path])) { wp_safe_redirect(home_url($redirects[$path]), 301); exit; }
 }, 1);
