@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -44,6 +44,36 @@ function lp_main_seo_sync_files() {
     }
 }
 register_activation_hook(__FILE__, 'lp_main_seo_sync_files');
+function lp_main_seo_write_docroot() {
+    if (wp_parse_url(home_url('/'), PHP_URL_HOST) !== 'lazyplex.com') { return; }
+    $root = isset($_SERVER['DOCUMENT_ROOT']) ? rtrim((string) $_SERVER['DOCUMENT_ROOT'], '/\\') . '/' : '';
+    if (!$root || !is_dir($root)) { return; }
+    $key = '0f54c7b2013f41a8a041d3d62c44ff41';
+    $file = $root . $key . '.txt';
+    if (!is_file($file) || @file_get_contents($file) !== $key) { @file_put_contents($file, $key, LOCK_EX); }
+}
+add_action('init', 'lp_main_seo_write_docroot', 2);
+add_action('init', function () {
+    $uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '/';
+    if (wp_parse_url($uri, PHP_URL_PATH) !== '/lp-seo-diagnostics/') return;
+    $key = '0f54c7b2013f41a8a041d3d62c44ff41';
+    $paths = array(
+        'ABSPATH' => rtrim(ABSPATH, '/\\') . '/',
+        'DOCUMENT_ROOT' => isset($_SERVER['DOCUMENT_ROOT']) ? rtrim((string) $_SERVER['DOCUMENT_ROOT'], '/\\') . '/' : ''
+    );
+    $flags = array();
+    foreach ($paths as $name => $dir) {
+        $file = $dir . $key . '.txt';
+        $flags[] = $name . '-dir-' . (is_dir($dir) ? 'yes' : 'no');
+        $flags[] = $name . '-writable-' . (is_writable($dir) ? 'yes' : 'no');
+        $flags[] = $name . '-key-exact-' . (is_file($file) && @file_get_contents($file) === $key ? 'yes' : 'no');
+    }
+    status_header(200); header('Content-Type: text/html; charset=utf-8');
+    header('X-Robots-Tag: noindex');
+    echo '<!doctype html><html><head><meta name="robots" content="noindex"><title>LP SEO diagnostic: ' . esc_html(implode(' ', $flags)) . '</title></head><body><h1>Verification diagnostics</h1></body></html>';
+    exit;
+}, 1);
+
 add_action('init', function () {
     if (!get_option('lp_main_seo_files_synced_v101')) {
         lp_main_seo_sync_files();
