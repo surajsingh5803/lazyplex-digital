@@ -10,7 +10,7 @@ const js = read('assets/experience.js');
 
 assert.match(html, /<body class="home-immersive">/, 'Immersive styling is homepage-scoped');
 assert.equal((html.match(/<h1\b/g) || []).length, 1, 'Homepage preserves exactly one H1');
-assert.match(html, /rel="canonical"[^>]*https:\/\/digital\.lazyplex\.com\//);
+assert.match(html, /<link\s+href="https:\/\/digital\.lazyplex\.com\/"\s+rel="canonical"\s*\/>/);
 assert.match(html, /assets\/experience\.css/);
 assert.match(html, /assets\/experience\.js/);
 assert.match(html, /<canvas class="growth-stars" aria-hidden="true"><\/canvas>/);
