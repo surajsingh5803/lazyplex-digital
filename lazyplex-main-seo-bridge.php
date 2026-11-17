@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -77,7 +77,22 @@ function lp_main_seo_metadata_map() {
         46 => array('title'=>'Business Growth Audit | Marketing & Sales | Lazy Plex','description'=>'Request a growth audit to understand acquisition, lead quality, conversion, CRM follow-up and measurement gaps before scaling spend.')
     );
 }
+function lp_main_blog_metadata_map() {
+    return array(
+        321 => array('title'=>'How to Choose a Digital Marketing Agency | Lazy Plex','description'=>'A practical buyer checklist for choosing a digital marketing agency: assess strategy, pricing, account ownership, reporting and real business outcomes.'),
+        322 => array('title'=>'Why Marketing Leads Do Not Convert | Lazy Plex','description'=>'Diagnose poor lead quality, broken forms, missed calls, slow follow-up and misleading metrics with an actionable service-business conversion guide.'),
+        323 => array('title'=>'SEO vs Google Ads vs Meta Ads: Which Works? | Lazy Plex','description'=>'Compare SEO, Google Ads and Meta Ads for service businesses by buyer intent, budget, lead quality, sales cycle and measurement.'),
+        325 => array('title'=>'How to Qualify Sales Leads: Scorecards & CRM | Lazy Plex','description'=>'Build a fair, practical lead qualification process using fit criteria, CRM stages, scorecards, handoffs and evidence-based follow-up.'),
+        326 => array('title'=>'CRM Automation: A Lead Follow-Up Blueprint | Lazy Plex','description'=>'Learn how to build CRM intake, routing, reminders and follow-up workflows that support customers, sales teams and reliable measurement.'),
+        327 => array('title'=>'Marketing ROI: From Leads to Revenue | Lazy Plex','description'=>'Track marketing costs, qualified enquiries, attribution, sales stages and actual revenue without mistaking clicks or forms for customers.'),
+        328 => array('title'=>'Healthcare Marketing for Clinics and Hospitals | Lazy Plex','description'=>'A patient-first healthcare marketing strategy covering local search, accurate service pages, appointment enquiries, ethical ads and privacy.'),
+        329 => array('title'=>'Real Estate Marketing Strategy for Developers | Lazy Plex','description'=>'Connect developer campaigns, qualified buyers, property enquiry routing, site visits and bookings through measurable real estate growth systems.'),
+        330 => array('title'=>'SEO for AI Search in 2026: A Practical Guide | Lazy Plex','description'=>'Improve AI-assisted discovery with useful content, crawlable pages, accurate business information and relevant SEO practices without false promises.'),
+        331 => array('title'=>'Digital Marketing Budget for Small Business | Lazy Plex','description'=>'Plan a sustainable marketing budget in India across SEO, paid ads, CRM and website improvements using business economics and realistic tests.')
+    );
+}
 add_filter('rank_math/frontend/title', function($title) {
+    if (is_singular('post')) { $postMap = lp_main_blog_metadata_map(); $postId = get_queried_object_id(); return isset($postMap[$postId]) ? $postMap[$postId]['title'] : $title; }
     if (!is_page()) return $title;
     $map = lp_main_seo_metadata_map(); $id = get_queried_object_id();
     return isset($map[$id]) ? $map[$id]['title'] : $title;
@@ -85,12 +100,13 @@ add_filter('rank_math/frontend/title', function($title) {
 add_filter('rank_math/frontend/description', function($description) {
     if (is_category('uncategorized')) return 'Category archive for Lazy Plex articles. Browse practical digital marketing and growth resources in our main insights section.';
     if (function_exists('is_shop') && is_shop()) return 'The Lazy Plex store is being prepared. For digital marketing, growth systems and business enquiries, contact our consultancy team.';
+    if (is_singular('post')) { $postMap = lp_main_blog_metadata_map(); $postId = get_queried_object_id(); return isset($postMap[$postId]) ? $postMap[$postId]['description'] : $description; }
     if (!is_page()) return $description;
     $map = lp_main_seo_metadata_map(); $id = get_queried_object_id();
     return isset($map[$id]) ? $map[$id]['description'] : $description;
 }, 99);
 add_filter('rank_math/frontend/robots', function($robots) {
-    if (is_page(array(217,218,219,220)) || is_post_type_archive('product') || is_category('uncategorized') || is_singular('product')) {
+    if (is_page(array(217,218,219,220)) || is_post_type_archive('product') || is_category() || is_singular('product')) {
         $robots['index'] = 'noindex'; $robots['follow'] = 'follow';
     }
     return $robots;
