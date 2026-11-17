@@ -17,6 +17,7 @@ jobs:
       - name: Validate JavaScript syntax
         run: |
           node --check assets/main.js
+          node --check assets/experience.js
           node --check scripts/seo-quality-check.mjs
           node --check assets/real-estate-funnel.js
           node --check assets/budget-planner.js
@@ -34,5 +35,7 @@ jobs:
         run: python3 -m py_compile scripts/wait-for-pages.py scripts/indexnow-submit.py
       - name: Verify IndexNow key, sitemap and changed-URL filtering
         run: python3 -m unittest discover -s scripts -p 'test_indexnow.py' -v
+      - name: Verify immersive homepage and its service destinations
+        run: node scripts/test-immersive-homepage.mjs
       - name: Check sitemap, titles, canonicals, structured data and internal links
         run: node scripts/seo-quality-check.mjs
