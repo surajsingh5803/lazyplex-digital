@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -29,6 +29,28 @@ function lp_main_seo_document_endpoint() {
     }
 }
 add_action('init', 'lp_main_seo_document_endpoint', 1);
+function lp_main_seo_sync_files() {
+    if (wp_parse_url(home_url('/'), PHP_URL_HOST) !== 'lazyplex.com') { return; }
+    $root = rtrim(ABSPATH, '/\\') . '/';
+    $key = '0f54c7b2013f41a8a041d3d62c44ff41';
+    $keyfile = $root . $key . '.txt';
+    if (!is_file($keyfile) || @file_get_contents($keyfile) !== $key) {
+        @file_put_contents($keyfile, $key, LOCK_EX);
+    }
+    $llms = $root . 'llms.txt';
+    if (!is_file($llms)) {
+        $description = "# Lazy Plex\n\nLazy Plex is a growth consultancy connecting marketing, SEO, AI automation, CRM and business measurement. The corporate website is https://lazyplex.com/ and the separate specialist resources website is https://digital.lazyplex.com/.\n\n## Main pages\n- https://lazyplex.com/\n- https://lazyplex.com/about/\n- https://lazyplex.com/solutions/\n- https://lazyplex.com/growth-consultancy/\n- https://lazyplex.com/real-estate/\n- https://lazyplex.com/contact/\n\n## Specialist resources\n- https://digital.lazyplex.com/services/\n- https://digital.lazyplex.com/industries/\n- https://digital.lazyplex.com/insights/\n";
+        @file_put_contents($llms, $description, LOCK_EX);
+    }
+}
+register_activation_hook(__FILE__, 'lp_main_seo_sync_files');
+add_action('init', function () {
+    if (!get_option('lp_main_seo_files_synced_v101')) {
+        lp_main_seo_sync_files();
+        update_option('lp_main_seo_files_synced_v101', 1, false);
+    }
+}, 3);
+
 function lp_main_seo_metadata_map() {
     return array(
         16 => array('title'=>'Lazy Plex | Growth Consultancy & Digital Marketing Systems','description'=>'Lazy Plex connects SEO, digital marketing, lead generation, CRM automation and analytics into measurable business growth systems.'),
