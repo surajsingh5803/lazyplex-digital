@@ -51,4 +51,11 @@ const emission=ctx.window.dataLayer.slice(previous).find(x=>Array.isArray(x)&&x[
 assert.ok(emission);
 assert.equal(emission[1],"lazyplex_phone_click");
 assert.equal("phone" in emission[2],false);
+const beforeLead=ctx.window.dataLayer.length;
+ctx.window.dataLayer.push({event:"lazyplex_secure_enquiry_received",service:"seo",name:"private person",email:"private@example.com"});
+const leadEmission=ctx.window.dataLayer.slice(beforeLead).find(x=>Array.isArray(x)&&x[0]==="event");
+assert.equal(leadEmission[1],"generate_lead");
+assert.equal(leadEmission[2].method,"secure_crm_form");
+assert.equal("name" in leadEmission[2],false);
+assert.equal("email" in leadEmission[2],false);
 console.log("Consent-first GA4 tests passed: opt-in only, reject, revoke controls, safe attribution and personal-data exclusion.");
