@@ -43,6 +43,10 @@
 - [Free Lead Quality & Marketing ROI Calculator](https://digital.lazyplex.com/tools/lead-quality-roi-calculator/): Browser-based calculation of cost per qualified lead, conversion rates and acquisition costs; no account required.
 - [Digital marketing services for Patna and Bihar](https://digital.lazyplex.com/locations/patna/): Regional search-intent guide; does not represent a walk-in office.
 
+## Editorial and accuracy
+
+- [Editorial standards](https://digital.lazyplex.com/editorial/): Content sourcing, hypothetical examples, author disclosure, AI assistance and corrections.
+
 ## Discovery and accuracy
 
 - [XML Sitemap](https://digital.lazyplex.com/sitemap.xml)
