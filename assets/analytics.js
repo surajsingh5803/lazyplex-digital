@@ -47,7 +47,11 @@
         eventParams.industry = item.industry;
       if (typeof item.source === "string" && /^[a-z0-9-]{1,60}$/.test(item.source))
         eventParams.source = item.source;
-      window.gtag("event", item.event, eventParams);
+      // GA4's recommended event means a lead reached our CRM.
+      // WhatsApp handoffs intentionally remain engagement events, not leads.
+      const gaEvent = item.event === "lazyplex_secure_enquiry_received" ? "generate_lead" : item.event;
+      if (gaEvent === "generate_lead") eventParams.method = "secure_crm_form";
+      window.gtag("event", gaEvent, eventParams);
     }
     return result;
   };
