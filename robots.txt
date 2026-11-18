@@ -1,3 +1,21 @@
+# Lazy Plex Digital: public marketing pages are available to search engines and AI search crawlers.
+# Search crawlers are different from model-training crawlers. Access does not guarantee placement.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: *
 Allow: /
+
 Sitemap: https://digital.lazyplex.com/sitemap.xml
