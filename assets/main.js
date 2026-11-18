@@ -26,26 +26,19 @@ document.addEventListener("click", event => {
   let target;
   try { target = new URL(link.getAttribute("href"), window.location.href); }
   catch { return; }
+  // Record click intent only. Do not send contact details or claim a delivered enquiry.
+  const eventType = target.protocol === "tel:" ? "lazyplex_phone_click"
+    : (target.hostname === "wa.me" || target.hostname === "api.whatsapp.com") ? "lazyplex_whatsapp_click" : "";
+  if (eventType) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:eventType,page_path:window.location.pathname});
+    return;
+  }
   if (target.origin !== window.location.origin || target.pathname !== "/contact/") return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({event:"lazyplex_contact_cta_click",page_path:window.location.pathname,service:target.searchParams.get("service")||""});
 });
 
-// Privacy-safe engagement events for future consent-aware GA4/GTM configuration.
-// These are dataLayer events only; they are not delivery confirmations.
-document.addEventListener("click", event => {
-  const a = event.target?.closest?.("a[href]");
-  if (!a) return;
-  let url;
-  try { url = new URL(a.getAttribute("href"), window.location.href); }
-  catch { return; }
-  let action = "";
-  if (url.protocol === "tel:") action = "lazyplex_phone_click";
-  else if (url.hostname === "wa.me" || url.hostname === "api.whatsapp.com") action = "lazyplex_whatsapp_click";
-  if (!action) return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({event:action,page_path:window.location.pathname});
-});
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.mobile-menu');
 if (toggle && menu) {
