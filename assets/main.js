@@ -31,6 +31,21 @@ document.addEventListener("click", event => {
   window.dataLayer.push({event:"lazyplex_contact_cta_click",page_path:window.location.pathname,service:target.searchParams.get("service")||""});
 });
 
+// Privacy-safe engagement events for future consent-aware GA4/GTM configuration.
+// These are dataLayer events only; they are not delivery confirmations.
+document.addEventListener("click", event => {
+  const a = event.target?.closest?.("a[href]");
+  if (!a) return;
+  let url;
+  try { url = new URL(a.getAttribute("href"), window.location.href); }
+  catch { return; }
+  let action = "";
+  if (url.protocol === "tel:") action = "lazyplex_phone_click";
+  else if (url.hostname === "wa.me" || url.hostname === "api.whatsapp.com") action = "lazyplex_whatsapp_click";
+  if (!action) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event:action,page_path:window.location.pathname});
+});
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.mobile-menu');
 if (toggle && menu) {
@@ -46,8 +61,11 @@ if (toggle && menu) {
     menu.hidden = true;
   }));
 }
+window.lpCampaignContext = {...campaignContext};
 const form = document.querySelector('#enquiry-form');
 if (form) {
+  const waButton = form.querySelector?.('#whatsapp-submit');
+  if (waButton) waButton.disabled = false;
   const params = new URLSearchParams(window.location.search);
 
   // Route a healthcare service/topic without collecting clinical or personal data in analytics.

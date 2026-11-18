@@ -1,0 +1,16 @@
+import assert from "node:assert/strict";import fs from "node:fs";
+const contact=fs.readFileSync("contact/index.html","utf8"),script=fs.readFileSync("assets/contact-intake.js","utf8"),main=fs.readFileSync("assets/main.js","utf8"),privacy=fs.readFileSync("privacy/index.html","utf8");
+assert.match(contact,/id="secure-intake"[^>]*hidden/);
+assert.match(contact,/id="whatsapp-submit" disabled/);
+assert.match(contact,/id="send-secure-enquiry"/);
+assert.match(contact,/src="\.\.\/assets\/contact-intake\.js"/);
+assert.match(contact,/name="website"/);
+assert.match(contact,/method="post"/);
+assert.match(privacy,/CRM endpoint is enabled/);
+assert.match(script,/data\.enabled !== true/);
+assert.match(script,/turnstile\.render/);
+assert.match(script,/result\.received !== true/);
+assert.match(script,/lazyplex_secure_enquiry_received/);
+assert.match(main,/lazyplex_phone_click/);
+assert.match(main,/lazyplex_whatsapp_click/);
+console.log("Secure contact integration smoke checks passed: WhatsApp fallback, disabled-by-default CRM, privacy-safe events.");
