@@ -71,3 +71,21 @@ Read the founder's overview of Lazy Plex and its consulting approach: [Suraj Kum
 Full execution details: [SEO-PHASE4-IMPLEMENTATION.md](SEO-PHASE4-IMPLEMENTATION.md). Google indexation snapshot: [SEO-PHASE4-INDEXATION-SNAPSHOT.md](SEO-PHASE4-INDEXATION-SNAPSHOT.md). Manual AI answer observation protocol: [SEO-PHASE4-AI-OBSERVATION-PLAN.md](SEO-PHASE4-AI-OBSERVATION-PLAN.md).
 
 New `/tools/break-even-marketing-budget-planner/` estimates the **required** leads and spend from a target outcome; it does not duplicate the forward ROI calculator. Added privacy-conscious source preservation and a separate CTA-intent event. The project still needs an appropriate GA4 connection to measure actual site events.
+
+
+## GA4 analytics (consent-first)
+This static site loads `/assets/analytics.js` from the common `assets/main.js`.
+The currently connected GA4 web stream is `G-Y52PL9CNK0` (Lazy Plex root
+property). This is intentionally a **shared GA4 property**; separate
+`digital.lazyplex.com` traffic using GA4's Hostname dimension, not by
+assuming the property contains only the Digital subdomain.
+On a first visit **no Google Analytics script is loaded** until the visitor
+accepts analytics. A rejection disables GA4 and keeps navigation, WhatsApp,
+contact form, and CRM choices operational. The footer lets visitors change
+their choice. Optional consent is stored in localStorage for up to 180 days.
+`page_location` includes only the path and allowlisted UTM labels, never
+unrestricted query strings or contact data. Only allowlisted event names and
+non-personal event parameters are forwarded; the events themselves are not
+GA4 key events until enabled in the GA4 property administration UI.
+For clean reporting, create a dedicated Digital web data stream/property in
+GA4 and update the measurement ID here when it becomes available.

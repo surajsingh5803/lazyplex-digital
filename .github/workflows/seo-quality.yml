@@ -19,6 +19,7 @@ jobs:
         run: |
           node --check assets/main.js
           node --check assets/contact-intake.js
+          node --check assets/analytics.js
           node --check assets/experience.js
           node --check scripts/seo-quality-check.mjs
           node --check assets/real-estate-funnel.js
@@ -33,6 +34,7 @@ jobs:
         run: |
           node scripts/test-attribution.mjs
           node scripts/test-contact-intake.mjs
+          node scripts/test-analytics-consent.mjs
       - name: Check key text contrast ratios
         run: node scripts/test-contrast.mjs
       - name: Validate deployment polling script syntax

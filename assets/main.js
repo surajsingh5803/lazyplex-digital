@@ -137,3 +137,12 @@ if (form) {
     window.location.assign(url);
   });
 }
+
+// Load consent-first analytics on all static pages. Legacy Node smoke tests use
+// a minimal DOM and intentionally skip this browser-only enhancement.
+if (typeof document.createElement === "function" && document.head && document.head.appendChild) {
+  const analyticsScript = document.createElement("script");
+  analyticsScript.src = "/assets/analytics.js";
+  analyticsScript.defer = true;
+  document.head.appendChild(analyticsScript);
+}

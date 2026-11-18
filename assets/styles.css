@@ -80,3 +80,13 @@
 
 /* Progressive, opt-in CRM capture. Hidden while secure endpoint is disabled. */
 .secure-intake{margin-top:18px;padding:20px;border:1px solid #d0deda;background:#f6fbf0;border-radius:16px}.secure-intake[hidden]{display:none!important}.secure-intake-title{font-size:18px;font-weight:800;margin:0 0 8px}.secure-intake p{line-height:1.6}.secure-intake #secure-turnstile{margin:12px 0}.secure-intake .btn:disabled{opacity:.55;cursor:not-allowed}.hp-field{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+
+/* Privacy-first analytics consent, independent of essential site functionality. */
+.lp-consent-banner[hidden]{display:none!important}
+.lp-consent-banner{position:fixed;bottom:20px;left:20px;z-index:1100;max-width:520px;width:calc(100vw - 40px);background:#fffefa;color:#13213a;border:1px solid #c7d5e3;border-radius:16px;padding:18px 20px;box-shadow:0 20px 48px rgba(4,12,25,.23);font-size:13px;line-height:1.65}
+.lp-consent-banner p{margin:0 0 13px}.lp-consent-banner a{color:#12385a;text-decoration:underline}
+.lp-consent-banner>div{display:flex;flex-wrap:wrap;gap:9px}.lp-consent-banner button{background:#eef2f3;color:#111d36;border:1px solid #d2dadd;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:700}
+.lp-consent-banner button.lp-consent-accept{background:#b9f664;border-color:#8fbf45;color:#0b1a27}
+.lp-privacy-settings{border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;opacity:.9;padding:3px 0;font-size:12px}
+.lp-consent-banner button:focus-visible,.lp-privacy-settings:focus-visible{outline:3px solid #407fa2;outline-offset:3px}
+@media(max-width:740px){.lp-consent-banner{bottom:74px;left:12px;width:calc(100vw - 24px);max-width:none;padding:15px}}
