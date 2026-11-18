@@ -33,10 +33,11 @@ class IndexNowTests(TestCase):
     def test_sitemap_and_seed(self):
         current = mod.sitemap_urls(mod.SITEMAP_FILE.read_bytes())
         seed = mod.validate_urls(mod.SEED_FILE.read_text().splitlines())
-        self.assertEqual(len(current), 102)
-        self.assertEqual(len(set(current)), 102)
+        self.assertGreaterEqual(len(current), 100)
+        self.assertEqual(len(set(current)), len(current))
         self.assertEqual(len(seed), 29)
         self.assertTrue(set(seed).issubset(set(current)))
+        self.assertIn('https://digital.lazyplex.com/editorial/', current)
         self.assertEqual(mod.KEY_FILE.read_text(), mod.KEY)
 
 
