@@ -84,8 +84,10 @@ accepts analytics. A rejection disables GA4 and keeps navigation, WhatsApp,
 contact form, and CRM choices operational. The footer lets visitors change
 their choice. Optional consent is stored in localStorage for up to 180 days.
 `page_location` includes only the path and allowlisted UTM labels, never
-unrestricted query strings or contact data. Only allowlisted event names and
-non-personal event parameters are forwarded; the events themselves are not
-GA4 key events until enabled in the GA4 property administration UI.
+unrestricted query strings or contact data. Only allowlisted event names and non-personal event parameters are forwarded.
+A **server-confirmed CRM receipt** emits the GA4 recommended `generate_lead`
+event; WhatsApp handoffs remain engagement only. The `generate_lead` event
+must still be marked as a key event in the GA4 Admin interface to report
+conversions and optionally import them into Google Ads.
 For clean reporting, create a dedicated Digital web data stream/property in
 GA4 and update the measurement ID here when it becomes available.
