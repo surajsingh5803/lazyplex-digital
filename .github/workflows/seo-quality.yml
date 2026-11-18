@@ -34,6 +34,7 @@ jobs:
         run: |
           node scripts/test-attribution.mjs
           node scripts/test-contact-intake.mjs
+          node scripts/test-contact-ui-behavior.mjs
           node scripts/test-analytics-consent.mjs
       - name: Check key text contrast ratios
         run: node scripts/test-contrast.mjs
