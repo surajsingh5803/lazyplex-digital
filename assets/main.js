@@ -146,3 +146,50 @@ if (typeof document.createElement === "function" && document.head && document.he
   analyticsScript.defer = true;
   document.head.appendChild(analyticsScript);
 }
+
+// Lazy Plex cross-site commercial journey v1 — canonical service catalogue
+// Progressive enhancement only: every page still works when JavaScript is disabled.
+document.addEventListener("DOMContentLoaded", () => {
+  const primaryCTA = document.querySelector(".desktop-nav .nav-cta");
+  if (primaryCTA) {
+    primaryCTA.href = "https://lazyplex.com/start/";
+    primaryCTA.innerHTML = 'Get Started <span aria-hidden="true">↗</span>';
+  }
+  const mobile = document.querySelector(".mobile-menu");
+  if (mobile && !mobile.querySelector('[data-lp-buyer-route]')) {
+    const routes = [
+      ["Get Started — choose a service", "https://lazyplex.com/start/"],
+      ["Compare current prices and tiers", "https://lazyplex.com/pricing/"]
+    ];
+    routes.forEach(([label, href]) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = label;
+      link.dataset.lpBuyerRoute = "true";
+      mobile.prepend(link);
+    });
+  }
+  const path = window.location.pathname;
+  if (!/^\/services\/[^/]+\/$/.test(path)) return;
+  const main = document.querySelector("main");
+  if (!main || document.querySelector(".lp-catalogue-bridge")) return;
+  const bridge = document.createElement("section");
+  bridge.className = "lp-catalogue-bridge";
+  bridge.setAttribute("aria-label", "Service packages and pricing");
+  const seoSpecific = path === "/services/search-engine-optimisation/";
+  bridge.innerHTML =
+    '<div class="container lp-catalogue-bridge-inner">' +
+      '<div><strong>Compare before you enquire</strong>' +
+      '<p>' + (seoSpecific
+        ? 'SEO individual service tiers currently start at ₹19,999/month on the main Lazy Plex catalogue. Check the exact deliverables, scope and exclusions there.'
+        : 'Published service tiers and package prices are maintained on the main Lazy Plex catalogue. This specialist guide explains the work; its tailored-quote wording does not replace published tier pricing.') +
+      '</p></div>' +
+      '<div class="lp-catalogue-bridge-actions">' +
+        '<a href="https://lazyplex.com/services/">See all service tiers ↗</a>' +
+        '<a href="https://lazyplex.com/compare/">Individual vs bundled ↗</a>' +
+      '</div>' +
+    '</div>';
+  const firstSection = main.querySelector("section");
+  if (firstSection) firstSection.insertAdjacentElement("afterend", bridge);
+  else main.prepend(bridge);
+});
