@@ -20,11 +20,21 @@ try {
        if(s.display==='none'||s.visibility==='hidden'||s.position==='fixed')return false;
        const r=el.getBoundingClientRect();
        return r.width>0&&(r.right>window.innerWidth+2||r.left< -2);
-      }).slice(0,6).map(el=>({tag:el.tagName,class:String(el.className||'').slice(0,60),right:Math.round(el.getBoundingClientRect().right)}));
+      }).slice(0,6).map(el=>({tag:el.tagName,class:String(el.className||'').slice(0,60),left:Math.round(el.getBoundingClientRect().left),right:Math.round(el.getBoundingClientRect().right),width:Math.round(el.getBoundingClientRect().width),parent:el.parentElement?.className,cssWidth:getComputedStyle(el).width,minWidth:getComputedStyle(el).minWidth}));
       return{viewport,documentWidth:full,overflow:Math.max(0,full-viewport),h1Count:h1.length,offscreen};
     })};
    }catch(e){result.error=String(e).slice(0,180)}
    results.push(result);
+   if(path==="/" && width===1440){
+     const nav=await page.locator("header a").evaluateAll(items=>items.slice(0,30).map(x=>({label:x.textContent.trim().slice(0,50),href:x.getAttribute("href")})));
+     console.log("LP_NAV "+JSON.stringify(nav));
+   }
+   if(path==="/request-proposal/" && width===390){
+     const q=await page.goto(new URL("/request-proposal/?service=seo&tier=basic",origin).href,{waitUntil:"domcontentloaded",timeout:35000});
+     await page.waitForTimeout(350);
+     const value=await page.locator('input[name$="-serviceorgrowthsolution"]').inputValue().catch(()=>"(field missing)");
+     console.log("LP_PREFILL "+JSON.stringify({status:q?.status(),value}));
+   }
    console.log('LP_QA '+JSON.stringify(result));
   }
   await page.close();
