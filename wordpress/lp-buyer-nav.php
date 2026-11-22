@@ -2,7 +2,7 @@
 /*
 Plugin Name: Lazy Plex Buyer Navigation Bridge
 Description: Connect the public Lazy Plex header to the approved service, proof, and buying routes.
-Version: 1.2.0
+Version: 1.3.0
 */
 defined('ABSPATH') || exit;
 add_action('wp_footer', function() {
@@ -97,3 +97,15 @@ add_action( 'wp_head', function() {
   if ( is_admin() ) return;
   echo '<style id="lp-no-social-flair">.sharedaddy,.jetpack-likes-widget,.jetpack-likes-widget-wrapper,.sd-sharing,.sd-like{display:none!important}</style>';
 }, 99 );
+
+/* LP sitemap indexability cleanup v1.3: don't list non-indexable utility URLs. */
+add_filter( 'rank_math/sitemap/entry', function( $entry, $type, $object ) {
+  if ( 'post' !== $type || ! is_object( $object ) || ! isset( $object->ID ) ) {
+    return $entry;
+  }
+  $excluded_page_ids = [ 539, 557, 420, 217, 218, 219, 220 ];
+  if ( in_array( (int) $object->ID, $excluded_page_ids, true ) ) {
+    return false;
+  }
+  return $entry;
+}, 99, 3 );
