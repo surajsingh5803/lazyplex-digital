@@ -2,7 +2,7 @@
 /*
 Plugin Name: Lazy Plex Buyer Navigation Bridge
 Description: Connect the public Lazy Plex header to the approved service, proof, and buying routes.
-Version: 1.0.0
+Version: 1.1.0
 */
 defined('ABSPATH') || exit;
 add_action('wp_footer', function() {
@@ -61,3 +61,19 @@ add_action('wp_footer', function() {
   </script>
   <?php
 }, 90);
+
+/* LP noindex buyer forms: private-style submission destinations should not compete with service landing pages. */
+add_filter('wp_robots', function($robots) {
+  if (is_page([539,557])) {
+    unset($robots['index']);
+    $robots['noindex']=true;
+    $robots['follow']=true;
+  }
+  return $robots;
+}, 99);
+add_filter('rank_math/frontend/robots', function($robots) {
+  if (is_page([539,557])) {
+    return ['noindex','follow'];
+  }
+  return $robots;
+}, 99);
