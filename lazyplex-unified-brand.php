@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Unified Brand
  * Description: Brings lazyplex.com into the same visual family as digital.lazyplex.com while preserving WordPress and Elementor content, WooCommerce, forms and URL structure.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) { exit; }
 /** Don't create a second header on purpose-built Elementor Canvas pages. */
 function lp_brand_use_shared_shell() {
     if (is_admin() || is_feed() || is_404()) return false;
-    return !is_page(array('growth-consultancy', 'coaching'));
+    return !is_page(array('coaching'));
 }
 
 add_action('wp_enqueue_scripts', function () {
@@ -21,7 +21,7 @@ add_action('wp_enqueue_scripts', function () {
         'lazyplex-unified-brand',
         plugins_url('assets/lazyplex-unified.css', __FILE__),
         array(),
-        '1.3.0',
+        '1.3.1',
         'all'
     );
 }, 60);
@@ -109,6 +109,7 @@ add_action('wp_footer', function () {
           <a href="<?php echo esc_url(home_url('/measure/')); ?>">Measure Growth</a>
           <a href="<?php echo esc_url(home_url('/contact/')); ?>">Contact</a>
           <a href="https://digital.lazyplex.com/work/">Our work</a>
+          <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy policy</a>
         </div>
         <div><h2>Get in touch</h2>
           <a href="tel:+917257919567">+91 72579 19567</a>
@@ -138,6 +139,6 @@ add_filter('body_class', function($classes) {
 
 /** Ensure Hello Elementor does not emit a redundant H1 on authored parent-brand pages. */
 add_filter('hello_elementor_page_title', function($show) {
-    if (is_front_page() || is_page(array('industries','healthcare','software','about-new','about','solutions','get-customers','convert','automate','measure','services','pricing','real-estate','education','ecommerce','beauty-wellness','hospitality','manufacturing-b2b','professional-services','startups-smes'))) return false;
+    if (is_front_page() || is_page(array('industries','healthcare','software','about-new','about','solutions','get-customers','convert','automate','measure','services','pricing','growth-consultancy','real-estate','education','ecommerce','beauty-wellness','hospitality','manufacturing-b2b','professional-services','startups-smes'))) return false;
     return $show;
 }, 99);
