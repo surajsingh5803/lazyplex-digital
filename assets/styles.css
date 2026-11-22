@@ -90,3 +90,15 @@
 .lp-privacy-settings{border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;opacity:.9;padding:3px 0;font-size:12px}
 .lp-consent-banner button:focus-visible,.lp-privacy-settings:focus-visible{outline:3px solid #407fa2;outline-offset:3px}
 @media(max-width:740px){.lp-consent-banner{bottom:74px;left:12px;width:calc(100vw - 24px);max-width:none;padding:15px}}
+
+/* Lazy Plex canonical cross-site buying banner v1 */
+.lp-catalogue-bridge{background:#eef6e5;color:#142139;border-block:1px solid #c5d8b4;padding:23px 0}
+.lp-catalogue-bridge-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
+.lp-catalogue-bridge strong{font-family:Manrope,'DM Sans',sans-serif;font-size:19px}
+.lp-catalogue-bridge p{max-width:760px;font-size:14px;line-height:1.7;margin:8px 0 0;color:#345064}
+.lp-catalogue-bridge-actions{display:flex;gap:11px;flex-wrap:wrap}
+.lp-catalogue-bridge-actions a{display:inline-flex;justify-content:center;align-items:center;min-height:42px;padding:10px 17px;border:1px solid #09132e;border-radius:999px;background:#09132e;color:#fffefa;font-size:13px;font-weight:800}
+.lp-catalogue-bridge-actions a+a{color:#09132e;background:transparent}
+.lp-catalogue-bridge-actions a:focus-visible{outline:3px solid #216e9c;outline-offset:3px}
+@media(max-width:990px){.lp-catalogue-bridge-inner{grid-template-columns:1fr}.lp-catalogue-bridge-actions{justify-content:flex-start}}
+@media(max-width:600px){.lp-catalogue-bridge-actions{display:grid}.lp-catalogue-bridge-actions a{width:100%}}
