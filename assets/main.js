@@ -177,6 +177,19 @@ document.addEventListener("DOMContentLoaded", () => {
   bridge.className = "lp-catalogue-bridge";
   bridge.setAttribute("aria-label", "Service packages and pricing");
   const seoSpecific = path === "/services/search-engine-optimisation/";
+  const serviceSlug = path.split("/")[2];
+  const proposalKeys = {
+    "search-engine-optimisation":"seo", "local-seo":"local-seo",
+    "ai-search-optimisation":"ai-search", "google-ads-ppc":"google-ads",
+    "meta-ads":"meta-ads", "social-media-marketing":"social",
+    "branding-design":"brand", "content-marketing":"content",
+    "lead-generation":"leads", "conversion-optimisation":"cro",
+    "website-development":"website", "crm-automation":"crm",
+    "ai-automation":"chatbot", "email-whatsapp-marketing":"messaging",
+    "analytics-reporting":"analytics"
+  };
+  const proposalKey = Object.prototype.hasOwnProperty.call(proposalKeys,serviceSlug) ? proposalKeys[serviceSlug] : "";
+  const proposalUrl = "https://lazyplex.com/request-proposal/" + (proposalKey ? "?service="+encodeURIComponent(proposalKey) : "");
   bridge.innerHTML =
     '<div class="container lp-catalogue-bridge-inner">' +
       '<div><strong>Compare before you enquire</strong>' +
@@ -187,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       '<div class="lp-catalogue-bridge-actions">' +
         '<a href="https://lazyplex.com/services/">See all service tiers ↗</a>' +
         '<a href="https://lazyplex.com/compare/">Individual vs bundled ↗</a>' +
+        '<a href="'+proposalUrl+'">Request this service ↗</a>' +
       '</div>' +
     '</div>';
   const firstSection = main.querySelector("section");
