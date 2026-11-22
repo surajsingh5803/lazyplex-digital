@@ -28,6 +28,9 @@ try {
    if(path==="/" && width===1440){
      const nav=await page.locator("header a").evaluateAll(items=>items.slice(0,30).map(x=>({label:x.textContent.trim().slice(0,50),href:x.getAttribute("href")})));
      console.log("LP_NAV "+JSON.stringify(nav));
+     if(!nav.some(x=>x.label.includes("Our Work") && x.href?.includes("/our-work/")) ||
+        !nav.some(x=>x.label.includes("Get Started") && x.href?.includes("/start/")))
+       result.error="Buyer navigation missing Our Work or Get Started";
      console.log("LP_HEADER "+(await page.locator("header").first().evaluate(el=>el.outerHTML.slice(0,6000))).replace(/\n/g," "));
    }
    if(path==="/request-proposal/" && width===390){
