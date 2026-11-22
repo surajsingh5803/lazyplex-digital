@@ -2,7 +2,7 @@
 /*
 Plugin Name: Lazy Plex Buyer Navigation Bridge
 Description: Connect the public Lazy Plex header to the approved service, proof, and buying routes.
-Version: 1.1.0
+Version: 1.2.0
 */
 defined('ABSPATH') || exit;
 add_action('wp_footer', function() {
@@ -77,3 +77,23 @@ add_filter('rank_math/frontend/robots', function($robots) {
   }
   return $robots;
 }, 99);
+
+/* LP site-wide clean customer pages v1.2: disable Jetpack Sharing and Likes.
+   Retains Jetpack Stats, Jetpack Forms, and Jetpack Social account connections. */
+add_filter( 'sharing_show', '__return_false', 999, 2 );
+add_filter( 'wpl_is_likes_visible', '__return_false', 999 );
+add_filter( 'sharing_js', '__return_false', 999 );
+
+add_action( 'init', function() {
+  // Remove automatic Sharing output, irrespective of legacy module setting.
+  remove_filter( 'post_flair', 'sharing_display', 20 );
+  remove_filter( 'the_content', 'sharing_display', 19 );
+  remove_filter( 'the_excerpt', 'sharing_display', 19 );
+  remove_action( 'wp_head', 'sharing_add_header', 1 );
+}, 999 );
+
+// Defensive display fallback if Jetpack or another integration injects a legacy block.
+add_action( 'wp_head', function() {
+  if ( is_admin() ) return;
+  echo '<style id="lp-no-social-flair">.sharedaddy,.jetpack-likes-widget,.jetpack-likes-widget-wrapper,.sd-sharing,.sd-like{display:none!important}</style>';
+}, 99 );
