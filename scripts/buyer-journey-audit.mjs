@@ -28,6 +28,7 @@ try {
    if(path==="/" && width===1440){
      const nav=await page.locator("header a").evaluateAll(items=>items.slice(0,30).map(x=>({label:x.textContent.trim().slice(0,50),href:x.getAttribute("href")})));
      console.log("LP_NAV "+JSON.stringify(nav));
+     console.log("LP_HEADER "+(await page.locator("header").first().evaluate(el=>el.outerHTML.slice(0,6000))).replace(/\n/g," "));
    }
    if(path==="/request-proposal/" && width===390){
      const q=await page.goto(new URL("/request-proposal/?service=seo&tier=basic",origin).href,{waitUntil:"domcontentloaded",timeout:35000});
