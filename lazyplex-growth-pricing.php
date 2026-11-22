@@ -2,12 +2,12 @@
 /**
  * Plugin Name: Lazy Plex Growth Pricing
  * Description: Server-calculated, editable tiered service pricing and four-pillar solution builder for Lazy Plex.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
 if (!defined('ABSPATH')) exit;
-const LPGP_VERSION = '1.0.0';
+const LPGP_VERSION = '1.0.1';
 const LPGP_OPTION = 'lpgp_configuration_v1';
 // One-time publication approval. Never re-enable a catalogue after an admin later unpublishes it.
 add_action('init',function(){
@@ -195,7 +195,7 @@ add_shortcode('lp_growth_pricing',function(){
  ob_start();?>
  <div id="lpgp-pricing" class="lpgp-root" data-lpgp-app="1">
  <script type="application/json" data-lpgp-catalog><?php echo wp_json_encode(lpgp_public_catalog(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
- <section class="lpgp-hero"><div class="lpgp-kicker">LAZY PLEX · GROWTH SOLUTION BUILDER</div><h1>Four growth pillars.<br><em>Your perfect mix.</em></h1><p>Choose a complete growth solution or build a custom selection of specialist services. See the exact included work, recurring fees and one-time project costs in one place.</p><?php if(is_page('pricing-preview')): ?><p class="lpgp-warning">Review preview · Public prices are starting prices, with fixed deliverable limits. This page is excluded from indexing.</p><?php else: ?><p class="lpgp-warning">Published starting prices. Every bundle has defined limits; ad spend, taxes, licences and additional setup are separate.</p><?php endif; ?></section>
+ <section class="lpgp-hero"><div class="lpgp-kicker">LAZY PLEX · GROWTH SOLUTION BUILDER</div><h1><?php echo is_page('pricing')?'Growth packages and transparent service pricing.':'Four growth pillars. Your perfect mix.'; ?></h1><p>Choose a complete growth pillar or build a custom selection of specialist services. Compare capped deliverables, recurring fees and one-time project costs without paying twice for included services.</p><?php if(is_page('pricing-preview')): ?><p class="lpgp-warning">Review preview · Public prices are starting prices, with fixed deliverable limits. This page is excluded from indexing.</p><?php else: ?><p class="lpgp-warning">Published starting prices. Every bundle has defined limits; ad spend, taxes, licences and additional setup are separate.</p><?php endif; ?></section>
  <div class="lpgp-shell"><div class="lpgp-placeholder" role="status">Loading the service catalogue and pricing calculator…</div></div>
  <section class="lpgp-seo-content"><div class="lpgp-seo-wrap"><div class="lpgp-kicker">A TRANSPARENT SERVICE CATALOGUE</div><h2>All specialist services and proposed starting prices</h2><p>These are illustrative individual service prices for comparing options. Each growth solution is a separately scoped bundle. Buying a bundle does not mean receiving the entire standalone deliverable list for every capability.</p>
  <?php $catalog=lpgp_public_catalog(); foreach($catalog['pillars'] as $pid=>$pillar): ?>
@@ -206,6 +206,26 @@ add_shortcode('lp_growth_pricing',function(){
  </div>
  <?php return ob_get_clean();
 });
+/** SEO-crawlable, server-maintained service directory using the same rates as the quote calculator. */
+add_shortcode('lp_growth_services',function(){
+ $catalog=lpgp_public_catalog();ob_start(); ?>
+ <div class="lpgp-root lpgp-directory">
+ <section class="lpgp-hero"><div class="lpgp-kicker">LAZY PLEX · INDIVIDUAL SPECIALIST SERVICES</div><h1>Choose the right service.<br>Know exactly what you're buying.</h1><p>Browse fifteen digital and operational services grouped under Get Customers, Convert Customers, Automate Operations and Measure Growth. Select Basic, Intermediate or Advanced on the pricing builder. All starting fees, deliverables and one-time charges come from one maintained catalogue.</p><div class="lpgp-directory-actions"><a class="lpgp-submit" href="<?php echo esc_url(home_url('/pricing/?mode=individual')); ?>">Open interactive service selector ↗</a><a class="lpgp-ghost-btn" href="<?php echo esc_url(home_url('/solutions/')); ?>">Explore complete growth solutions ↗</a></div></section>
+ <div class="lpgp-directory-body">
+ <section><div class="lpgp-kicker">TWO WAYS TO BUY</div><h2>A standalone service or one complete pillar solution</h2><p>A standalone engagement gives dedicated capacity for one chosen service. A pillar bundle includes all of that pillar's listed capabilities at smaller, shared limits. Get Customers contains eight acquisition capabilities in Basic, Intermediate and Advanced packages. Compare actual quantities, not just headline fees.</p></section>
+ <?php foreach($catalog['pillars'] as $pillar_id=>$pillar): ?>
+ <section class="lpgp-directory-pillar"><div class="lpgp-kicker">GROWTH PILLAR</div><h2><?php echo esc_html($pillar['title']); ?></h2><p><?php echo esc_html($pillar['description']); ?></p><div class="lpgp-directory-grid">
+ <?php foreach($catalog['services'] as $service):if($service['pillar']!==$pillar_id)continue; ?>
+ <article class="lpgp-directory-card"><h3><?php echo esc_html($service['name']); ?></h3><p><?php echo esc_html($service['summary']); ?></p><div class="lpgp-rate-grid">
+ <?php foreach(lpgp_tiers() as $key=>$name):$s=$service['tiers'][$key];?><div><span><?php echo esc_html($name); ?></span><strong><?php echo esc_html('₹'.number_format_i18n($s['monthly']?:$s['once'])); ?></strong><small><?php echo $service['unit']==='once'?'one-time':'/month'; ?></small><?php if($s['monthly']&&$s['once']):?><small>+ ₹<?php echo esc_html(number_format_i18n($s['once'])); ?> setup</small><?php endif; ?></div><?php endforeach; ?></div>
+ <details><summary>What's included at each level?</summary><?php foreach(lpgp_tiers() as $key=>$name):?><p><strong><?php echo esc_html($name); ?>:</strong> <?php echo esc_html($service['tiers'][$key]['scope']); ?></p><?php endforeach; ?></details><div class="lpgp-directory-links"><a href="<?php echo esc_url(home_url('/pricing/?mode=individual&pillar='.$pillar_id.'&service='.$service['id'])); ?>">Select <?php echo esc_html($service['name']); ?> ↗</a><a href="<?php echo esc_url($service['url']); ?>">Detailed Digital service guide ↗</a></div></article>
+ <?php endforeach; ?></div><p><a href="<?php echo esc_url(home_url('/pricing/?mode=bundle&pillar='.$pillar_id)); ?>">Compare the complete <?php echo esc_html($pillar['title']); ?> bundle with individual services ↗</a></p></section>
+ <?php endforeach; ?>
+ <section class="lpgp-directory-end"><h2>Explore packages across all nine industries.</h2><p>Whether your goal is a qualified property enquiry, a patient appointment, an eligible application, a purchase, a booking or a technically suitable RFQ, we tailor the engagement to that outcome. Media spend, taxes, third-party platforms and custom implementation are additional where applicable.</p><a href="<?php echo esc_url(home_url('/industries/')); ?>">Explore nine industry growth systems ↗</a> · <a href="<?php echo esc_url(home_url('/growth-audit/')); ?>">Request a growth audit ↗</a></section>
+ </div></div>
+ <?php return ob_get_clean();
+});
+
 add_filter('hello_elementor_page_title',function($show){return is_page(['pricing-preview','pricing','services'])?false:$show;},99);
 add_filter('wp_robots',function($robots){if(is_page('pricing-preview')){$robots['noindex']=true;$robots['nofollow']=true;}return $robots;});
 add_action('wp_head',function(){if(is_page('pricing-preview'))echo '<meta name="robots" content="noindex,nofollow" />' . "\n";},1);

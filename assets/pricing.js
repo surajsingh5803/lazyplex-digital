@@ -111,9 +111,9 @@
     if (inline) {
       const c=JSON.parse(inline.textContent);
       if (!c.services || !c.bundles) throw Error('Invalid catalogue');
-      state.catalog=c;draw();
+      state.catalog=c;const initialService=params.get('service');if(state.mode==='individual'&&initialService&&c.services.some(s=>s.id===initialService)){state.selected.set(initialService,'basic');state.pillar=c.services.find(s=>s.id===initialService).pillar;}draw();
     } else throw Error('No inline catalogue');
   } catch (_) {
-    fetch(cfg.catalog,{credentials:'omit'}).then(r=>{if(!r.ok)throw Error('Catalogue not available');return r.json();}).then(c=>{if(!c.services||!c.bundles)throw Error('Incomplete catalogue');state.catalog=c;draw();}).catch(e=>root.querySelector('.lpgp-shell').innerHTML=`<p class="lpgp-error" role="alert">Pricing catalogue is temporarily unavailable. <a href="${safe(cfg.contact)}">Request a manual quote</a>.</p>`);
+    fetch(cfg.catalog,{credentials:'omit'}).then(r=>{if(!r.ok)throw Error('Catalogue not available');return r.json();}).then(c=>{if(!c.services||!c.bundles)throw Error('Incomplete catalogue');state.catalog=c;const initialService=params.get('service');if(state.mode==='individual'&&initialService&&c.services.some(s=>s.id===initialService)){state.selected.set(initialService,'basic');state.pillar=c.services.find(s=>s.id===initialService).pillar;}draw();}).catch(e=>root.querySelector('.lpgp-shell').innerHTML=`<p class="lpgp-error" role="alert">Pricing catalogue is temporarily unavailable. <a href="${safe(cfg.contact)}">Request a manual quote</a>.</p>`);
   }
 })();
