@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 const origin=process.env.LP_QA_ORIGIN||'https://lazyplex.com';
-const paths=['/','/solutions/','/services/','/pricing/','/start/','/compare/','/our-work/','/working-together/','/request-proposal/','/contact/','/growth-advisor/','/industries/','/healthcare/','/get-customers/'];
+const paths=['/','/solutions/','/services/','/pricing/','/start/','/compare/','/our-work/','/working-together/','/request-proposal/','/request-growth-audit/','/growth-audit/','/contact/','/growth-advisor/','/industries/','/healthcare/','/real-estate/','/industries/education/','/industries/ecommerce/','/industries/beauty-wellness/','/industries/hospitality/','/industries/manufacturing-b2b/','/industries/professional-services/','/industries/startups-smes/','/get-customers/','/convert/','/automate/','/measure/','/about/','/software/','/how-it-works/','/growth-consultancy/'];
 const widths=[320,390,768,1440],results=[];
 const browser=await chromium.launch({headless:true});
 try {
