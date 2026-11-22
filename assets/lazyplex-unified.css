@@ -1,0 +1,90 @@
+/* Lazy Plex × Lazy Plex Digital shared identity. Visual-only; preserve native form, CRM and WooCommerce logic. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--lpx-navy:#09132e;--lpx-navy2:#0e1d40;--lpx-cream:#f5f5ee;--lpx-white:#fffefa;--lpx-ink:#142139;--lpx-muted:#637084;--lpx-mint:#b9f664;--lpx-lilac:#c3b6ff;--lpx-cyan:#82e7fa;--lpx-line:#dce1e6}
+html{scroll-behavior:smooth}body{font-family:'DM Sans',Arial,sans-serif;color:var(--lpx-ink);background:var(--lpx-white)}
+body :is(h1,h2,h3,h4,h5,h6){font-family:Manrope,'DM Sans',sans-serif;letter-spacing:-.045em}
+body :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #8069ea;outline-offset:3px}
+.lpbrand-container{width:min(1200px,calc(100% - 44px));margin:0 auto}
+.lpbrand-has-shell #site-header,.lpbrand-has-shell header.site-header:not(.lpbrand-header),.lpbrand-has-shell .elementor-location-header{display:none!important}
+.lpbrand-has-shell #site-footer,.lpbrand-has-shell footer.site-footer:not(.lpbrand-footer),.lpbrand-has-shell .elementor-location-footer{display:none!important}
+.lpbrand-skip{position:absolute;top:0;left:-9999px;z-index:9999;background:white;color:#09132e;padding:12px}.lpbrand-skip:focus{left:16px}
+.lpbrand-header{position:sticky;top:0;z-index:1000;width:100%;background:#09132e!important;border-bottom:1px solid #ffffff27;color:#fff!important;box-shadow:0 3px 18px #02071822;font-family:'DM Sans',sans-serif}
+.lpbrand-header *{box-sizing:border-box}.lpbrand-nav{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:84px}
+.lpbrand-wordmark{display:flex!important;align-items:center;gap:12px;flex:none;color:#fff!important;text-decoration:none!important}
+.lpbrand-mark{display:flex;align-items:center;justify-content:center;width:48px;height:48px;flex:0 0 48px;padding:3px;border-radius:13px;background:#fff;border:1px solid #ffffff5c;overflow:hidden}
+.lpbrand-mark img{display:block;object-fit:contain;width:100%;height:100%;max-width:100%;max-height:100%;}
+.lpbrand-name{display:flex;flex-direction:column;gap:4px;white-space:nowrap;font-size:15px;line-height:1;font-weight:800;letter-spacing:.13em;color:#fff}
+.lpbrand-name small{font-size:9px;line-height:1.1;color:#b9f664;letter-spacing:.26em;font-weight:800}
+.lpbrand-desktop{display:flex;align-items:center;gap:clamp(12px,1.5vw,24px);margin-left:auto}
+.lpbrand-desktop a{font-size:12.5px;line-height:1.3;font-weight:700;color:#dce4f2!important;text-decoration:none!important;white-space:nowrap;transition:color .2s ease}
+.lpbrand-desktop a:hover,.lpbrand-desktop a:focus-visible{color:#b9f664!important}
+.lpbrand-desktop .lpbrand-phone{color:#d5f8a6!important;font-size:12px}
+.lpbrand-desktop .lpbrand-cta{display:inline-flex;align-items:center;gap:12px;padding:13px 18px;background:transparent;color:#fff!important;border-radius:999px;border:1px solid #ffffff67;transition:background .2s,color .2s}
+.lpbrand-desktop .lpbrand-cta span{color:#b9f664;font-size:17px}.lpbrand-desktop .lpbrand-cta:hover{background:#b9f664;color:#09132e!important}.lpbrand-desktop .lpbrand-cta:hover span{color:#09132e}
+.lpbrand-mobile{display:none;position:relative}.lpbrand-mobile summary{display:flex;cursor:pointer;align-items:center;flex-direction:column;gap:5px;justify-content:center;width:66px;height:48px;padding:6px;border-radius:10px;border:1px solid #ffffff40;list-style:none;color:white}
+.lpbrand-mobile summary::-webkit-details-marker{display:none}.lpbrand-mobile summary span{width:20px;height:2px;background:#b9f664;border-radius:4px}.lpbrand-mobile summary b{font-size:9px;letter-spacing:.04em}
+.lpbrand-mobile nav{position:absolute;top:58px;right:0;width:min(330px,calc(100vw - 36px));padding:12px 17px 22px;border:1px solid #ffffff2c;border-radius:0 0 17px 17px;background:#0e1d40;box-shadow:0 20px 45px #01071580;max-height:72vh;overflow:auto}
+.lpbrand-mobile nav a{display:block;color:#edf4ff!important;font-size:14px;font-weight:700;text-decoration:none!important;padding:13px 10px;border-bottom:1px solid #ffffff18}.lpbrand-mobile nav a:hover{color:#b9f664!important}
+.lpbrand-footer{background:#08112a!important;color:#c2ccda!important;padding:70px 0 24px;font-family:'DM Sans',sans-serif}
+.lpbrand-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:45px}.lpbrand-footer-grid>div{display:flex;flex-direction:column;gap:12px;min-width:0}
+.lpbrand-footer h2{color:#fff!important;font-size:13px;letter-spacing:0;margin:0 0 12px;font-family:Manrope,sans-serif}
+.lpbrand-footer p{font-size:13px;line-height:1.85;color:#9faec4;max-width:330px;margin:15px 0 12px}.lpbrand-footer a{color:#b2c0d3!important;text-decoration:none!important;font-size:12.5px;font-weight:600}
+.lpbrand-footer a:hover{color:#b9f664!important}.lpbrand-footer-intro strong{color:#fff;font-size:24px;letter-spacing:-.07em;font-family:Manrope,sans-serif}.lpbrand-footer-intro strong span{color:#b9f664}
+.lpbrand-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;border-top:1px solid #ffffff26;margin-top:55px;padding-top:23px;font-size:11px;color:#8794ad}
+body.lpbrand-has-shell .site-main :is(.entry-title,.page-title){color:#142139;font-family:Manrope,sans-serif}
+body.lpbrand-has-shell .wp-block-button__link{border-radius:999px}
+body.lpbrand-has-shell .entry-content :is(p,li){line-height:1.75}
+body.lpbrand-has-shell :is(.woocommerce input.input-text,.woocommerce textarea,.woocommerce select){border-radius:10px;padding:12px}
+/* Legacy Elementor content: all these rules target visual elements only. */
+body :is(.lp-hero,.lp-solutions,.lp-gc,.lp-cc,.lp-ao,.lp-mg,.lp-hiw,.lp-insights,.lp-about,.lp-ge,.lp-contact,.lp-audit-hero){
+ --lp-green:#b9f664!important;--lp-deep-green:#142139!important;--lp-navy:#09132e!important;--lp-blue:#82e7fa!important;
+ --lp-text:#142139!important;--lp-muted:#637084!important;--lp-soft:#f5f5ee!important;--lp-border:#dce1e6!important;
+ --green:#b9f664!important;--deep-green:#142139!important;--navy:#09132e!important;--blue:#82e7fa!important;
+ --text:#142139!important;--muted:#637084!important;--soft:#f5f5ee!important;--border:#dce1e6!important;
+ font-family:'DM Sans',Arial,sans-serif!important
+}
+body :is(.lp-hero,.lp-solutions,.lp-gc,.lp-cc,.lp-ao,.lp-mg,.lp-hiw,.lp-insights,.lp-about,.lp-ge,.lp-contact,.lp-audit-hero) :is(h1,h2,h3,h4){font-family:Manrope,'DM Sans',sans-serif!important;letter-spacing:-.05em}
+body :is(.lp-hero,.lp-solutions-hero,.lp-gc-hero,.lp-cc-hero,.lp-ao-hero,.lp-mg-hero,.lp-hiw-hero,.lp-about-hero,.lp-insights-hero,.lp-ge-hero,.lp-contact-hero,.lp-audit-hero){
+ background:radial-gradient(ellipse 73% 78% at 82% 25%,#292b67 0%,transparent 64%),radial-gradient(ellipse 48% 64% at 12% 65%,#123d52 0%,transparent 73%),#09132e!important;
+ color:#fff!important;position:relative;isolation:isolate
+}
+body :is(.lp-hero,.lp-solutions-hero,.lp-gc-hero,.lp-cc-hero,.lp-ao-hero,.lp-mg-hero,.lp-hiw-hero,.lp-about-hero,.lp-insights-hero,.lp-ge-hero,.lp-contact-hero,.lp-audit-hero) :is(h1,h2){color:#fff!important}
+body :is(.lp-hero,.lp-solutions-hero,.lp-gc-hero,.lp-cc-hero,.lp-ao-hero,.lp-mg-hero,.lp-hiw-hero,.lp-about-hero,.lp-insights-hero,.lp-ge-hero,.lp-contact-hero,.lp-audit-hero) :is(.lp-hero-description,.lp-lead,.lp-gc-description,.lp-cc-description,.lp-ao-description,.lp-mg-description,.lp-hiw-description,.lp-audit-description){color:#cad5e8!important}
+body :is(.lp-hero,.lp-solutions-hero,.lp-gc-hero,.lp-cc-hero,.lp-ao-hero,.lp-mg-hero,.lp-hiw-hero,.lp-about-hero,.lp-insights-hero,.lp-ge-hero,.lp-contact-hero,.lp-audit-hero) :is(.lp-eyebrow,.lp-kicker,.lp-gc-eyebrow,.lp-cc-eyebrow,.lp-ao-eyebrow,.lp-mg-eyebrow,.lp-hiw-eyebrow,.lp-about-eyebrow,.lp-in-eyebrow,.lp-ge-eyebrow,.lp-contact-eyebrow,.lp-audit-eyebrow){color:#b9f664!important}
+body :is(.lp-btn-primary,.lp-gc-btn-primary,.lp-cc-btn-primary,.lp-ao-btn-primary,.lp-mg-btn-primary,.lp-hiw-btn-primary,.lp-audit-btn-primary,.lp-in-btn,.lp-contact-btn,.lp-ge-btn-primary,.lp-about-btn-primary){background:#b9f664!important;color:#09132e!important;border:1px solid #b9f664!important;border-radius:999px!important;box-shadow:0 12px 28px #b9f66427!important;font-weight:800!important}
+body :is(.lp-btn-primary,.lp-gc-btn-primary,.lp-cc-btn-primary,.lp-ao-btn-primary,.lp-mg-btn-primary,.lp-hiw-btn-primary,.lp-audit-btn-primary,.lp-in-btn,.lp-contact-btn):hover{background:#dbffb1!important;color:#09132e!important;transform:translateY(-2px)}
+body :is(.lp-gc-system,.lp-cc-system,.lp-ao-system,.lp-mg-dashboard,.lp-hiw-system,.lp-audit-card,.lp-solutions .lp-system-card){border-radius:24px!important;box-shadow:0 26px 68px #06132e44!important}
+body .lp-hero .lp-system-card{border-radius:27px!important;background:linear-gradient(145deg,#25366e,#0c1737 78%)!important;box-shadow:0 26px 80px #02071875!important}
+body .lp-hero .lp-hero-inner{max-width:1200px}
+body .lp-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(#b9cafa0d 1px,transparent 1px),linear-gradient(90deg,#b9cafa0d 1px,transparent 1px);background-size:60px 60px;z-index:-1;pointer-events:none}
+body .lp-hero .lp-btn-secondary{background:transparent!important;color:#fff!important;border:1px solid #ffffff75!important;border-radius:999px!important}
+body .lp-hero h1 span,body :is(.lp-gc-green,.lp-cc-green,.lp-ao-green,.lp-mg-green,.lp-hiw-green,.lp-about-green,.lp-in-green,.lp-ge-green){color:#b9f664!important}
+/* Canvas pages contain their own original headers; only brand their existing controls. */
+body #marketing-agency-site{--ng-bg:#09132e!important;--ng-surface:#0e1d40!important;--ng-surface-2:#16264b!important;--ng-text:#fffefa!important;--ng-muted:#c2cbdc!important;--ng-line:#35466a!important;--ng-accent:#b9f664!important;--ng-ink:#142139!important;--ng-paper:#f5f5ee!important;font-family:'DM Sans',Arial,sans-serif!important;background:#09132e!important;color:#fffefa!important}
+body #marketing-agency-site :is(h1,h2,h3,h4){font-family:Manrope,sans-serif!important}
+body #marketing-agency-site .ng-header{background:#09132efa!important}
+body #marketing-agency-site .ng-btn{background:#b9f664!important;color:#09132e!important;border-radius:999px!important}
+body #marketing-agency-site .ng-btn-secondary{background:transparent!important;color:#fffefa!important;border:1px solid #ffffff68!important}
+body #marketing-agency-site .ng-logo-mark{display:none!important}
+body #marketing-agency-site .ng-logo::before{content:'';display:block;width:44px;height:44px;flex:0 0 44px;background:#fff url('https://digital.lazyplex.com/assets/lazyplex-logo.webp') center/contain no-repeat;border-radius:11px}
+body .lp-final{--lp-red:#b9f664!important;--lp-red-dark:#dbffb1!important;--lp-black:#09132e!important;--lp-panel:#0e1d40!important;--lp-panel-2:#16264b!important;--lp-line:#35466a!important;--lp-white:#fffefa!important;--lp-soft:#cbd5e3!important;--lp-muted:#a0aec3!important;font-family:'DM Sans',Arial,sans-serif!important;background:#09132e!important}
+body .lp-final :is(h1,h2,h3,h4){font-family:Manrope,sans-serif!important}
+body .lp-final :is(.lp-nav-cta,.lp-btn){background:#b9f664!important;color:#09132e!important;border-radius:999px!important}
+body .lp-final .lp-brand::before{content:'';display:inline-block;width:38px;height:38px;vertical-align:middle;margin-right:11px;border-radius:10px;background:#fff url('https://digital.lazyplex.com/assets/lazyplex-logo.webp') center/contain no-repeat}
+@media(max-width:1180px){.lpbrand-desktop{gap:12px}.lpbrand-desktop .lpbrand-phone{display:none}}
+@media(max-width:990px){.lpbrand-nav{min-height:72px}.lpbrand-desktop{display:none}.lpbrand-mobile{display:block}}
+@media(max-width:740px){.lpbrand-container{width:calc(100% - 36px)}.lpbrand-mark{width:42px;height:42px;flex-basis:42px}.lpbrand-name{font-size:12px}.lpbrand-name small{font-size:8px}.lpbrand-footer-grid{grid-template-columns:1fr 1fr;gap:34px}.lpbrand-footer-intro{grid-column:1/-1}.lpbrand-bottom{flex-direction:column;align-items:flex-start;gap:8px}body .lp-hero .lp-hero-inner{padding:72px 20px!important}}
+@media(max-width:480px){.lpbrand-footer-grid{grid-template-columns:1fr}.lpbrand-name{letter-spacing:.09em}.lpbrand-mobile nav{right:-4px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* 1.1 — Parent-brand page framework, preserving existing Elementor content */
+body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) .site-main{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) .site-main :is(.page-header,.entry-header){display:none!important}
+body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) .site-main>.page-content,
+body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) .site-main>.entry-content{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) :is(.lp-parent-page,.lp-parent-page .lp-wrap){max-width:none}
+body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) .lp-parent-page .lp-wrap{max-width:1180px}
+@media(max-width:1160px){.lpbrand-desktop{gap:10px}.lpbrand-desktop a{font-size:12px}}
+
+/* Expanded nine-industry navigation and keyboard-safe skip link */
+.lpbrand-skip-target{display:block;position:relative;width:1px;height:1px;overflow:hidden}.lpbrand-industry-nav{border-top:1px solid #ffffff27;display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding:23px 0;margin-top:25px}.lpbrand-industry-nav strong{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#b9f664}.lpbrand-industry-nav a{color:#c9d4e6!important;font-size:12px;text-decoration:none!important}.lpbrand-industry-nav a:hover,.lpbrand-industry-nav a:focus-visible{color:#b9f664!important;text-decoration:underline!important}.lpbrand-header :is(a,summary):focus-visible,.lpbrand-footer a:focus-visible{outline:3px solid #b9f664;outline-offset:4px;border-radius:3px}.lpbrand-skip:focus-visible{left:16px;top:8px;outline:3px solid #6b3fcf;outline-offset:2px}
