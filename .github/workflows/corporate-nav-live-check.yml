@@ -1,0 +1,19 @@
+name: Corporate navigation live check
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  navigation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --no-package-lock playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Verify public header, dropdowns, footer and all new pages
+        run: node scripts/corporate-nav-live-check.mjs
