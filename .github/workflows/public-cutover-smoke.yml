@@ -1,0 +1,37 @@
+name: Public cutover smoke checks
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Verify actual corporate production response and protected routes
+        run: |
+          set -e
+          for path in / /about/ /software/ /labs/ /insights/ /contact/; do
+            code=$(curl -sSL --retry 2 --max-time 45 -H 'Cache-Control: no-cache' -o /tmp/lp-page -w '%{http_code}' "https://lazyplex.com${path}?lpverify=${GITHUB_RUN_ID}")
+            test "$code" = 200
+            echo "Corporate $path -> $code"
+            if [ "$path" = / ]; then
+              grep -qi "Building what" /tmp/lp-page
+              grep -qi "Lazy Plex Labs" /tmp/lp-page
+              if grep -qi 'WinBuzz: Your Ultimate Gaming Universe' /tmp/lp-page; then echo 'Legacy branding still visible'; exit 1; fi
+            fi
+          done
+          for path in /pricing/ /lp-crm-privacy-policy/ /lp-crm-terms/ /lp-crm-data-deletion/ /luma-circuit-privacy/ /privacy-policy/; do
+            code=$(curl -sSL --max-time 45 -o /dev/null -w '%{http_code}' "https://lazyplex.com$path")
+            test "$code" = 200
+            echo "Preserved $path -> $code"
+          done
+      - name: Verify preview CDN and noindex
+        run: |
+          for path in / /pricing/ /growth-planner/ /insights/; do
+            curl -fsSL --retry 2 --max-time 45 "https://lazyplex-digital-v2-preview.onrender.com$path" -o /tmp/lp-preview
+            grep -q 'name="lp-preview"' /tmp/lp-preview
+            grep -q 'content="noindex, nofollow"' /tmp/lp-preview
+            echo "Preview $path -> 200, noindex"
+          done
