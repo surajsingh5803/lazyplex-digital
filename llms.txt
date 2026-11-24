@@ -28,6 +28,11 @@
 - [CRM automation](https://digital.lazyplex.com/services/crm-automation/)
 - [AI automation](https://digital.lazyplex.com/services/ai-automation/)
 - [Conversion optimisation](https://digital.lazyplex.com/services/conversion-optimisation/)
+- [AI search optimisation](https://digital.lazyplex.com/services/ai-search-optimisation/)
+- [Analytics and reporting](https://digital.lazyplex.com/services/analytics-reporting/)
+- [Branding and design](https://digital.lazyplex.com/services/branding-design/)
+- [Content marketing](https://digital.lazyplex.com/services/content-marketing/)
+- [Email and WhatsApp marketing](https://digital.lazyplex.com/services/email-whatsapp-marketing/)
 
 ## Marketing by industry
 

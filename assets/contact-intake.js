@@ -104,11 +104,13 @@
     update("Verifying and sending your enquiry to Lazy Plex CRM…");
     let response = null;
     try {
-      response = await fetch(endpoint, {
-        method:"POST", mode:"cors", credentials:"omit",
+      const sendController = new AbortController();
+      const sendTimeout = setTimeout(() => sendController.abort(), 65000);
+      try { response = await fetch(endpoint, {
+        method:"POST", mode:"cors", credentials:"omit", signal:sendController.signal,
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({...payload,turnstile_token:token})
-      });
+      }); } finally { clearTimeout(sendTimeout); }
       let result = null;
       try { result = await response.json(); } catch { /* handled below */ }
       if (!response.ok || result?.received !== true)

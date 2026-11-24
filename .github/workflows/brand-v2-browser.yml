@@ -20,3 +20,4 @@ jobs:
           python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/lp-http.log 2>&1 &
           for i in {1..20}; do curl -fsS http://127.0.0.1:8765/ >/dev/null && break; sleep 1; done
           node scripts/brand-v2-browser-check.mjs
+          node scripts/customer-value-browser-check.mjs
