@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Unified Brand
  * Description: Brings lazyplex.com into the same visual family as digital.lazyplex.com while preserving WordPress and Elementor content, WooCommerce, forms and URL structure.
- * Version: 2.0.3
+ * Version: 2.0.4
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -21,7 +21,7 @@ add_action('wp_enqueue_scripts', function () {
         'lazyplex-unified-brand',
         plugins_url('assets/lazyplex-unified.css', __FILE__),
         array(),
-        '2.0.3',
+        '2.0.4',
         'all'
     );
 }, 60);
@@ -120,3 +120,24 @@ add_filter('render_block', function($content, $block) {
     if (!is_admin() && in_array($block['blockName'] ?? '', array('jetpack/sharing-buttons', 'jetpack/likes'), true)) return '';
     return $content;
 }, 99, 2);
+
+
+/** Authored corporate and privacy layouts span the full viewport, not the theme content box. */
+function lp_brand_fullbleed_page() {
+    return is_page(array(407,411,406,591,49,157,622,623,624,625,626,627,628,3));
+}
+add_filter('body_class', function($classes) {
+    if (lp_brand_fullbleed_page()) $classes[] = 'lpbrand-fullbleed';
+    return $classes;
+}, 100);
+/** Add a targeted class to the first authored hero, without changing the saved page content. */
+add_filter('the_content', function($content) {
+    if (!lp_brand_fullbleed_page() || !is_main_query() || !in_the_loop()) return $content;
+    if (!class_exists('WP_HTML_Tag_Processor')) return $content;
+    $processor = new WP_HTML_Tag_Processor($content);
+    if ($processor->next_tag(array('tag_name' => 'SECTION'))) {
+        $processor->add_class('lp-corporate-edge-hero');
+        return $processor->get_updated_html();
+    }
+    return $content;
+}, 8);
