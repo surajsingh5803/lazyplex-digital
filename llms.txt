@@ -6,9 +6,14 @@
 
 - [Lazy Plex Digital](https://digital.lazyplex.com/): Overview of standalone digital marketing services and industry solutions.
 - [About Lazy Plex Digital](https://digital.lazyplex.com/about/): Company approach and its founder, Suraj Kumar.
-- [Lazy Plex main website](https://lazyplex.com/): Main business website, including real estate marketing.
+- [Lazy Plex main website](https://lazyplex.com/): Corporate parent of Lazy Plex Digital, Software and Labs.
 - [Founder, Suraj Kumar](https://heysuraj.com/): The founder's personal site and projects.
 - [Contact](https://digital.lazyplex.com/contact/): Request a scope or quotation.
+
+## Commercial decision tools
+
+- [Published pricing and packages](https://digital.lazyplex.com/pricing/): Starting fees, scope, exclusions and indicative estimate builder.
+- [Growth planner](https://digital.lazyplex.com/growth-planner/): Rule-based guidance for choosing a focused marketing starting point.
 
 ## Individual digital marketing services
 

@@ -1,0 +1,38 @@
+name: Brand V2 release gates
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate production and preview output
+        run: |
+          node scripts/build-static-production.mjs
+          test -f dist/pricing/index.html
+          test -f dist/growth-planner/index.html
+          test -f dist/sitemap.xml
+          test -f dist/llms.txt
+          test -f dist/98ee5d1795784dcd838024c1ada1bd49.txt
+          ! grep -q 'name="lp-preview"' dist/index.html
+          ! grep -q 'content="noindex, nofollow"' dist/index.html
+          node scripts/build-static-preview.mjs
+          grep -q 'name="lp-preview"' dist/index.html
+          grep -q 'content="noindex, nofollow"' dist/pricing/index.html
+          test ! -f dist/sitemap.xml
+      - name: Check public CRM readiness without submitting a lead
+        run: |
+          curl --fail --silent --show-error --retry 2 --max-time 75 -H 'Origin: https://digital.lazyplex.com' -D /tmp/lp-crm-headers -o /tmp/lp-crm-status https://crm.lazyplex.com/api/public-leads/status
+          node -e 'const fs=require("fs");const d=JSON.parse(fs.readFileSync("/tmp/lp-crm-status","utf8"));if(d.enabled!==true||typeof d.siteKey!=="string"||!d.siteKey)throw Error("CRM secure intake unavailable");console.log("Secure intake enabled; public site key present")'
+          grep -iE '^access-control-allow-origin: (https://digital\.lazyplex\.com|\*)' /tmp/lp-crm-headers
+          curl --fail --silent --show-error --max-time 30 -X OPTIONS -H 'Origin: https://digital.lazyplex.com' -H 'Access-Control-Request-Method: POST' -H 'Access-Control-Request-Headers: content-type' -D /tmp/lp-preflight -o /dev/null https://crm.lazyplex.com/api/public-leads
+          grep -iE '^access-control-allow-origin: (https://digital\.lazyplex\.com|\*)' /tmp/lp-preflight
+          grep -i '^access-control-allow-methods:' /tmp/lp-preflight | grep -i POST
+          echo 'CRM readiness and CORS preflight passed; no lead submitted'
