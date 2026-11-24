@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Unified Brand
  * Description: Brings lazyplex.com into the same visual family as digital.lazyplex.com while preserving WordPress and Elementor content, WooCommerce, forms and URL structure.
- * Version: 2.0.2
+ * Version: 2.0.3
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -21,7 +21,7 @@ add_action('wp_enqueue_scripts', function () {
         'lazyplex-unified-brand',
         plugins_url('assets/lazyplex-unified.css', __FILE__),
         array(),
-        '2.0.2',
+        '2.0.3',
         'all'
     );
 }, 60);
@@ -93,3 +93,20 @@ add_filter('hello_elementor_page_title', function($show) {
     if (is_front_page() || is_page(array('industries','healthcare','software','about-new','about','solutions','get-customers','convert','automate','measure','services','pricing','growth-consultancy','real-estate','education','ecommerce','beauty-wellness','hospitality','manufacturing-b2b','professional-services','startups-smes','labs','insights','contact','leadership','our-approach','businesses','products','luma-circuit','partnerships','product-support','privacy-policy'))) return false;
     return $show;
 }, 99);
+
+/** Remove automatic Jetpack sharing and likes at source, including logged-in visitors. */
+add_filter('sharing_show', '__return_false', PHP_INT_MAX);
+add_filter('jetpack_likes_enabled', '__return_false', PHP_INT_MAX);
+add_action('wp', function () {
+    remove_filter('the_content', 'sharing_display', 19);
+    remove_filter('the_excerpt', 'sharing_display', 19);
+    if (class_exists('Jetpack_Likes') && method_exists('Jetpack_Likes', 'init')) {
+        $likes = Jetpack_Likes::init();
+        remove_filter('the_content', array($likes, 'post_likes'), 30);
+        remove_filter('the_excerpt', array($likes, 'post_likes'), 30);
+    }
+}, 99);
+add_filter('render_block', function($content, $block) {
+    if (!is_admin() && in_array($block['blockName'] ?? '', array('jetpack/sharing-buttons', 'jetpack/likes'), true)) return '';
+    return $content;
+}, 99, 2);
