@@ -21,8 +21,8 @@ assert.match(js, /pointerenter/);
 assert.match(js, /focus/);
 assert.match(html, /id="hero-title"/);
 assert.match(html, /id="growth-stage"/);
-assert.match(html, /Everything your business needs/, 'Service content preserved');
-assert.match(html, /Different industries/, 'Industry content preserved');
+assert.match(html, /Digital marketing services <em>for your business/, 'Service content preserved');
+assert.match(html, /Marketing designed <em>for your industry/, 'Industry content preserved');
 assert.match(html, /https:\/\/heysuraj\.com\//, 'Founder link preserved');
 assert.match(html, /https:\/\/lazyplex\.com\//, 'Main site link preserved');
 
