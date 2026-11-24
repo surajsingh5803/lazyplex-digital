@@ -1,5 +1,8 @@
 name: Generate customer-first editorial release
 on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
   push:
     branches: [customer-first-editorial]
     paths:
@@ -9,13 +12,17 @@ permissions:
   contents: write
 jobs:
   generate:
+    if: github.event_name == 'push' || (github.head_ref == 'customer-first-editorial' && github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: customer-first-editorial
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/apply-customer-first-editorial.mjs
+      - run: |
+          if grep -q 'Turn digital attention into' index.html; then node scripts/apply-customer-first-editorial.mjs; fi
       - run: node scripts/apply-navigation-v3.mjs
       - run: node scripts/seo-quality-check.mjs
       - name: Commit generated pages
