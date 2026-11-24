@@ -68,7 +68,7 @@
     const running = canAnimate();
     stage.classList.toggle('is-paused', !running);
     motionButton.setAttribute('aria-pressed', String(!userPaused));
-    motionButton.setAttribute('aria-label', userPaused ? 'Play 3D animation' : 'Pause 3D animation');
+    motionButton.setAttribute('aria-label', userPaused ? 'Play motion' : 'Pause motion');
     motionButton.textContent = userPaused ? '▶ Play motion' : 'Ⅱ Pause motion';
     if (running) begin();
     else stop();
@@ -83,7 +83,7 @@
     motionButton.textContent = 'Reduced motion on';
     motionButton.disabled = true;
     motionButton.setAttribute('aria-pressed', 'false');
-    motionButton.setAttribute('aria-label', 'Animation disabled by reduced-motion preference');
+    motionButton.setAttribute('aria-label', 'Reduced motion on');
   }
 
   // Keyboard and touch use the same real, clickable links as desktop.
