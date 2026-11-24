@@ -92,7 +92,7 @@ if (form) {
     enquiryContext.textContent = 'You are enquiring about: ' + focusNames[focus] + '.';
     enquiryContext.hidden = false;
   }
-  const service = params.get('service');
+  const service = focus === 'ai-search-optimisation' && params.get('service') === 'search-engine-optimisation' ? 'ai-search-optimisation' : params.get('service');
   const industry = params.get('industry');
   const serviceInput = form.elements.namedItem('service');
   const industryInput = form.elements.namedItem('industry');
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slug = path.split("/")[2];
   const id = Object.prototype.hasOwnProperty.call(ids,slug) ? ids[slug] : "";
   if (!id) return;
-  const service = slug === "ai-search-optimisation" ? "search-engine-optimisation" : slug;
+  const service = slug;
   const bridge = document.createElement("section");
   bridge.className = "lp-catalogue-bridge";
   bridge.setAttribute("aria-label", "Service packages and pricing");
