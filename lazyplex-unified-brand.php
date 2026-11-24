@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Unified Brand
  * Description: Brings lazyplex.com into the same visual family as digital.lazyplex.com while preserving WordPress and Elementor content, WooCommerce, forms and URL structure.
- * Version: 2.0.4
+ * Version: 2.0.5
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -21,7 +21,7 @@ add_action('wp_enqueue_scripts', function () {
         'lazyplex-unified-brand',
         plugins_url('assets/lazyplex-unified.css', __FILE__),
         array(),
-        '2.0.4',
+        '2.0.5',
         'all'
     );
 }, 60);
