@@ -16,7 +16,7 @@ try {
       assert.ok(size.scroll<=size.viewport+2, 'Horizontal overflow '+path+' '+width+': '+JSON.stringify(size));
     }
     await page.goto(base+'/services/google-ads-ppc/');
-    assert.equal(await page.locator('.desktop-nav .nav-cta').getAttribute('href'),'/growth-planner/');
+    assert.equal(await page.locator('.desktop-nav .nav-cta').getAttribute('href'),'/contact/');
     assert.equal(await page.locator('.lp-catalogue-bridge a').first().getAttribute('href'),'/pricing/#service-google');
     assert.equal(await page.locator('.lp-catalogue-bridge a').last().getAttribute('href'),'/contact/?service=google-ads-ppc');
     assert.equal(await page.locator('.mobile-menu a[data-lp-buyer-route][href^="https://lazyplex.com/"]').count(),0);

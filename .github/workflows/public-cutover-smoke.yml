@@ -17,7 +17,7 @@ jobs:
             test "$code" = 200
             echo "Corporate $path -> $code"
             if [ "$path" = / ]; then
-              grep -qi "Building what" /tmp/lp-page
+              grep -qi "Grow your business. Simplify your operations." /tmp/lp-page
               grep -qi "Lazy Plex Labs" /tmp/lp-page
               if grep -qi 'WinBuzz: Your Ultimate Gaming Universe' /tmp/lp-page; then echo 'Legacy branding still visible'; exit 1; fi
             fi

@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 const browser=await chromium.launch({headless:true});
 const base='http://127.0.0.1:8765';
-const labels=['Services','Industries','Growth & pricing','Resources','Company','Contact'];
+const labels=['Services','Industries','Plans & pricing','Resources','About us','Contact'];
 const pages=['/','/pricing/','/growth-planner/','/services/google-ads-ppc/','/industries/healthcare/','/insights/how-to-choose-digital-marketing-agency/','/404.html'];
 try {
  for(const width of [320,390,768,1199,1280,1440]){

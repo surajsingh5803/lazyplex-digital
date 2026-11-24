@@ -165,13 +165,13 @@ if (!lpPreview && typeof document.createElement === "function" && document.head 
 document.addEventListener("DOMContentLoaded", () => {
   const primaryCTA = document.querySelector(".desktop-nav .nav-cta");
   if (primaryCTA) {
-    primaryCTA.href = "/growth-planner/";
-    primaryCTA.innerHTML = 'Get Started <span aria-hidden="true">↗</span>';
+    primaryCTA.href = "/contact/";
+    primaryCTA.innerHTML = 'Discuss your project <span aria-hidden="true">↗</span>';
   }
   const mobile = document.querySelector(".mobile-menu");
   if (mobile && !mobile.querySelector('[data-lp-buyer-route]')) {
     const routes = [
-      ["Get Started — choose a service", "/growth-planner/"],
+      ["Discuss your project", "/contact/"],
       ["Compare current prices and tiers", "/pricing/"]
     ];
     routes.forEach(([label, href]) => {

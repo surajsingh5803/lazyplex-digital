@@ -31,7 +31,7 @@ const expectedServiceForGuide = {
   "industries/real-estate/seo/index.html": "search-engine-optimisation",
   "industries/real-estate/lead-generation/index.html": "lead-generation",
   "industries/real-estate/google-ads/index.html": "google-ads-ppc",
-  "services/ai-search-optimisation/index.html": "search-engine-optimisation",
+  "services/ai-search-optimisation/index.html": "ai-search-optimisation",
   "industries/real-estate/insights/cost-per-qualified-property-lead/index.html": "lead-generation",
   "industries/real-estate/insights/search-vs-performance-max-property-ads/index.html": "google-ads-ppc",
   "industries/real-estate/insights/property-project-launch-marketing-plan/index.html": "lead-generation",

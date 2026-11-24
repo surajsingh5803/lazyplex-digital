@@ -83,7 +83,7 @@
     if (response.status === 429)
       return "Too many enquiries from this connection. Please use WhatsApp or try again later.";
     if (response.status === 503)
-      return "Secure CRM intake is temporarily unavailable. Please use WhatsApp.";
+      return "Direct enquiry submission is temporarily unavailable. Please use WhatsApp.";
     // An unexpected server or network error may occur after a record was saved.
     return "We couldn't confirm whether your enquiry was saved. Please check with Lazy Plex on WhatsApp before resubmitting.";
   };
@@ -101,7 +101,7 @@
     hasErrorNotice = false;
     button.disabled = true;
     const token = captcha;
-    update("Verifying and sending your enquiry to Lazy Plex CRM…");
+    update("Verifying and sending your enquiry…");
     let response = null;
     try {
       const sendController = new AbortController();
@@ -116,7 +116,7 @@
       if (!response.ok || result?.received !== true)
         throw {response,result};
       completed = true;
-      update("Enquiry received successfully by Lazy Plex CRM. We will review it and follow up.",true);
+      update("Thank you for contacting Lazy Plex. Your enquiry has been received. We will review your requirements and follow up.",true);
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({event:"lazyplex_secure_enquiry_received",page_path:"/contact/",
         service:payload.service,industry:payload.industry});
@@ -167,7 +167,7 @@
           "expired-callback":() => {
             captcha = "";
             pendingSubmit = false;
-            if (!completed) update("Spam check expired. Click Send enquiry securely to verify again.");
+            if (!completed) update("Spam check expired. Click Submit my project enquiry to verify again.");
           },
           "error-callback":() => {
             captcha = "";
