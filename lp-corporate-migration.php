@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Corporate Migration
  * Description: Explicit old-to-new marketing URL redirects. Activate only after all Digital destination pages are publicly verified.
- * Version: 1.1.0
+ * Version: 1.1.1
  * License: GPL-2.0-or-later
  */
 defined('ABSPATH') || exit;
@@ -95,3 +95,6 @@ add_filter('wp_sitemaps_posts_query_args', function($args, $post_type) {
     $args['post__not_in'] = array_values(array_unique($excluded));
     return $args;
 }, 99, 2);
+
+// Rebuild sitemap responses instead of serving a pre-migration transient.
+add_filter('rank_math/sitemap/enable_caching', '__return_false', 99);
