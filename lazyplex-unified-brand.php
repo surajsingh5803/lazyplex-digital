@@ -100,10 +100,20 @@ add_filter('jetpack_likes_enabled', '__return_false', PHP_INT_MAX);
 add_action('wp', function () {
     remove_filter('the_content', 'sharing_display', 19);
     remove_filter('the_excerpt', 'sharing_display', 19);
-    if (class_exists('Jetpack_Likes') && method_exists('Jetpack_Likes', 'init')) {
-        $likes = Jetpack_Likes::init();
-        remove_filter('the_content', array($likes, 'post_likes'), 30);
-        remove_filter('the_excerpt', array($likes, 'post_likes'), 30);
+    // Remove registered Jetpack Likes callbacks without constructing or reinitialising Jetpack.
+    global $wp_filter;
+    foreach (array('the_content', 'the_excerpt') as $hook) {
+        if (empty($wp_filter[$hook]) || !($wp_filter[$hook] instanceof WP_Hook)) continue;
+        foreach ($wp_filter[$hook]->callbacks as $priority => $callbacks) {
+            foreach ($callbacks as $callback) {
+                $fn = $callback['function'];
+                if (!is_array($fn) || count($fn) !== 2 || $fn[1] !== 'post_likes') continue;
+                $class = is_object($fn[0]) ? get_class($fn[0]) : $fn[0];
+                if (is_string($class) && is_a($class, 'Jetpack_Likes', true)) {
+                    remove_filter($hook, $fn, $priority);
+                }
+            }
+        }
     }
 }, 99);
 add_filter('render_block', function($content, $block) {
