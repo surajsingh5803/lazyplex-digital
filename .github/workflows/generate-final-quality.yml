@@ -1,0 +1,23 @@
+name: Generate final brand quality pages
+on:
+  push:
+    branches: [final-brand-quality]
+    paths: ['.github/workflows/generate-final-quality.yml']
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/apply-final-brand-quality.mjs && node scripts/seo-quality-check.mjs
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*.html'
+          git diff --cached --quiet && exit 0
+          git commit -m "Apply final quality improvements across Digital pages"
+          git push origin HEAD:refs/heads/final-brand-quality
