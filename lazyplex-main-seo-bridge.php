@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -136,4 +136,16 @@ add_filter('rank_math/json_ld', function($data) {
     }
     unset($node);
     return $data;
+}, 99);
+
+// Conservative frontend protection; leave admin, REST, checkout/payment integrations and embeds unchanged.
+add_action('send_headers', function() {
+    if (is_admin() || wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST) || headers_sent()) return;
+    if (function_exists('is_checkout') && is_checkout()) return;
+    header('X-Content-Type-Options: nosniff');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    if (is_page(array(407,411,406,591,49,157,622,623,624,625,626,627,628))) {
+        header('X-Frame-Options: SAMEORIGIN');
+        header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
+    }
 }, 99);
