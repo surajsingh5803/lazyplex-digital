@@ -1,0 +1,17 @@
+services:
+  - type: web
+    runtime: static
+    name: lazyplex-digital-production
+    branch: brand-architecture-v2
+    buildCommand: node scripts/seo-quality-check.mjs && node scripts/build-static-production.mjs
+    staticPublishPath: dist
+    domains:
+      - digital.lazyplex.com
+    renderSubdomainPolicy: disabled
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
