@@ -9,7 +9,7 @@
    input.addEventListener("input",apply);document.getElementById("lp-price-clear").addEventListener("click",()=>{input.value="";apply();input.focus()});document.querySelectorAll("select[data-kind]").forEach(el=>el.addEventListener("change",apply));
    document.getElementById("reset-plan")?.addEventListener("click",apply);
    document.querySelectorAll("#lp-price-jump a[href^='#']").forEach(a=>a.addEventListener("click",()=>{input.value="";apply()}));
-   price.hidden=false;apply();
+   input.disabled=false;document.getElementById("lp-price-clear").disabled=false;apply();
  }
  const resources=document.getElementById("lp-resource-discovery");
  if(resources){
