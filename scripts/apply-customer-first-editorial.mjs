@@ -40,6 +40,7 @@ const block=section('lp-buying-guide','Before you choose this service',grid([['W
 c=c.replace(/<section class="section section-cream" aria-labelledby="lp-published-tiers">/,block+'<section class="section section-cream" aria-labelledby="lp-published-tiers">');
 assert.ok(c.includes('id="lp-buying-guide"'),p+' missing buying guide');
 if(slug==='lead-generation')c=c.replaceAll('Lead Generation &amp; CRO','Lead Generation &amp; Funnel Management');
+if(slug==='ai-search-optimisation')c=c.replaceAll('/contact/?service=search-engine-optimisation','/contact/?service=ai-search-optimisation');
 return c;
 });}
 const industries=[
