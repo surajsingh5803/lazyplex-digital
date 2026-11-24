@@ -17,6 +17,8 @@ add_action('template_redirect', static function () {
     if (!is_string($path)) { return; }
     $path = '/' . trim($path, '/') . '/';
     $routes = array(
+        '/solutions/' => '/pricing/#packages',
+        '/growth-consultancy/' => '/approach/',
         '/pricing/' => '/pricing/',
         '/services/' => '/services/',
         '/compare/' => '/pricing/#packages',
