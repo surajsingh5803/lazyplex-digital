@@ -1,14 +1,14 @@
 name: Generate static Digital navigation
 on:
   push:
-    branches: [digital-navigation-v3]
+    branches: [remaining-production-qa]
     paths:
       - '.github/workflows/generate-navigation-v3.yml'
 permissions:
   contents: write
 jobs:
   generate:
-    if: github.ref == 'refs/heads/digital-navigation-v3'
+    if: github.ref == 'refs/heads/remaining-production-qa'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -25,4 +25,4 @@ jobs:
           git add -- '*.html'
           git diff --cached --quiet && exit 0
           git commit -m "Apply static navigation and footer to all public pages"
-          git push origin HEAD:refs/heads/digital-navigation-v3
+          git push origin HEAD:refs/heads/remaining-production-qa
