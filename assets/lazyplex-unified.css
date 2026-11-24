@@ -134,6 +134,8 @@ body.lpbrand-fullbleed .site-main :is(.lpco,.lp-parent-page){
 body.lpbrand-fullbleed .lp-corporate-edge-hero{
   width:100%!important;max-width:none!important;margin:0!important;border-radius:0!important;
   box-sizing:border-box;
+}
+body.lpbrand-fullbleed .lp-corporate-edge-hero:not(.hero):not(.lp-hero){
   padding-inline:max(clamp(20px,5vw,72px),calc((100% - 1180px)/2))!important;
 }
 body.lpbrand-fullbleed .lpco>.hero,
