@@ -1,0 +1,38 @@
+name: Production Lighthouse and security baseline
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --no-package-lock lighthouse playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Lighthouse mobile lab measurements
+        run: |
+          export CHROME_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")
+          mkdir -p /tmp/lp-lighthouse
+          for item in parent:lazyplex.com/ digital:digital.lazyplex.com/ pricing:digital.lazyplex.com/pricing/ contact:digital.lazyplex.com/contact/; do
+            label=${item%%:*}
+            url=${item#*:}
+            npx lighthouse "https://$url" --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path="/tmp/lp-lighthouse/$label.json" || echo "Lighthouse execution failed: $label"
+          done
+          node --input-type=module -e 'import fs from "node:fs"; for(const f of fs.readdirSync("/tmp/lp-lighthouse")){if(!f.endsWith(".json"))continue;const j=JSON.parse(fs.readFileSync("/tmp/lp-lighthouse/"+f,"utf8"));console.log(JSON.stringify({page:f,url:j.finalDisplayedUrl,runtimeError:j.runtimeError,categories:Object.fromEntries(Object.entries(j.categories||{}).map(([k,v])=>[k,v.score===null?null:Math.round(v.score*100)])),lcp:j.audits?.["largest-contentful-paint"]?.numericValue,cls:j.audits?.["cumulative-layout-shift"]?.numericValue,tbt:j.audits?.["total-blocking-time"]?.numericValue,contrast:(j.audits?.["color-contrast"]?.details?.items||[]).map(i=>({node:i.node?.selector,summary:i.node?.explanation})),labels:(j.audits?.["label-content-name-mismatch"]?.details?.items||[]).map(i=>({node:i.node?.selector,summary:i.node?.explanation})),failures:Object.entries(j.audits||{}).filter(([k,v])=>v.score===0&&v.scoreDisplayMode!=="notApplicable").map(([k,v])=>({id:k,title:v.title})).slice(0,30)}))}'
+      - name: Inspect live HTTPS response protections
+        run: |
+          for url in https://lazyplex.com/ https://digital.lazyplex.com/ https://crm.lazyplex.com/api/public-leads/status; do
+            echo "$url"
+            curl -fsS -D - -o /dev/null --max-time 70 "$url" | grep -Ei '^(HTTP/|strict-transport-security:|content-security-policy:|x-content-type-options:|x-frame-options:|referrer-policy:|permissions-policy:|cache-control:)' || true
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-lighthouse
+          path: /tmp/lp-lighthouse/
