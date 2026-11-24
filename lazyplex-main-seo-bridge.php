@@ -2,11 +2,12 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 1.0.6
+ * Version: 2.0.0
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
 if (!defined('ABSPATH')) { exit; }
+function lp_main_corporate_llms() { return "# Lazy Plex\n\nLazy Plex is a founder-led business, technology and innovation company with three specialist divisions: Lazy Plex Digital (digital marketing and growth), Lazy Plex Software (business software and automation), and Lazy Plex Labs (mobile games and applications in development).\n\n## Corporate pages\n- https://lazyplex.com/\n- https://lazyplex.com/about/\n- https://lazyplex.com/leadership/\n- https://lazyplex.com/our-approach/\n- https://lazyplex.com/businesses/\n- https://lazyplex.com/software/\n- https://lazyplex.com/labs/\n- https://lazyplex.com/products/\n- https://lazyplex.com/luma-circuit/\n- https://lazyplex.com/insights/\n- https://lazyplex.com/contact/\n- https://lazyplex.com/partnerships/\n- https://lazyplex.com/product-support/\n\n## Lazy Plex Digital\n- https://digital.lazyplex.com/\n- https://digital.lazyplex.com/services/\n- https://digital.lazyplex.com/industries/\n- https://digital.lazyplex.com/pricing/\n- https://digital.lazyplex.com/growth-planner/\n- https://digital.lazyplex.com/insights/\n- https://digital.lazyplex.com/tools/\n\n## Products\n- https://estatecrm.lazyplex.com/ (client-facing product; confirm availability on product site)\n- https://lazyplex.com/luma-circuit/ (in development)\n\nAvailability and claims are limited to verified information.\n"; }
 function lp_main_seo_document_endpoint() {
     if (wp_parse_url(home_url('/'), PHP_URL_HOST) !== 'lazyplex.com') { return; }
     $uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '/';
@@ -24,7 +25,7 @@ function lp_main_seo_document_endpoint() {
         status_header(200);
         header('Content-Type: text/plain; charset=utf-8');
         header('X-Content-Type-Options: nosniff');
-        echo "# Lazy Plex\n\nLazy Plex is a growth consultancy connecting SEO, digital marketing, CRM automation, lead quality, customer conversion and measurable business systems. The main corporate website runs at https://lazyplex.com/; its separate digital resources site is https://digital.lazyplex.com/.\n\n## Corporate pages\n- https://lazyplex.com/\n- https://lazyplex.com/about/\n- https://lazyplex.com/solutions/\n- https://lazyplex.com/growth-consultancy/\n- https://lazyplex.com/real-estate/\n- https://lazyplex.com/how-it-works/\n- https://lazyplex.com/growth-audit/\n- https://lazyplex.com/contact/\n\n## Digital knowledge hub\n- https://digital.lazyplex.com/services/\n- https://digital.lazyplex.com/industries/\n- https://digital.lazyplex.com/industries/healthcare/\n- https://digital.lazyplex.com/industries/real-estate/\n- https://digital.lazyplex.com/insights/\n- https://digital.lazyplex.com/tools/\n\nEducational examples and descriptions do not guarantee outcomes or imply unauthorised client endorsements.\n";
+        echo lp_main_corporate_llms();
         exit;
     }
 }
@@ -38,9 +39,8 @@ function lp_main_seo_sync_files() {
         @file_put_contents($keyfile, $key, LOCK_EX);
     }
     $llms = $root . 'llms.txt';
-    if (!is_file($llms)) {
-        $description = "# Lazy Plex\n\nLazy Plex is a growth consultancy connecting marketing, SEO, AI automation, CRM and business measurement. The corporate website is https://lazyplex.com/ and the separate specialist resources website is https://digital.lazyplex.com/.\n\n## Main pages\n- https://lazyplex.com/\n- https://lazyplex.com/about/\n- https://lazyplex.com/solutions/\n- https://lazyplex.com/growth-consultancy/\n- https://lazyplex.com/real-estate/\n- https://lazyplex.com/contact/\n\n## Specialist resources\n- https://digital.lazyplex.com/services/\n- https://digital.lazyplex.com/industries/\n- https://digital.lazyplex.com/insights/\n";
-        @file_put_contents($llms, $description, LOCK_EX);
+    if (!is_file($llms) || @file_get_contents($llms) !== lp_main_corporate_llms()) {
+        @file_put_contents($llms, lp_main_corporate_llms(), LOCK_EX);
     }
 }
 register_activation_hook(__FILE__, 'lp_main_seo_sync_files');
@@ -50,31 +50,33 @@ function lp_main_seo_write_docroot() {
     if (!$root || !is_dir($root)) { return; }
     $key = '0f54c7b2013f41a8a041d3d62c44ff41';
     $file = $root . $key . '.txt';
+    $llms = $root . 'llms.txt';
+    if (!is_file($llms) || @file_get_contents($llms) !== lp_main_corporate_llms()) { @file_put_contents($llms, lp_main_corporate_llms(), LOCK_EX); }
     if (!is_file($file) || @file_get_contents($file) !== $key) { @file_put_contents($file, $key, LOCK_EX); }
 }
 add_action('init', 'lp_main_seo_write_docroot', 2);
 add_action('init', function () {
-    if (!get_option('lp_main_seo_files_synced_v101')) {
+    if (!get_option('lp_main_seo_files_synced_v200')) {
         lp_main_seo_sync_files();
-        update_option('lp_main_seo_files_synced_v101', 1, false);
+        update_option('lp_main_seo_files_synced_v200', 1, false);
     }
 }, 3);
 
 function lp_main_seo_metadata_map() {
     return array(
-        16 => array('title'=>'Lazy Plex | Growth Consultancy & Digital Marketing Systems','description'=>'Lazy Plex connects SEO, digital marketing, lead generation, CRM automation and analytics into measurable business growth systems.'),
-        55 => array('title'=>'About Lazy Plex | Growth Consultancy & Automation','description'=>'Meet Lazy Plex: a growth consultancy connecting digital strategy, acquisition, automation and performance measurement across business sectors.'),
-        22 => array('title'=>'Business Growth Solutions | Marketing, CRM & SEO | Lazy Plex','description'=>'Explore Lazy Plex solutions for qualified customer acquisition, lead conversion, CRM automation, SEO and meaningful growth measurement.'),
-        40 => array('title'=>'Real Estate Marketing Systems for Developers | Lazy Plex','description'=>'Connect real estate marketing, buyer qualification, CRM follow-up, site visits and revenue measurement in one practical growth system.'),
-        49 => array('title'=>'Growth Insights & Marketing Resources | Lazy Plex','description'=>'Explore practical marketing, customer acquisition, lead conversion, automation and measurement insights from Lazy Plex and its digital hub.'),
-        157 => array('title'=>'Contact Lazy Plex | Digital Marketing & Growth Consultancy','description'=>'Contact Lazy Plex to discuss SEO, digital marketing, qualified leads, CRM automation and measurable growth. Start with a practical growth audit.'),
-        254 => array('title'=>'Coaching Institute Websites & Lead Generation | Lazy Plex','description'=>'Build an admissions-focused website for your coaching institute. Explore lead generation, student enquiries and enrolment journeys with Lazy Plex.'),
-        287 => array('title'=>'Growth Consultancy & Business Marketing Systems | Lazy Plex','description'=>'Explore Lazy Plex growth consultancy: digital strategy, acquisition, customer conversion, automation and measurement built around business goals.'),
-        28 => array('title'=>'Real Estate Lead Generation & Buyer Acquisition | Lazy Plex','description'=>'Build qualified property demand with Lazy Plex through search, landing pages, paid acquisition and connected sales qualification.'),
-        31 => array('title'=>'Real Estate Lead Conversion Services | Lazy Plex','description'=>'Improve property enquiry qualification, sales handoffs, CRM follow-up and conversion journeys with Lazy Plex growth systems.'),
-        34 => array('title'=>'Real Estate Sales Automation & CRM Workflows | Lazy Plex','description'=>'Connect property sales enquiries, lead routing, CRM workflows and timely follow-up with practical real estate automation.'),
-        37 => array('title'=>'Real Estate Marketing Analytics & Reporting | Lazy Plex','description'=>'Connect property marketing spend, qualified leads, site visits, bookings and revenue with meaningful reporting and measurement.'),
-        46 => array('title'=>'Business Growth Audit | Marketing & Sales | Lazy Plex','description'=>'Request a growth audit to understand acquisition, lead quality, conversion, CRM follow-up and measurement gaps before scaling spend.')
+        407 => array('title'=>'Lazy Plex | Business, Technology & Innovation','description'=>'Explore Lazy Plex, a founder-led company with Digital, Software and Labs divisions.'),
+        411 => array('title'=>'About Lazy Plex | Our Company','description'=>'Learn about Lazy Plex\'s purpose, three specialist divisions and operating philosophy.'),
+        406 => array('title'=>'Lazy Plex Software | Business Software & Automation','description'=>'Explore business software, LP Real Estate CRM and internal automation initiatives.'),
+        591 => array('title'=>'Lazy Plex Labs | Mobile Games & Apps','description'=>'Explore mobile game and application development, including Luma Circuit.'),
+        49 => array('title'=>'Lazy Plex Insights | Business & Technology','description'=>'Read business technology, CRM, sales operations and innovation perspectives.'),
+        157 => array('title'=>'Contact Lazy Plex | Corporate & Division Enquiries','description'=>'Find the right contact route for corporate partnerships, digital marketing, software and Labs.'),
+        622 => array('title'=>'Leadership | Lazy Plex','description'=>'Discover the founder-led direction and operating principles of Lazy Plex.'),
+        623 => array('title'=>'Our Approach | Lazy Plex','description'=>'Learn how Lazy Plex identifies problems, builds focused solutions and validates them.'),
+        624 => array('title'=>'Our Businesses | Lazy Plex','description'=>'Explore Lazy Plex Digital, Lazy Plex Software and Lazy Plex Labs.'),
+        625 => array('title'=>'Products & Innovation | Lazy Plex','description'=>'Discover client-facing products and development initiatives across Lazy Plex.'),
+        626 => array('title'=>'Luma Circuit | Lazy Plex Labs','description'=>'Explore the mobile game project in development and its privacy information.'),
+        627 => array('title'=>'Partnerships & Collaborations | Lazy Plex','description'=>'Discuss technology, product and business collaboration opportunities.'),
+        628 => array('title'=>'Product Support | Lazy Plex','description'=>'Find product support, enquiry routes and privacy resources.'),
     );
 }
 function lp_main_blog_metadata_map() {
@@ -98,8 +100,8 @@ add_filter('rank_math/frontend/title', function($title) {
     return isset($map[$id]) ? $map[$id]['title'] : $title;
 }, 99);
 add_filter('rank_math/frontend/description', function($description) {
-    if (is_category('uncategorized')) return 'Category archive for Lazy Plex articles. Browse practical digital marketing and growth resources in our main insights section.';
-    if (function_exists('is_shop') && is_shop()) return 'The Lazy Plex store is being prepared. For digital marketing, growth systems and business enquiries, contact our consultancy team.';
+    if (is_category('uncategorized')) return 'Browse business and technology perspectives from Lazy Plex.';
+    if (function_exists('is_shop') && is_shop()) return 'For account and product enquiries, contact Lazy Plex.';
     if (is_singular('post')) { $postMap = lp_main_blog_metadata_map(); $postId = get_queried_object_id(); return isset($postMap[$postId]) ? $postMap[$postId]['description'] : $description; }
     if (!is_page()) return $description;
     $map = lp_main_seo_metadata_map(); $id = get_queried_object_id();
@@ -113,6 +115,22 @@ add_filter('rank_math/frontend/robots', function($robots) {
 }, 99);
 add_action('template_redirect', function() {
     $path = wp_parse_url(isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '/', PHP_URL_PATH);
-    $redirects = array('/elementor-287/' => '/growth-consultancy/', '/hello-world/' => '/insights/', '/digital-bundle/' => '/solutions/', '/digital-bundle-thank-you/' => '/solutions/', '/product/222/' => '/solutions/');
+    $redirects = array('/elementor-287/' => '/businesses/', '/hello-world/' => '/insights/', '/digital-bundle/' => '/businesses/', '/digital-bundle-thank-you/' => '/businesses/', '/product/222/' => '/businesses/');
     if (isset($redirects[$path])) { wp_safe_redirect(home_url($redirects[$path]), 301); exit; }
 }, 1);
+
+// Keep corporate organisation identity consistent without replacing other schema nodes.
+add_filter('rank_math/json_ld', function($data) {
+    if (!is_array($data)) return $data;
+    foreach ($data as &$node) {
+        if (!is_array($node)) continue;
+        $types = isset($node['@type']) ? (array) $node['@type'] : array();
+        if (in_array('Organization', $types, true) && isset($node['name']) && $node['name'] === 'Lazy Plex') {
+            $node['description'] = 'Founder-led business, technology and innovation company with Digital, Software and Labs divisions.';
+            $node['url'] = home_url('/');
+            $node['subOrganization'] = array(array('@type'=>'Organization','name'=>'Lazy Plex Digital','url'=>'https://digital.lazyplex.com/'),array('@type'=>'Organization','name'=>'Lazy Plex Software','url'=>home_url('/software/')),array('@type'=>'Organization','name'=>'Lazy Plex Labs','url'=>home_url('/labs/')));
+        }
+    }
+    unset($node);
+    return $data;
+}, 99);
