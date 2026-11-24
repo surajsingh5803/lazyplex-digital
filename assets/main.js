@@ -94,6 +94,17 @@ if (form) {
   const industry = params.get('industry');
   const serviceInput = form.elements.namedItem('service');
   const industryInput = form.elements.namedItem('industry');
+  // Import a user-selected indicative plan only on the explicit pricing handoff.
+  if (safeSource === 'pricing') {
+    try {
+      const stored = JSON.parse(sessionStorage.getItem('lp_pricing_selection') || 'null');
+      sessionStorage.removeItem('lp_pricing_selection');
+      const msg = form.elements.namedItem('message');
+      if (msg && !msg.value && stored && typeof stored.brief === 'string' && Number.isFinite(stored.created) && Date.now() - stored.created >= 0 && Date.now() - stored.created < 1800000) {
+        msg.value = stored.brief.slice(0, 2200);
+      }
+    } catch {}
+  }
   if (service && serviceInput && [...serviceInput.options].some(o => o.value === service)) serviceInput.value = service;
   if (industry && industryInput) {
     const industryMatch = [...industryInput.options].find(o => o.value.toLowerCase().replaceAll(' ','-') === industry || o.text.toLowerCase().replaceAll(' ','-') === industry);
