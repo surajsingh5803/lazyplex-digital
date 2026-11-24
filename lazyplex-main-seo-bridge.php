@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 2.0.2
+ * Version: 2.0.3
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -64,22 +64,22 @@ add_action('init', function () {
 
 function lp_main_seo_metadata_map() {
     return array(
-        407 => array('title'=>'Lazy Plex | Business, Technology & Innovation','description'=>'Explore Lazy Plex, a founder-led company with Digital, Software and Labs divisions.'),
-        411 => array('title'=>'About Lazy Plex | Our Company','description'=>'Learn about Lazy Plex\'s purpose, three specialist divisions and operating philosophy.'),
-        406 => array('title'=>'Lazy Plex Software | Business Software & Automation','description'=>'Explore business software, LP Real Estate CRM and internal automation initiatives.'),
-        591 => array('title'=>'Lazy Plex Labs | Mobile Games & Apps','description'=>'Explore mobile game and application development, including Luma Circuit.'),
-        49 => array('title'=>'Lazy Plex Insights | Business & Technology','description'=>'Read business technology, CRM, sales operations and innovation perspectives.'),
-        157 => array('title'=>'Contact Lazy Plex | Corporate & Division Enquiries','description'=>'Find the right contact route for corporate partnerships, digital marketing, software and Labs.'),
-        622 => array('title'=>'Leadership | Lazy Plex','description'=>'Discover the founder-led direction and operating principles of Lazy Plex.'),
-        623 => array('title'=>'Our Approach | Lazy Plex','description'=>'Learn how Lazy Plex identifies problems, builds focused solutions and validates them.'),
-        624 => array('title'=>'Our Businesses | Lazy Plex','description'=>'Explore Lazy Plex Digital for marketing, Lazy Plex Software for business systems and Lazy Plex Labs for mobile experiences.'),
-        625 => array('title'=>'Products & Innovation | Lazy Plex','description'=>'Discover client-facing products and development initiatives across Lazy Plex.'),
-        626 => array('title'=>'Luma Circuit | Lazy Plex Labs','description'=>'Explore the mobile game project in development and its privacy information.'),
-        627 => array('title'=>'Partnerships & Collaborations | Lazy Plex','description'=>'Explore potential business, technology and product collaborations with Lazy Plex. Share your objective and relevant capabilities.'),
+        407 => array('title'=>'Lazy Plex | Business, Technology & Innovation','description'=>'Find digital marketing, business software and mobile products from Lazy Plex. Choose the right division for your business or product needs.'),
+        411 => array('title'=>'About Lazy Plex | Our Company & Businesses','description'=>'Meet the company behind Lazy Plex Digital, Software and Labs. Discover our services, products, purpose and commitment to clear choices.'),
+        406 => array('title'=>'Lazy Plex Software | CRM & Business Software','description'=>'Explore LP Real Estate CRM, LP Forms in development and internal software initiatives. Find the right product and support route.'),
+        591 => array('title'=>'Lazy Plex Labs | Games & Mobile Apps in Development','description'=>'Discover Luma Circuit, an offline puzzle game in development, and follow upcoming mobile projects from Lazy Plex Labs.'),
+        49 => array('title'=>'Business & Technology Insights | Lazy Plex','description'=>'Find practical guides to CRM, sales follow-up, lead qualification, marketing investment and business technology.'),
+        157 => array('title'=>'Contact Lazy Plex | Find the Right Team','description'=>'Contact Lazy Plex for digital marketing, software, product support, corporate enquiries or business partnerships.'),
+        622 => array('title'=>'Suraj Kumar | Founder of Lazy Plex','description'=>'Meet the founder of Lazy Plex and learn about his focus on digital marketing, business technology and product development.'),
+        623 => array('title'=>'Our Approach | How Lazy Plex Works','description'=>'Understand how Lazy Plex helps you choose a service or product, agree scope, review implementation and find support.'),
+        624 => array('title'=>'Our Businesses | Lazy Plex Digital, Software & Labs','description'=>'Find the right Lazy Plex division for customer acquisition, business software or upcoming mobile products.'),
+        625 => array('title'=>'Products & Digital Tools | Lazy Plex','description'=>'Explore LP Real Estate CRM, Luma Circuit in development, free marketing calculators and our software portfolio.'),
+        626 => array('title'=>'Luma Circuit | Offline Puzzle Game in Development','description'=>'Rotate wires and complete circuits. Explore Luma Circuit\'s current development features, 30 puzzles and release status.'),
+        627 => array('title'=>'Business & Technology Partnerships | Lazy Plex','description'=>'Discuss business development, technology integrations and specialist delivery opportunities with Lazy Plex.'),
         220 => array('title'=>'My Account | Lazy Plex','description'=>'Manage your Lazy Plex account and existing orders. For product or account assistance, contact the relevant support channel.'),
         218 => array('title'=>'Cart | Lazy Plex','description'=>'Review items in your Lazy Plex cart and confirm your selection before proceeding to checkout.'),
         254 => array('title'=>'Coaching Institute Marketing | Lazy Plex','description'=>'Explore education-focused marketing, student enquiry journeys and website development with Lazy Plex Digital.'),
-        628 => array('title'=>'Product Support | Lazy Plex','description'=>'Find support routes for Lazy Plex products, report a software issue and access relevant privacy and account resources.'),
+        628 => array('title'=>'Product Support | Lazy Plex','description'=>'Find product contact routes, issue reporting guidance and privacy resources for LP Real Estate CRM and Luma Circuit.'),
     );
 }
 function lp_main_blog_metadata_map() {
