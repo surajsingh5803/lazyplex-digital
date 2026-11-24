@@ -3,6 +3,7 @@
 // One click begins verification and automatically submits on a valid token.
 // WhatsApp fallback is independent and no personal information goes to analytics.
 (() => {
+  if (document.querySelector('meta[name="lp-preview"]')) return;
   const form = document.querySelector("#enquiry-form");
   const panel = document.querySelector("#secure-intake");
   if (!form || !panel || typeof fetch !== "function") return;
