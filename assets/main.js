@@ -158,21 +158,21 @@ if (typeof document.createElement === "function" && document.head && document.he
   document.head.appendChild(analyticsScript);
 }
 
-// Lazy Plex cross-site commercial journey v1 — canonical service catalogue
-// Progressive enhancement only: every page still works when JavaScript is disabled.
+// Digital owns the commercial journey. Never route buying actions to the parent.
 document.addEventListener("DOMContentLoaded", () => {
   const primaryCTA = document.querySelector(".desktop-nav .nav-cta");
   if (primaryCTA) {
-    primaryCTA.href = "https://lazyplex.com/start/";
+    primaryCTA.href = "/growth-planner/";
     primaryCTA.innerHTML = 'Get Started <span aria-hidden="true">↗</span>';
   }
   const mobile = document.querySelector(".mobile-menu");
   if (mobile && !mobile.querySelector('[data-lp-buyer-route]')) {
     const routes = [
-      ["Get Started — choose a service", "https://lazyplex.com/start/"],
-      ["Compare current prices and tiers", "https://lazyplex.com/pricing/"]
+      ["Get Started — choose a service", "/growth-planner/"],
+      ["Compare current prices and tiers", "/pricing/"]
     ];
     routes.forEach(([label, href]) => {
+      if (Array.from(mobile.querySelectorAll("a")).some(a => a.getAttribute("href") === href)) return;
       const link = document.createElement("a");
       link.href = href;
       link.textContent = label;
@@ -184,36 +184,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!/^\/services\/[^/]+\/$/.test(path)) return;
   const main = document.querySelector("main");
   if (!main || document.querySelector(".lp-catalogue-bridge")) return;
+  const ids = {
+    "search-engine-optimisation":"seo", "local-seo":"local",
+    "ai-search-optimisation":"ai_search", "google-ads-ppc":"google",
+    "meta-ads":"meta", "social-media-marketing":"social",
+    "branding-design":"branding", "content-marketing":"content",
+    "lead-generation":"lead_gen", "conversion-optimisation":"cro",
+    "website-development":"website", "crm-automation":"crm",
+    "ai-automation":"ai_auto", "email-whatsapp-marketing":"messaging",
+    "analytics-reporting":"analytics"
+  };
+  const slug = path.split("/")[2];
+  const id = Object.prototype.hasOwnProperty.call(ids,slug) ? ids[slug] : "";
+  if (!id) return;
+  const service = slug === "ai-search-optimisation" ? "search-engine-optimisation" : slug;
   const bridge = document.createElement("section");
   bridge.className = "lp-catalogue-bridge";
   bridge.setAttribute("aria-label", "Service packages and pricing");
-  const seoSpecific = path === "/services/search-engine-optimisation/";
-  const serviceSlug = path.split("/")[2];
-  const proposalKeys = {
-    "search-engine-optimisation":"seo", "local-seo":"local-seo",
-    "ai-search-optimisation":"ai-search", "google-ads-ppc":"google-ads",
-    "meta-ads":"meta-ads", "social-media-marketing":"social",
-    "branding-design":"brand", "content-marketing":"content",
-    "lead-generation":"leads", "conversion-optimisation":"cro",
-    "website-development":"website", "crm-automation":"crm",
-    "ai-automation":"chatbot", "email-whatsapp-marketing":"messaging",
-    "analytics-reporting":"analytics"
-  };
-  const proposalKey = Object.prototype.hasOwnProperty.call(proposalKeys,serviceSlug) ? proposalKeys[serviceSlug] : "";
-  const proposalUrl = "https://lazyplex.com/request-proposal/" + (proposalKey ? "?service="+encodeURIComponent(proposalKey) : "");
-  bridge.innerHTML =
-    '<div class="container lp-catalogue-bridge-inner">' +
-      '<div><strong>Compare before you enquire</strong>' +
-      '<p>' + (seoSpecific
-        ? 'SEO individual service tiers currently start at ₹19,999/month on the main Lazy Plex catalogue. Check the exact deliverables, scope and exclusions there.'
-        : 'Published service tiers and package prices are maintained on the main Lazy Plex catalogue. This specialist guide explains the work; its tailored-quote wording does not replace published tier pricing.') +
-      '</p></div>' +
-      '<div class="lp-catalogue-bridge-actions">' +
-        '<a href="https://lazyplex.com/services/">See all service tiers ↗</a>' +
-        '<a href="https://lazyplex.com/compare/">Individual vs bundled ↗</a>' +
-        '<a href="'+proposalUrl+'">Request this service ↗</a>' +
-      '</div>' +
-    '</div>';
+  bridge.innerHTML = '<div class="container lp-catalogue-bridge-inner"><div><strong>Compare before you enquire</strong><p>Published service tiers and package scopes are maintained here on Lazy Plex Digital. Compare the exact deliverables, fees and exclusions before requesting a proposal.</p></div><div class="lp-catalogue-bridge-actions"><a href="/pricing/#service-'+id+'">See this service’s tiers ↗</a><a href="/pricing/#packages">Individual vs bundled ↗</a><a href="/contact/?service='+service+'">Request this service ↗</a></div></div>';
   const firstSection = main.querySelector("section");
   if (firstSection) firstSection.insertAdjacentElement("afterend", bridge);
   else main.prepend(bridge);
