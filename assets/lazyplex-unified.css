@@ -121,3 +121,24 @@ body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) .lp-parent-pa
 
 /* Corporate site: no automatic Jetpack sharing or like widgets on public content. */
 body .sharedaddy,body .sd-sharing-enabled,body .sd-like-enabled,body .jetpack-likes-widget-wrapper,body .post-likes-widget,body .wp-block-jetpack-sharing-buttons,body .wp-block-jetpack-likes{display:none!important}
+
+/* Edge-to-edge authored pages: no theme gutters or floating hero frame. */
+body.lpbrand-fullbleed :is(main.site-main,div.site-main,#content.site-main),
+body.lpbrand-fullbleed .site-main>:is(.page-content,.entry-content),
+body.lpbrand-fullbleed .site-main>.page-content>.entry-content{
+  width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+}
+body.lpbrand-fullbleed .site-main :is(.lpco,.lp-parent-page){
+  width:100%!important;max-width:none!important;margin:0!important;
+}
+body.lpbrand-fullbleed .lp-corporate-edge-hero{
+  width:100%!important;max-width:none!important;margin:0!important;border-radius:0!important;
+  box-sizing:border-box;
+  padding-inline:max(clamp(20px,5vw,72px),calc((100% - 1180px)/2))!important;
+}
+body.lpbrand-fullbleed .lpco>.hero,
+body.lpbrand-fullbleed .lp-parent-page>.lp-hero{margin-top:0!important;border-radius:0!important}
+body.lpbrand-fullbleed .lpbrand-skip-target{height:0}
+body.admin-bar .lpbrand-header{top:32px}
+@media(max-width:782px){body.admin-bar .lpbrand-header{top:46px}}
+@media(max-width:600px){body.admin-bar .lpbrand-header{top:0}}
