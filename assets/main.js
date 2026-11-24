@@ -1,5 +1,6 @@
 "use strict";
 const WA_NUMBER = "917257919567";
+const lpPreview = !!document.querySelector('meta[name="lp-preview"]');
 // Only non-sensitive, short UTM labels are retained in this tab for enquiry routing.
 // No names, phone numbers, emails, query strings or form messages are stored here.
 const campaignFields = ["utm_source", "utm_medium", "utm_campaign"];
@@ -58,6 +59,7 @@ window.lpCampaignContext = {...campaignContext};
 const form = document.querySelector('#enquiry-form');
 if (form) {
   const waButton = form.querySelector?.('#whatsapp-submit');
+  if (lpPreview) { const notice = document.querySelector("#form-status"); if (notice) notice.textContent = "Preview only — explore the form without sending an enquiry."; }
   if (waButton) waButton.disabled = false;
   const params = new URLSearchParams(window.location.search);
 
@@ -116,6 +118,7 @@ if (form) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const status = document.querySelector('#form-status');
+    if (lpPreview) { status.textContent = 'Preview only: no enquiry was sent. Use digital.lazyplex.com for live contact.'; return; }
     if (!form.reportValidity()) return;
     const d = new FormData(form);
     const selectedService = serviceInput.options[serviceInput.selectedIndex]?.text || '';
@@ -151,7 +154,7 @@ if (form) {
 
 // Load consent-first analytics on all static pages. Legacy Node smoke tests use
 // a minimal DOM and intentionally skip this browser-only enhancement.
-if (typeof document.createElement === "function" && document.head && document.head.appendChild) {
+if (!lpPreview && typeof document.createElement === "function" && document.head && document.head.appendChild) {
   const analyticsScript = document.createElement("script");
   analyticsScript.src = "/assets/analytics.js";
   analyticsScript.defer = true;
