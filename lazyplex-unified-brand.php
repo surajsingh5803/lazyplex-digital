@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Unified Brand
  * Description: Brings lazyplex.com into the same visual family as digital.lazyplex.com while preserving WordPress and Elementor content, WooCommerce, forms and URL structure.
- * Version: 2.0.0
+ * Version: 2.0.1
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -21,7 +21,7 @@ add_action('wp_enqueue_scripts', function () {
         'lazyplex-unified-brand',
         plugins_url('assets/lazyplex-unified.css', __FILE__),
         array(),
-        '2.0.0',
+        '2.0.1',
         'all'
     );
 }, 60);
@@ -90,6 +90,6 @@ add_filter('body_class', function($classes) {
 
 /** Ensure Hello Elementor does not emit a redundant H1 on authored parent-brand pages. */
 add_filter('hello_elementor_page_title', function($show) {
-    if (is_front_page() || is_page(array('industries','healthcare','software','about-new','about','solutions','get-customers','convert','automate','measure','services','pricing','growth-consultancy','real-estate','education','ecommerce','beauty-wellness','hospitality','manufacturing-b2b','professional-services','startups-smes','labs','insights','contact','leadership','our-approach','businesses','products','luma-circuit','partnerships','product-support'))) return false;
+    if (is_front_page() || is_page(array('industries','healthcare','software','about-new','about','solutions','get-customers','convert','automate','measure','services','pricing','growth-consultancy','real-estate','education','ecommerce','beauty-wellness','hospitality','manufacturing-b2b','professional-services','startups-smes','labs','insights','contact','leadership','our-approach','businesses','products','luma-circuit','partnerships','product-support','privacy-policy'))) return false;
     return $show;
 }, 99);
