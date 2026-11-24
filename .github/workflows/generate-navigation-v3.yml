@@ -1,0 +1,28 @@
+name: Generate static Digital navigation
+on:
+  push:
+    branches: [digital-navigation-v3]
+    paths:
+      - '.github/workflows/generate-navigation-v3.yml'
+permissions:
+  contents: write
+jobs:
+  generate:
+    if: github.ref == 'refs/heads/digital-navigation-v3'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/apply-navigation-v3.mjs
+      - run: node scripts/seo-quality-check.mjs
+      - name: Commit generated public HTML to the feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*.html'
+          git diff --cached --quiet && exit 0
+          git commit -m "Apply static navigation and footer to all public pages"
+          git push origin HEAD:refs/heads/digital-navigation-v3

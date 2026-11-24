@@ -1,0 +1,22 @@
+name: Digital V3 navigation acceptance
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  navigation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/apply-navigation-v3.mjs && git diff --exit-code
+      - run: node scripts/seo-quality-check.mjs
+      - run: npm install --no-save --no-package-lock playwright
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 8765 > /tmp/lp-nav-http.log 2>&1 &
+          node scripts/navigation-v3-browser-check.mjs

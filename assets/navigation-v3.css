@@ -1,0 +1,44 @@
+/* Shared static navigation V3. All links exist in HTML before JavaScript. */
+.lp-digital-nav{position:sticky;top:0;z-index:1000}
+.lp-digital-nav .nav-bar{width:min(1380px,calc(100% - 44px));height:84px;gap:20px}
+.lp-digital-nav .desktop-nav{display:flex;gap:clamp(8px,1vw,16px);margin-left:auto;align-items:center}
+.lp-digital-nav .desktop-nav .nav-link{white-space:nowrap}
+.lp-nav-group{position:relative}
+.lp-nav-group>summary,.lp-mobile-shell>summary{list-style:none;cursor:pointer;user-select:none}
+.lp-nav-group>summary::-webkit-details-marker,.lp-mobile-shell>summary::-webkit-details-marker{display:none}
+.lp-nav-group>summary{display:flex;align-items:center;gap:7px;white-space:nowrap;padding:24px 3px;line-height:1.35;font-weight:700;color:#dbe0ef}
+.lp-nav-group>summary:hover,.lp-nav-group[open]>summary,.lp-digital-nav [aria-current="page"]{color:var(--mint,#b9f664)}
+.lp-nav-group>summary:focus-visible,.lp-mobile-shell>summary:focus-visible{outline:3px solid #b9f664;outline-offset:3px;border-radius:5px}
+.lp-nav-chevron{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .15s}
+.lp-nav-group[open]>.summary .lp-nav-chevron,.lp-nav-group[open]>summary .lp-nav-chevron{transform:rotate(225deg)}
+.lp-nav-panel{background:#101e3b;border:1px solid #ffffff2b;border-radius:15px;padding:13px;box-shadow:0 18px 50px #03091e65;min-width:240px;color:#e4eaf3}
+.desktop-nav .lp-nav-panel{position:absolute;top:100%;left:0;z-index:1001}
+.desktop-nav .lp-nav-group:nth-last-of-type(-n+2) .lp-nav-panel{left:auto;right:0}
+.desktop-nav .lp-nav-wide .lp-nav-panel{width:max-content;max-width:min(740px,calc(100vw - 60px))}
+.lp-nav-columns{display:grid;grid-template-columns:repeat(var(--lp-nav-columns),minmax(0,1fr));gap:10px}
+.lp-nav-column{min-width:0}
+.lp-nav-column .lp-nav-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#aebdd8;margin:7px 9px}
+.lp-nav-column a,.lp-nav-all{display:block;padding:10px 12px;line-height:1.45;font-size:13px;font-weight:600;border-radius:7px;color:#e4eaf3;white-space:normal}
+.lp-nav-column a:hover,.lp-nav-column a:focus-visible,.lp-nav-all:hover{background:#ffffff12;color:var(--mint,#b9f664)}
+.lp-nav-all{margin-top:8px;border-top:1px solid #ffffff20;color:#b9f664;font-weight:800}
+.lp-mobile-shell{display:none;position:relative}
+.lp-mobile-shell>summary{color:#fff;border:1px solid #ffffff50;border-radius:10px;padding:10px 13px;font-size:13px;font-weight:700;white-space:nowrap}
+.lp-hamburger{margin-right:5px;color:#b9f664}
+.lp-mobile-shell .mobile-menu{display:flex;position:absolute;flex-direction:column;right:0;top:calc(100% + 12px);width:min(420px,calc(100vw - 32px));max-height:76vh;max-height:76dvh;overflow:auto;overscroll-behavior:contain;background:#101e3b;border:1px solid #ffffff30;border-radius:14px;box-shadow:0 20px 50px #0006;padding:10px 15px 18px}
+.lp-mobile-shell .mobile-menu> a,.lp-mobile-shell .lp-nav-group>summary{padding:14px 5px;border-bottom:1px solid #ffffff18;color:#fff;font-size:14px;font-weight:700}
+.lp-mobile-shell .lp-nav-group>summary{justify-content:space-between}
+.lp-mobile-shell .lp-nav-panel{position:static;min-width:0;width:100%;box-shadow:none;background:#0b1730;padding:9px;margin-bottom:8px}
+.lp-mobile-shell .lp-nav-columns{grid-template-columns:1fr}
+.lp-mobile-shell .lp-nav-column a{font-size:13px;padding:10px;border-bottom:0}
+.lp-mobile-shell .lp-mobile-cta{color:#b9f664!important}
+.lp-digital-footer .lp-footer-intro{margin-bottom:32px}
+.lp-digital-footer .lp-footer-intro p{max-width:620px}
+.lp-digital-footer .lp-footer-columns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;margin-bottom:30px}
+.lp-digital-footer .lp-footer-columns>div{min-width:0}
+.lp-digital-footer .lp-footer-columns h3{font-size:15px;color:#fff;margin:0 0 15px}
+.lp-digital-footer .lp-footer-columns a{display:block;font-size:13px;line-height:1.55;margin:0 0 10px;color:#c1cde0;overflow-wrap:anywhere}
+.lp-digital-footer .lp-footer-columns a:hover{color:#b9f664}
+@media(max-width:1199px){.lp-digital-nav .desktop-nav{display:none!important}.lp-mobile-shell{display:block}}
+@media(max-width:740px){.lp-digital-nav .nav-bar{height:70px;width:calc(100% - 36px)}.lp-digital-footer .lp-footer-columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}}
+@media(max-width:350px){.lp-digital-footer .lp-footer-columns{grid-template-columns:1fr}.lp-digital-nav .nav-bar{gap:8px}.lp-mobile-shell>summary{padding:9px}}
+@media(prefers-reduced-motion:reduce){.lp-nav-chevron{transition:none}}
