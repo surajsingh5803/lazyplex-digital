@@ -13,7 +13,7 @@ const values = {
 let posts = 0, renders = 0, callback, onClick, lastBody;
 const panel = {hidden:true};
 const status = {textContent:"",className:""};
-const button = {disabled:false,textContent:"Send enquiry securely",addEventListener:(type,fn)=>{
+const button = {disabled:false,textContent:"Submit my project enquiry",addEventListener:(type,fn)=>{
   assert.equal(type,"click");onClick=fn;
 }};
 const form = {
@@ -74,7 +74,7 @@ onClick();
 await flush();
 assert.equal(posts,2,"Retry after correcting a server-side validation issue");
 assert.equal(renders,1,"Retry of HTTP 422 does not need another Cloudflare challenge");
-assert.match(status.textContent,/Enquiry received successfully/);
+assert.match(status.textContent,/Your enquiry has been received/);
 assert.equal(button.disabled,true);
 assert.equal(window.dataLayer.filter(x=>x.event==="lazyplex_secure_enquiry_received").length,1);
 onClick();
