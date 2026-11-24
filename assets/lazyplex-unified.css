@@ -88,3 +88,33 @@ body:is(.home,.page-id-404,.page-id-405,.page-id-406,.page-id-407) .lp-parent-pa
 
 /* Expanded nine-industry navigation and keyboard-safe skip link */
 .lpbrand-skip-target{display:block;position:relative;width:1px;height:1px;overflow:hidden}.lpbrand-industry-nav{border-top:1px solid #ffffff27;display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding:23px 0;margin-top:25px}.lpbrand-industry-nav strong{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#b9f664}.lpbrand-industry-nav a{color:#c9d4e6!important;font-size:12px;text-decoration:none!important}.lpbrand-industry-nav a:hover,.lpbrand-industry-nav a:focus-visible{color:#b9f664!important;text-decoration:underline!important}.lpbrand-header :is(a,summary):focus-visible,.lpbrand-footer a:focus-visible{outline:3px solid #b9f664;outline-offset:4px;border-radius:3px}.lpbrand-skip:focus-visible{left:16px;top:8px;outline:3px solid #6b3fcf;outline-offset:2px}
+/* Corporate V3: the shared shell uses the assigned WordPress menus. */
+.lpbrand-header .lpbrand-name small{font-size:8px;letter-spacing:.08em}
+.lpbrand-header .lpbrand-container{width:min(1340px,calc(100% - 44px))}
+.lpbrand-menu,.lpbrand-menu ul,.lpbrand-footer-menu,.lpbrand-footer-menu ul{list-style:none;margin:0;padding:0}
+.lpbrand-desktop .lpbrand-menu{display:flex;align-items:center;gap:clamp(5px,1.1vw,17px)}
+.lpbrand-desktop .lpbrand-menu>li{position:relative;display:block;margin:0}
+.lpbrand-desktop .lpbrand-menu>li>a{display:block;padding:28px 6px;white-space:nowrap}
+.lpbrand-desktop .menu-item-has-children>a::after{content:"";display:inline-block;width:6px;height:6px;margin-left:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);vertical-align:3px}
+.lpbrand-desktop .lpbrand-menu .sub-menu{position:absolute;top:100%;left:0;min-width:242px;max-width:320px;background:#101e36;border:1px solid #ffffff30;border-radius:12px;padding:8px;box-shadow:0 18px 45px #0005;display:none;z-index:1010}
+.lpbrand-desktop .lpbrand-menu>li:last-child>.sub-menu,.lpbrand-desktop .lpbrand-menu>li:nth-last-child(2)>.sub-menu{left:auto;right:0}
+.lpbrand-desktop .lpbrand-menu li:hover>.sub-menu,.lpbrand-desktop .lpbrand-menu li:focus-within>.sub-menu{display:block}
+.lpbrand-desktop .lpbrand-menu .sub-menu a{display:block;white-space:normal;padding:12px 14px;border-radius:7px;font-size:13px;line-height:1.45}
+.lpbrand-desktop .lpbrand-menu .sub-menu a:hover,.lpbrand-desktop .lpbrand-menu .sub-menu a:focus-visible{background:#ffffff12}
+.lpbrand-mobile .lpbrand-menu>li{margin:0}
+.lpbrand-mobile .lpbrand-menu>li>a{font-weight:800}
+.lpbrand-mobile .lpbrand-menu .sub-menu{padding-left:14px;border-left:1px solid #ffffff28;margin-left:10px}
+.lpbrand-mobile .lpbrand-menu .sub-menu a{font-size:13px;font-weight:500;padding:10px}
+.lpbrand-footer .lpbrand-footer-intro{margin-bottom:30px}
+.lpbrand-footer .lpbrand-footer-intro p{max-width:640px}
+.lpbrand-footer-menu{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px;align-items:start}
+.lpbrand-footer-menu>li{min-width:0}
+.lpbrand-footer-menu>li>a{display:block;font-size:15px;font-weight:800;color:#fff!important;margin-bottom:15px}
+.lpbrand-footer-menu .sub-menu{display:block;position:static}
+.lpbrand-footer-menu .sub-menu li{margin:0 0 10px}
+.lpbrand-footer-menu .sub-menu a{display:block;white-space:normal;font-size:13px;line-height:1.5}
+.lpbrand-footer-menu a:focus-visible,.lpbrand-footer-menu a:hover{text-decoration:underline!important}
+@media(max-width:1100px){.lpbrand-desktop{display:none}.lpbrand-mobile{display:block}.lpbrand-nav{min-height:72px}}
+@media(max-width:800px){.lpbrand-footer-menu{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 18px}}
+@media(max-width:350px){.lpbrand-footer-menu{grid-template-columns:1fr}.lpbrand-header .lpbrand-name small{font-size:7px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
