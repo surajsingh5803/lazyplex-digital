@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Main Site SEO Bridge
  * Description: Main WordPress site only: OpenSEO key, AI discovery and Rank Math metadata. No changes to the digital subdomain.
- * Version: 2.0.0
+ * Version: 2.0.1
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -72,11 +72,14 @@ function lp_main_seo_metadata_map() {
         157 => array('title'=>'Contact Lazy Plex | Corporate & Division Enquiries','description'=>'Find the right contact route for corporate partnerships, digital marketing, software and Labs.'),
         622 => array('title'=>'Leadership | Lazy Plex','description'=>'Discover the founder-led direction and operating principles of Lazy Plex.'),
         623 => array('title'=>'Our Approach | Lazy Plex','description'=>'Learn how Lazy Plex identifies problems, builds focused solutions and validates them.'),
-        624 => array('title'=>'Our Businesses | Lazy Plex','description'=>'Explore Lazy Plex Digital, Lazy Plex Software and Lazy Plex Labs.'),
+        624 => array('title'=>'Our Businesses | Lazy Plex','description'=>'Explore Lazy Plex Digital for marketing, Lazy Plex Software for business systems and Lazy Plex Labs for mobile experiences.'),
         625 => array('title'=>'Products & Innovation | Lazy Plex','description'=>'Discover client-facing products and development initiatives across Lazy Plex.'),
         626 => array('title'=>'Luma Circuit | Lazy Plex Labs','description'=>'Explore the mobile game project in development and its privacy information.'),
-        627 => array('title'=>'Partnerships & Collaborations | Lazy Plex','description'=>'Discuss technology, product and business collaboration opportunities.'),
-        628 => array('title'=>'Product Support | Lazy Plex','description'=>'Find product support, enquiry routes and privacy resources.'),
+        627 => array('title'=>'Partnerships & Collaborations | Lazy Plex','description'=>'Explore potential business, technology and product collaborations with Lazy Plex. Share your objective and relevant capabilities.'),
+        220 => array('title'=>'My Account | Lazy Plex','description'=>'Manage your Lazy Plex account and existing orders. For product or account assistance, contact the relevant support channel.'),
+        218 => array('title'=>'Cart | Lazy Plex','description'=>'Review items in your Lazy Plex cart and confirm your selection before proceeding to checkout.'),
+        254 => array('title'=>'Coaching Institute Marketing | Lazy Plex','description'=>'Explore education-focused marketing, student enquiry journeys and website development with Lazy Plex Digital.'),
+        628 => array('title'=>'Product Support | Lazy Plex','description'=>'Find support routes for Lazy Plex products, report a software issue and access relevant privacy and account resources.'),
     );
 }
 function lp_main_blog_metadata_map() {
@@ -101,7 +104,7 @@ add_filter('rank_math/frontend/title', function($title) {
 }, 99);
 add_filter('rank_math/frontend/description', function($description) {
     if (is_category('uncategorized')) return 'Browse business and technology perspectives from Lazy Plex.';
-    if (function_exists('is_shop') && is_shop()) return 'For account and product enquiries, contact Lazy Plex.';
+    if (function_exists('is_shop') && is_shop()) return 'For product availability, account enquiries and support, contact Lazy Plex through the appropriate product or corporate channel.';
     if (is_singular('post')) { $postMap = lp_main_blog_metadata_map(); $postId = get_queried_object_id(); return isset($postMap[$postId]) ? $postMap[$postId]['description'] : $description; }
     if (!is_page()) return $description;
     $map = lp_main_seo_metadata_map(); $id = get_queried_object_id();
