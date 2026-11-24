@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Lazy Plex Unified Brand
  * Description: Brings lazyplex.com into the same visual family as digital.lazyplex.com while preserving WordPress and Elementor content, WooCommerce, forms and URL structure.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author: Lazy Plex
  * License: GPL-2.0-or-later
  */
@@ -21,7 +21,7 @@ add_action('wp_enqueue_scripts', function () {
         'lazyplex-unified-brand',
         plugins_url('assets/lazyplex-unified.css', __FILE__),
         array(),
-        '2.0.1',
+        '2.0.2',
         'all'
     );
 }, 60);
@@ -44,7 +44,7 @@ add_action('wp_body_open', function () {
     <a class="lpbrand-skip" href="#lpbrand-content-start">Skip to main content</a>
     <header class="lpbrand-header" role="banner">
       <div class="lpbrand-container lpbrand-nav">
-        <a class="lpbrand-wordmark" href="<?php echo esc_url(home_url('/')); ?>" aria-label="Lazy Plex home">
+        <a class="lpbrand-wordmark" href="<?php echo esc_url(home_url('/')); ?>" aria-label="Lazy Plex — Business · Technology · Innovation — home">
           <span class="lpbrand-mark"><img width="42" height="42" alt="Lazy Plex" loading="eager" decoding="async" src="https://digital.lazyplex.com/assets/lazyplex-logo.webp"></span>
           <span class="lpbrand-name">LAZY PLEX <small>BUSINESS · TECHNOLOGY · INNOVATION</small></span>
         </a>
@@ -52,7 +52,7 @@ add_action('wp_body_open', function () {
           <?php lp_brand_render_menu('menu-1', 'lpbrand-corporate-nav', 'lpbrand-menu'); ?>
         </nav>
         <details class="lpbrand-mobile" aria-label="Mobile navigation">
-          <summary aria-label="Open navigation"><span></span><span></span><span></span><b>Menu</b></summary>
+          <summary aria-label="Menu"><span></span><span></span><span></span><b>Menu</b></summary>
           <nav aria-label="Mobile site menu">
             <?php lp_brand_render_menu('menu-1', 'lpbrand-mobile-nav', 'lpbrand-menu'); ?>
           </nav>
