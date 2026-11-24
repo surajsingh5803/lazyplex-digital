@@ -1,0 +1,46 @@
+name: Corporate navigation live check
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  navigation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Verify actual rendered corporate menus and links
+        run: |
+          curl -fsSL --retry 2 --max-time 45 "https://lazyplex.com/?navcheck=${GITHUB_RUN_ID}" -o /tmp/lp-home.html
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from urllib.parse import urlsplit
+          class Parser(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.stack=[]; self.links=[]; self.a=None
+              def handle_starttag(self, tag, attrs):
+                  a=dict(attrs)
+                  if tag not in ('area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'): self.stack.append((tag,a))
+                  if tag=='a':
+                      self.a={'href':a.get('href',''),'text':'','ancestors':self.stack[:]}
+              def handle_data(self,data):
+                  if self.a: self.a['text']+=data
+              def handle_endtag(self,tag):
+                  if tag=='a' and self.a:
+                      self.a['text']=' '.join(self.a['text'].split()); self.links.append(self.a); self.a=None
+                  for i in range(len(self.stack)-1,-1,-1):
+                      if self.stack[i][0]==tag: self.stack=self.stack[:i]; break
+          p=Parser(); p.feed(open('/tmp/lp-home.html').read())
+          top=[l for l in p.links if any(tag=='header' or 'site-header' in a.get('class','').split() or a.get('role')=='banner' for tag,a in l['ancestors'])]
+          footer=[l for l in p.links if any(tag=='footer' or 'site-footer' in a.get('class','').split() or a.get('role')=='contentinfo' for tag,a in l['ancestors'])]
+          for label in ['Home','About Us','Our Businesses','Lazy Plex Digital','Lazy Plex Software','Lazy Plex Labs','Insights','Contact Us']:
+              assert any(l['text']==label for l in top), f'Header label missing: {label}; found {[l["text"] for l in top]}'
+          for label in ['Lazy Plex Digital','Lazy Plex Software','Lazy Plex Labs']:
+              l=next(l for l in top if l['text']==label)
+              assert any('menu-item-621' in a.get('class','').split() or a.get('id')=='menu-item-621' for tag,a in l['ancestors']), f'{label} not in Our Businesses submenu'
+          for label in ['About Us','Lazy Plex Digital','Lazy Plex Software','Lazy Plex Labs','Insights','Contact Us','Privacy Policy']:
+              assert any(l['text']==label for l in footer), f'Footer label missing: {label}; found {[l["text"] for l in footer]}'
+          assert any(l['href'].endswith('#lp-businesses') for l in top if l['text']=='Our Businesses')
+          assert 'id="lp-businesses"' in open('/tmp/lp-home.html').read()
+          print('Live header hierarchy, division dropdown, footer links and overview anchor verified')
+          PY
