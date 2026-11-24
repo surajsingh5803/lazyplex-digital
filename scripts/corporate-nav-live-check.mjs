@@ -13,9 +13,12 @@ const abs=u=>u.startsWith('https:')?u:base+u;
 try{
  const page=await browser.newPage({viewport:{width:1440,height:900}});
  await page.goto(base+'/?navcheck='+Date.now(),{waitUntil:'domcontentloaded'});
- const header=page.locator('#menu-corporate-navigation-v3').first();
+ assert.equal(await page.locator('.lpbrand-header:visible').count(),1);
+ assert.equal(await page.locator('.lpbrand-footer:visible').count(),1);
+ assert.equal(await page.locator('.lpbrand-header a[href="https://lazyplex.com/pricing/"]').count(),0,'Old header links still present');
+ const header=page.locator('#lpbrand-corporate-nav').first();
  assert.equal(await header.count(),1,'Header menu id missing');
- const footer=page.locator('#menu-corporate-footer-v3').first();
+ const footer=page.locator('#lpbrand-corporate-footer').first();
  assert.equal(await footer.count(),1,'Footer menu id missing');
  assert.equal(await header.locator(':scope > li').count(),6);
  for(const [label,dest,children] of groups){
@@ -37,14 +40,12 @@ try{
  console.log('Desktop: five dropdowns and four-column footer verified');
  await page.setViewportSize({width:390,height:844});
  await page.goto(base+'/?navcheck='+Date.now(),{waitUntil:'domcontentloaded'});
- const toggle=page.locator('#site-header .site-navigation-toggle-holder .site-navigation-toggle, #site-header .site-navigation-toggle, header .menu-toggle').filter({visible:true}).first();
- if(await toggle.count()) await toggle.click();
- const menu=page.locator('header a[href="https://lazyplex.com/leadership/"]').filter({visible:true});
- if(!await menu.count()){
-   const company=page.locator('header a').filter({hasText:/^Company$/}).filter({visible:true}).first();
-   if(await company.count()) await company.hover();
- }
- const mobileFooter=await page.locator('#menu-corporate-footer-v3').evaluate(el=>({columns:getComputedStyle(el).gridTemplateColumns,visible:[...el.querySelectorAll('.sub-menu a')].every(a=>a.getBoundingClientRect().height>0)}));
+ const mobile=page.locator('.lpbrand-mobile');
+ await mobile.locator('summary').click();
+ assert.ok(await mobile.locator('#lpbrand-mobile-nav a[href="https://lazyplex.com/leadership/"]').isVisible(),'Mobile leadership link missing');
+ assert.ok(await mobile.locator('#lpbrand-mobile-nav a[href="https://lazyplex.com/partnerships/"]').isVisible(),'Mobile partnerships link missing');
+ await mobile.locator('summary').click();
+ const mobileFooter=await page.locator('#lpbrand-corporate-footer').evaluate(el=>({columns:getComputedStyle(el).gridTemplateColumns,visible:[...el.querySelectorAll('.sub-menu a')].every(a=>a.getBoundingClientRect().height>0)}));
  assert.equal(mobileFooter.columns.split(' ').length,2);
  assert.ok(mobileFooter.visible);
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'Mobile horizontal overflow');
